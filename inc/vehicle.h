@@ -1,6 +1,6 @@
 // This file contains vehicle class. As of now it will implement simple bicycle model
 using namespace std;
-#include <iostream>;
+#include <iostream>
 
 class Vehicle{
 private:
