@@ -14,25 +14,14 @@ struct SimpleGraph{
 
 };
 
-struct NodeAndEgeWeight{
-    char node;
-    float weight;
-};
 
 struct WeightedGraph{
-    //using weighted adjacency matrix
-    vector<vector<float>> structure;
-
-     
-};
-
-struct WeightedGraph_{
     //using weighted adjacency matrix
     unordered_map<char,vector<pair<char, int>>> structure;
 
     vector<char> neighbours(char node){
         vector<char> ret;
-        for (int i = 1; i < structure[node].size(); i++){
+        for (int i = 0; i < structure[node].size(); i++){
             ret.push_back(structure[node][i].first);
         }
         return ret;       
