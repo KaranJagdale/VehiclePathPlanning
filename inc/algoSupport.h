@@ -26,4 +26,14 @@ struct WeightedGraph{
         }
         return ret;       
     }
+
+    int getEdgeWeight(char node1, char node2){
+        for (int i = 0; i < structure[node1].size(); i++){
+            if (structure[node1][i].first == node2){
+                return structure[node1][i].second;
+            }
+        }
+        cout<<"invalid nodes were entered"<<endl;
+        return 0;
+    }
 };
