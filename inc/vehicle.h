@@ -1,6 +1,7 @@
 // This file contains vehicle class. As of now it will implement simple bicycle model
 using namespace std;
 #include <iostream>
+#include <vector>
 
 class Vehicle{
 private:
@@ -19,10 +20,19 @@ class Boundary{
 public:
     float* pos; 
     float* size;
+    Boundary();
     Boundary(float* obj_pos, float* obj_size){
         //cout<<"created a boundary"<<endl;
         pos = obj_pos;
         size = obj_size;
     }
 
+};
+
+class SimEnv{
+public:
+    Boundary boundary;
+    vector<Boundary> objects;
+   // Env(void);
+   SimEnv();
 };

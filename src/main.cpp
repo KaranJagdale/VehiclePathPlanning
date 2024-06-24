@@ -1,7 +1,8 @@
-#include "../inc/vehicle.h";
-#include <iostream>;
+#include "../inc/vehicle.h"
+#include <iostream>
 
 int main(){
+
     float env_pos[2] = {0, 0};
     float env_size[2] = {20, 20};
 
@@ -15,11 +16,13 @@ int main(){
     float obj3_size[2] = {2,6};
 
     //creating the environment with objects as the obstacles
-
+  //  SimEnv temp;
     Boundary env(env_pos, env_size);
     Boundary obj1(obj1_pos, obj1_size);
     Boundary obj2(obj2_pos, obj2_size);
     Boundary obj3(obj3_pos, obj3_size);
+
+    
 
 
 }
