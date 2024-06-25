@@ -1,28 +1,49 @@
 #include "../inc/vehicle.h"
 #include <iostream>
+#include <cmath>
+
+bool isReached(float vehx, float vehy, float tarx, float tary){
+
+    //returs true if the vehicle is in 1 cm radius of the target
+    return (sqrt(pow(vehx - tarx, 2) + pow(vehy - tary,2)) < 0.01);
+
+}
 
 int main(){
 
-    float env_pos[2] = {0, 0};
-    float env_size[2] = {20, 20};
+    SimEnv simEnv;
 
-    float obj1_pos[2] = {5, 5};
-    float obj1_size[2] = {3,3};
+    simEnv.boundary = {0, 0, 20, 20};
 
-    float obj2_pos[2] = {10, 15};
-    float obj2_size[2] = {5,4};
-
-    float obj3_pos[2] = {12, 10};
-    float obj3_size[2] = {2,6};
-
-    //creating the environment with objects as the obstacles
-  //  SimEnv temp;
-    Boundary env(env_pos, env_size);
-    Boundary obj1(obj1_pos, obj1_size);
-    Boundary obj2(obj2_pos, obj2_size);
-    Boundary obj3(obj3_pos, obj3_size);
-
+    simEnv.objects = {{5, 5, 8, 8},
+                      {10, 15, 13, 19},
+                      {15, 5, 16, 18}};
     
+    //vehicle physical parameters
+    float vehWheelBase = 1.5; 
+    float vehMass = 1500;
+
+    //target location for the vehicle
+    float xTar = 20;
+    float yTar = 20;
+
+    Vehicle car (vehWheelBase, vehMass);
+
+    //vehicle initial configuration
+    car.xLoc = 1;
+    car.yLoc = 1;
+    car.heading = 90; 
+
+    int maxItr = 100;
+    int itr = 0;
+
+    while (!isReached(car.xLoc, car.yLoc, xTar, yTar) && itr < maxItr)
+    {
+
+    }
+
+
+    return 0;   
 
 
 }
