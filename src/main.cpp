@@ -43,7 +43,7 @@ int main(){
     //vehicle initial configuration
     vehicle.state = {1, 1, 0};
 
-    Vector2f input = {60 * M_PI/180, 5};
+    Vector2f input = {30 * M_PI/180, 5};
 
     int maxItr = 100;
     int itr = 0;
@@ -51,19 +51,14 @@ int main(){
     Vector3f nextState, nextState1, nextState2;
     ODESolver odeSolver;
 
-    nextState1 = odeSolver.updateState(vehicle, 0, 2, input, 0.05, "RK4");
-    nextState2 = odeSolver.updateState(vehicle, 0, 2, input, 0.05, "euler");
+    nextState1 = odeSolver.updateState(vehicle, 0, 1, input, 0.05, "RK4");
+    nextState2 = odeSolver.updateState(vehicle, 0, 1, input, 0.05, "euler");
 
-    cout << "RK4" << nextState1 << endl;
-    cout << "euler" << nextState2 << endl;
+    for (float dt = 0.05; dt < 1; dt += 0.05) 
+    {
+        cout << "RK4:\n" <<odeSolver.updateState(vehicle, 0, dt, input, 0.05, "RK4") << endl;
+    }
 
-
-
-
-    // while (!isReached(car.xLoc, car.yLoc, xTar, yTar) && itr < maxItr)
-    // {
-
-    // }
 
 
     return 0;   
