@@ -34,14 +34,9 @@ Vector3f constToDiscretezGrid(Vector3f state, SimEnv simEnv, unsigned int xRes,
     //xRes, yRes denotes the resolution of the grid in the respective direction
     Vector3f res;
 
-    //computing the number of points based on the resolution
-    float xPoints = simEnv.boundary[2] / xRes;
-    float yPoints = simEnv.boundary[3] / yRes;
-    float headPoints = 360 / headRes; 
-
-    res(1) = (float) round(state(1) / xPoints) * xPoints;
-    res(2) = (float) round(state(2) / yPoints) * yPoints;
-    res(3) = (float) round(state(3) / headPoints) * headPoints;
+    res(0) = (float) round(state(0) / xRes) * xRes;
+    res(1) = (float) round(state(1) / yRes) * yRes;
+    res(2) = (float) round(state(2) / headRes) * headRes;
 
     return res;
 }
@@ -74,12 +69,13 @@ int main(){
 
     simEnv.objects = {{5, 5, 8, 8},
                       {10, 15, 13, 19},
-                      {15, 0, 16, 12}};
+                      {15, 0, 16, 12},
+                      };
     //Grid resolution
 
-    float xRes{1}, yRes{1}, headRes{5};
+    float xRes{1}, yRes{1}, headRes{2};
     //vehicle physical parameters
-    float vehWheelBase = 1.5; 
+    float vehWheelBase = 1.3; 
     float vehMass = 1500;
 
     //target location for the vehicle
@@ -92,33 +88,38 @@ int main(){
     Vehicle vehicle (vehWheelBase, vehMass);
 
     //vehicle initial configuration
-    vehicle.state = {1, 1, 0};
+
+    Vector3f startState = {1, 1, 0};
+    
 
     // parameters for trajectory simulation for cell opening
     float PathGenSteerRes = 30;
     float pathGenSteeringMax = 30;
 
-    float pathGenVel = 1; 
+    float pathGenVel = 1.5; 
     float simDt = 0.01;
 
     //parameters for computing thee heuristic cost
     float turnWeightPar = 1.2;
     float reverseWeightPar = 1.5;
 
-    int maxItr = 200;
+    int maxItr = 2000;
     int itr = 0;
 
     ODESolver odeSolver;
 
-    //Define queue to store the nodes that are being explored
+    // //Define queue to store the nodes that are being explored
     queue<Vector3f> seq;
-    seq.push(constToDiscretezGrid(vehicle.state, simEnv, xRes, yRes, headRes));
+    seq.push(constToDiscretezGrid(startState, simEnv, xRes, yRes, headRes));
     cout << "while loop starting" << endl;
     while (!seq.empty())
     {
         itr++;
 
         vehicle.state = seq.front(); //this is redundunt in the first loop
+
+        // cout << "vehicle state in while" << endl;
+        // cout << vehicle.state << endl;
         seq.pop();
         
         // to iterate over forward and reverse motion
@@ -127,12 +128,16 @@ int main(){
             //to iterate over the possible steering angles
             for(float steer = pathGenSteeringMax; steer >= -pathGenSteeringMax; steer -= PathGenSteerRes)
             {
+                // cout << vel << ", " << steer << endl;
+
                 //input to compute the next position
                 Vector2f input = {steer, vel};
 
                 stateWithDistance update = odeSolver.updateStateWithDist(vehicle, 0, 1, input, simDt, "RK4");
 
                 Vector3f neighbor = update.state;
+                // cout << "neighbor - " << endl;
+                // cout << neighbor << endl;
 
                 float distToNeighbor = update.distance;
 
@@ -140,15 +145,19 @@ int main(){
                 Vector3f currentNode = constToDiscretezGrid(vehicle.state, simEnv, xRes, yRes, headRes);
                 Vector3f neighborNode = constToDiscretezGrid(neighbor, simEnv, xRes, yRes, headRes);
 
+                // cout << neighbor << endl;
+                // cout<< neighborNode << endl;
+
                 //check if the grid boundary overlaps with obstacle
                 vector<float> gridBoundary = {neighborNode(0) - xRes/2, neighborNode(1) - yRes/2,
                                             neighborNode(0) + xRes/2, neighborNode(1) + yRes/2};
-                //vector<float> gridBoundary = {0, 1, 3, 3};
                 
                 bool isNodeIntersect = gridObstacleOverlap(gridBoundary, simEnv);
-                
-                //node does not intersect with an obstacle
-                if (~isNodeIntersect)
+                bool isNodeInBoundary = neighborNode(0) >= simEnv.boundary[0] && neighborNode[0] <= simEnv.boundary[2]
+                                        && neighborNode(1) >= simEnv.boundary[1] && neighborNode[1] <= simEnv.boundary[3];
+
+                //node does not intersect with an obstacle and is inside the simulation boundary
+                if (~isNodeIntersect && isNodeInBoundary)
                 {
                     //compute the weights to penalize turns and reversing
                     float turnWeight = (steer != 0) ? turnWeightPar : 1.0f;
@@ -160,9 +169,14 @@ int main(){
 
                     float costHeuristic = distToNeighbor * turnWeight * reverseWeight + costTillNow[currentNodeKey] 
                                     + eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-
+                    if (itr == 1711)
+                    {
+                        cout << neighborNode << endl;
+                        cout << (cameFrom.find(neighborNodeKey) == cameFrom.end()) << endl;
+                    }
                     if (cameFrom.find(neighborNodeKey) == cameFrom.end() || costHeuristic < costTillNow[neighborNodeKey])
                     {
+                        //cout << "adding node to the queue" << endl;
                         costTillNow[neighborNodeKey] = costHeuristic;
                         seq.push(neighborNode);
                         cameFrom[neighborNodeKey] = currentNode;
@@ -173,8 +187,22 @@ int main(){
         //breaking the loop if the solution is not converging
         if (itr > maxItr)
         {
+            
             break;
         }
+        
     }
+    cout << vehicle.state << endl;
+    cout << "iteration " << itr << endl;
+
+    cout << "path of the agent is -" << endl;
+    Vector3f current = vehicle.state;
+
+    while (vectorToKey(current) != vectorToKey(startState))
+    {
+        cout << current << endl;
+        current = cameFrom[vectorToKey(current)];
+    }
+    
     return 0;   
 }
