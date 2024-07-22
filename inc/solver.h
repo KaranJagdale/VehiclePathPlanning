@@ -11,10 +11,15 @@ using namespace Eigen;
 class ODESolver{
 public:
     //ODESolver();
-    Vector3f updateState(Vehicle vehicle,float t0, float t1, Vector2f input,
+    stateWithDistance updateStateWithDist(Vehicle vehicle,float t0, float t1, Vector2f input,
                          float timeStep, string method)
     {
         //use the below function to compute the integral from t0 to t1
+        //structWithDistance have two datamembers state and distance
+        stateWithDistance ret;
+        
+        float distance = 0;
+
         Vector3f smallUpdate;
 
         float t = t0;
@@ -36,6 +41,8 @@ public:
 
             vehicle.state += smallUpdate;
 
+            distance += pow(smallUpdate(0),2) + pow(smallUpdate(1), 2);
+
             // Wraping the heading angle between (0, 2pi]
             if (vehicle.state(2) > 2*M_PI)
             {
@@ -50,10 +57,13 @@ public:
 
         }
 
-        return vehicle.state;
-        // Vector3f ret(1,2,4);
-        // return ret;
-   
+        distance = sqrt(distance);
+
+        ret.state = vehicle.state;
+
+        ret.distance = distance;
+
+        return ret;
     }
     //write a function to compute the area under the curve for small time delta
 

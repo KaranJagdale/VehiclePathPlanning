@@ -1,19 +1,16 @@
 #include <iostream>
 #include <cmath>
 #include <Eigen/Dense>
+#include <vector>
 
 using namespace std;
 using namespace Eigen;
 
 int main()
 {
-    Vector3f a = {1.2, 3.0, 4.0}; 
-    // a.setOnes();
-    // a = a * 2;
-    Vector3f b = a * 2.2;
-    //a = a * b;
-    cout <<a(2) << endl;
 
+    Vector3f a = {1,2,3};
 
+    cout << a(1) << endl;
     return 0;
 }

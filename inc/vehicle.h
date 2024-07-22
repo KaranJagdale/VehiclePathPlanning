@@ -36,9 +36,9 @@ public:
 
         Vector3f ret;
 
-        float headRad = state(3) * M_PI / 180;
+        float headRad = state(2) * M_PI / 180;
 
-        ret << cos(headRad) * input(2), sin(headRad) * input(2), input(2) * tan(input(1)) / wheel_base;
+        ret << cos(headRad) * input(1), sin(headRad) * input(1), input(1) * tan(input(0)) / wheel_base;
 
         return ret;
     }
@@ -61,23 +61,9 @@ public:
 
 };
 
-class Boundary{
-public:
-    float* pos; 
-    float* size;
-
-    Boundary();
-
-    Boundary(float* obj_pos, float* obj_size){
-        //cout<<"created a boundary"<<endl;
-        pos = obj_pos;
-        size = obj_size;
-    }
-};
 
 class SimEnv{
 public:
-
     //the structure of the boundary is (x1, y1, x2, y2)
     //(x1, y1) and (x2, y2) are diagonally opposite vertices
     vector<float> boundary;
@@ -85,6 +71,21 @@ public:
     //objects are written with same structure as boundary
     vector<vector<float>> objects;
 
-    //SimEnv();
 };
+
+struct stateWithDistance
+{
+    Vector3f state;
+    float distance;
+};
+
+
+float eulerDist(float x1, float y1, float x2, float y2)
+{
+    //returs true if the vehicle is in 1 cm radius of the target
+
+    return sqrt(pow(x1 - x2, 2) + pow(y1 - y2,2));
+}
+
+
 
