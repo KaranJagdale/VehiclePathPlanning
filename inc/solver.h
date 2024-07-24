@@ -41,7 +41,7 @@ public:
 
             vehicle.state += smallUpdate;
 
-            distance += pow(smallUpdate(0),2) + pow(smallUpdate(1), 2);
+            distance += sqrt(pow(smallUpdate(0),2) + pow(smallUpdate(1), 2));
 
             // Wraping the heading angle between (0, 2pi]
             if (vehicle.state(2) > 2*M_PI)
@@ -57,7 +57,7 @@ public:
 
         }
 
-        distance = sqrt(distance);
+        //distance = sqrt(distance);
 
         ret.state = vehicle.state;
 

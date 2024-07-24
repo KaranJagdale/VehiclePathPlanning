@@ -33,10 +33,13 @@ Vector3f constToDiscretezGrid(Vector3f state, SimEnv simEnv, unsigned int xRes,
     //converts continuous state to the discrete point in the grid
     //xRes, yRes denotes the resolution of the grid in the respective direction
     Vector3f res;
+    state(2) *= 180 / M_PI;  //converting to degree
 
     res(0) = (float) round(state(0) / xRes) * xRes;
     res(1) = (float) round(state(1) / yRes) * yRes;
     res(2) = (float) round(state(2) / headRes) * headRes;
+
+    res(2) *= M_PI / 180; //converting back to radians
 
     return res;
 }
@@ -49,10 +52,10 @@ bool gridObstacleOverlap(vector<float> gridBoundary, SimEnv simEnv)
     for(unsigned int i = 0; i < size(simEnv.objects); i+=1)
     {
         vector<float> object = simEnv.objects[i];
-        intersect = (gridBoundary[0] > object[0] && gridBoundary[0] < object[1]) ||
-                    (gridBoundary[2] > object[0] && gridBoundary[2] < object[1]) &&
-                    (gridBoundary[1] > object[1] && gridBoundary[1] < object[3]) ||
-                    (gridBoundary[3] > object[1] && gridBoundary[3] < object[3]);
+        intersect = ((gridBoundary[0] > object[0] && gridBoundary[0] < object[2]) ||
+                    (gridBoundary[2] > object[0] && gridBoundary[2] < object[2])) &&
+                    ((gridBoundary[1] > object[1] && gridBoundary[1] < object[3]) ||
+                    (gridBoundary[3] > object[1] && gridBoundary[3] < object[3]));
         if (intersect)
         {
             return true;
@@ -69,11 +72,11 @@ int main(){
 
     simEnv.objects = {{5, 5, 8, 8},
                       {10, 15, 13, 19},
-                      {15, 0, 16, 12},
+                      {15, 0, 17, 12},
                       };
     //Grid resolution
 
-    float xRes{1}, yRes{1}, headRes{2};
+    float xRes{1}, yRes{1}, headRes{3};
     //vehicle physical parameters
     float vehWheelBase = 1.3; 
     float vehMass = 1500;
@@ -93,17 +96,17 @@ int main(){
     
 
     // parameters for trajectory simulation for cell opening
-    float PathGenSteerRes = 30;
-    float pathGenSteeringMax = 30;
+    float PathGenSteerRes = 30 * M_PI / 180;
+    float pathGenSteeringMax = 30 * M_PI / 180;
 
-    float pathGenVel = 1.5; 
+    float pathGenVel = 1; 
     float simDt = 0.01;
 
     //parameters for computing thee heuristic cost
     float turnWeightPar = 1.2;
     float reverseWeightPar = 1.5;
 
-    int maxItr = 2000;
+    int maxItr = 60000;
     int itr = 0;
 
     ODESolver odeSolver;
@@ -121,6 +124,7 @@ int main(){
         // cout << "vehicle state in while" << endl;
         // cout << vehicle.state << endl;
         seq.pop();
+
         
         // to iterate over forward and reverse motion
         for (float vel = pathGenVel; vel >= -pathGenVel; vel -= 2*pathGenVel)
@@ -136,8 +140,6 @@ int main(){
                 stateWithDistance update = odeSolver.updateStateWithDist(vehicle, 0, 1, input, simDt, "RK4");
 
                 Vector3f neighbor = update.state;
-                // cout << "neighbor - " << endl;
-                // cout << neighbor << endl;
 
                 float distToNeighbor = update.distance;
 
@@ -145,20 +147,29 @@ int main(){
                 Vector3f currentNode = constToDiscretezGrid(vehicle.state, simEnv, xRes, yRes, headRes);
                 Vector3f neighborNode = constToDiscretezGrid(neighbor, simEnv, xRes, yRes, headRes);
 
-                // cout << neighbor << endl;
-                // cout<< neighborNode << endl;
-
                 //check if the grid boundary overlaps with obstacle
                 vector<float> gridBoundary = {neighborNode(0) - xRes/2, neighborNode(1) - yRes/2,
                                             neighborNode(0) + xRes/2, neighborNode(1) + yRes/2};
                 
                 bool isNodeIntersect = gridObstacleOverlap(gridBoundary, simEnv);
+                
+
                 bool isNodeInBoundary = neighborNode(0) >= simEnv.boundary[0] && neighborNode[0] <= simEnv.boundary[2]
                                         && neighborNode(1) >= simEnv.boundary[1] && neighborNode[1] <= simEnv.boundary[3];
+                // if (itr == 31)
+                // {
+                //     cout << "vel - " << vel << "  steer - " << steer << "  distance - " << distToNeighbor << endl;  
+                //     for(int i = 0; i < 3; i++)
+                //     {
+                //         cout << vehicle.state(i) << "  " << neighborNode(i) << "  " << neighbor(i) << endl;
+                //     }
+                //     cout << "isNodeIntersect - " << isNodeIntersect << "\n\n";
+                // }
 
                 //node does not intersect with an obstacle and is inside the simulation boundary
-                if (~isNodeIntersect && isNodeInBoundary)
+                if (!isNodeIntersect && isNodeInBoundary)
                 {
+                    
                     //compute the weights to penalize turns and reversing
                     float turnWeight = (steer != 0) ? turnWeightPar : 1.0f;
                     float reverseWeight = (vel < 0) ? reverseWeightPar : 1.0f;
@@ -169,11 +180,11 @@ int main(){
 
                     float costHeuristic = distToNeighbor * turnWeight * reverseWeight + costTillNow[currentNodeKey] 
                                     + eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-                    if (itr == 1711)
-                    {
-                        cout << neighborNode << endl;
-                        cout << (cameFrom.find(neighborNodeKey) == cameFrom.end()) << endl;
-                    }
+                    // if (itr == 1711)
+                    // {
+                    //     cout << neighborNode << endl;
+                    //     cout << (cameFrom.find(neighborNodeKey) == cameFrom.end()) << endl;
+                    // }
                     if (cameFrom.find(neighborNodeKey) == cameFrom.end() || costHeuristic < costTillNow[neighborNodeKey])
                     {
                         //cout << "adding node to the queue" << endl;
@@ -195,8 +206,14 @@ int main(){
     cout << vehicle.state << endl;
     cout << "iteration " << itr << endl;
 
+    // vector<float> temp = {13, 0, 14, 2};
+
+    // bool res = gridObstacleOverlap(temp, simEnv);
+
+    // cout << res << endl;
+
     cout << "path of the agent is -" << endl;
-    Vector3f current = vehicle.state;
+    Vector3f current = {20, 0, 0};
 
     while (vectorToKey(current) != vectorToKey(startState))
     {
