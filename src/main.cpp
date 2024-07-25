@@ -27,21 +27,21 @@ float vectorToKey(Vector3f vec)
 }
 
 
-Vector3f constToDiscretezGrid(Vector3f state, SimEnv simEnv, unsigned int xRes, 
-                                        unsigned int yRes, unsigned int headRes)
+Vector3f constToDiscretezGrid(Vector3f state, SimEnv simEnv, float xRes, 
+                                        float yRes, float headRes)
 {
     //converts continuous state to the discrete point in the grid
     //xRes, yRes denotes the resolution of the grid in the respective direction
-    Vector3f res;
+
     state(2) *= 180 / M_PI;  //converting to degree
 
-    res(0) = (float) round(state(0) / xRes) * xRes;
-    res(1) = (float) round(state(1) / yRes) * yRes;
-    res(2) = (float) round(state(2) / headRes) * headRes;
+    state(0) = (float) round(state(0) / xRes) * xRes;
+    state(1) = (float) round(state(1) / yRes) * yRes;
+    state(2) = (float) round(state(2) / headRes) * headRes;
 
-    res(2) *= M_PI / 180; //converting back to radians
+    state(2) *= M_PI / 180; //converting back to radians
 
-    return res;
+    return state;
 }
 
 bool gridObstacleOverlap(vector<float> gridBoundary, SimEnv simEnv)
@@ -76,15 +76,15 @@ int main(){
                       };
     //Grid resolution
 
-    float xRes{1}, yRes{1}, headRes{3};
+    float xRes{0.5}, yRes{0.5}, headRes{5};
     //vehicle physical parameters
     float vehWheelBase = 1.3; 
     float vehMass = 1500;
 
     //target location for the vehicle
-    float xTar = 20;
-    float yTar = 0;
-
+    float xTar = 14;
+    float yTar = 17;
+ 
     unordered_map<float, Vector3f> cameFrom;
     unordered_map<float, float> costTillNow;
 
@@ -103,10 +103,10 @@ int main(){
     float simDt = 0.01;
 
     //parameters for computing thee heuristic cost
-    float turnWeightPar = 1.2;
-    float reverseWeightPar = 1.5;
+    float turnWeightPar = 1.1;
+    float reverseWeightPar = 1.1;
 
-    int maxItr = 60000;
+    int maxItr = 100000;
     int itr = 0;
 
     ODESolver odeSolver;
@@ -117,12 +117,17 @@ int main(){
     cout << "while loop starting" << endl;
     while (!seq.empty())
     {
-        itr++;
+        float distToTar = eulerDist(vehicle.state(0), vehicle.state(1), xTar, yTar);
+
+        if (distToTar < 2)
+        {
+            break;
+        }
+
+        itr += 1;
 
         vehicle.state = seq.front(); //this is redundunt in the first loop
 
-        // cout << "vehicle state in while" << endl;
-        // cout << vehicle.state << endl;
         seq.pop();
 
         
@@ -197,8 +202,7 @@ int main(){
         }
         //breaking the loop if the solution is not converging
         if (itr > maxItr)
-        {
-            
+        {     
             break;
         }
         
@@ -212,8 +216,30 @@ int main(){
 
     // cout << res << endl;
 
+    //counting the number of nodes visited
+    int notVisistedCount = 0;
+    for (float x = 0; x <= simEnv.boundary[2]; x += xRes)
+    {
+        for(float y = 0; y <= simEnv.boundary[3]; y += yRes)
+        {
+            for (float head = 0; head <= 360; head += headRes)
+            {
+                Vector3f tempNode = {x, y, head* M_PI /180};
+
+                float tempNodeKey = vectorToKey(tempNode);
+
+                if (cameFrom.find(tempNodeKey) == cameFrom.end())
+                {
+                    notVisistedCount++;
+                }
+            }
+        }
+    }
+
+    cout << "No. of un-visited nodes - " << notVisistedCount << "\n\n";
+
     cout << "path of the agent is -" << endl;
-    Vector3f current = {20, 0, 0};
+    Vector3f current = vehicle.state;
 
     while (vectorToKey(current) != vectorToKey(startState))
     {
