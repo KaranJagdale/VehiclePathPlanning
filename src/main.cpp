@@ -7,7 +7,6 @@
 #include <vector>
 #include <unordered_map>
 
-
 using namespace std;
 using namespace Eigen;
 
@@ -72,7 +71,7 @@ int main(){
 
     simEnv.objects = {{5, 5, 8, 8},
                       {10, 15, 13, 19},
-                      {15, 0, 17, 12},
+                      {14, 0, 16, 12},
                       };
     //Grid resolution
 
@@ -82,8 +81,8 @@ int main(){
     float vehMass = 1500;
 
     //target location for the vehicle
-    float xTar = 14;
-    float yTar = 17;
+    float xTar = 19;
+    float yTar = 4;
  
     unordered_map<float, Vector3f> cameFrom;
     unordered_map<float, float> costTillNow;
@@ -93,7 +92,8 @@ int main(){
     //vehicle initial configuration
 
     Vector3f startState = {1, 1, 0};
-    
+
+    Vector3f startNode = constToDiscretezGrid(startState, simEnv, xRes, yRes, headRes);
 
     // parameters for trajectory simulation for cell opening
     float PathGenSteerRes = 30 * M_PI / 180;
@@ -112,8 +112,26 @@ int main(){
     ODESolver odeSolver;
 
     // //Define queue to store the nodes that are being explored
-    queue<Vector3f> seq;
-    seq.push(constToDiscretezGrid(startState, simEnv, xRes, yRes, headRes));
+
+    // Defining PQElement type as a pair of cost and state
+    // Defining this pair is required to implement the priority queue
+
+    typedef pair<int, Vector3f> PQElement;
+
+    struct myComp {
+    constexpr bool operator()(
+        pair<float, Vector3f> const& a,
+        pair<float, Vector3f> const& b)
+        const noexcept
+    {
+        return a.first > b.first;
+    }
+};
+
+    priority_queue<PQElement, vector<PQElement>, myComp> seq;
+
+    seq.emplace(0, startNode);
+
     cout << "while loop starting" << endl;
     while (!seq.empty())
     {
@@ -126,11 +144,10 @@ int main(){
 
         itr += 1;
 
-        vehicle.state = seq.front(); //this is redundunt in the first loop
+        vehicle.state = seq.top().second; //this is redundunt in the first loop
 
         seq.pop();
 
-        
         // to iterate over forward and reverse motion
         for (float vel = pathGenVel; vel >= -pathGenVel; vel -= 2*pathGenVel)
         {
@@ -194,7 +211,7 @@ int main(){
                     {
                         //cout << "adding node to the queue" << endl;
                         costTillNow[neighborNodeKey] = costHeuristic;
-                        seq.push(neighborNode);
+                        seq.emplace(costHeuristic, neighborNode);
                         cameFrom[neighborNodeKey] = currentNode;
                     }
                 }
