@@ -10,6 +10,15 @@
 using namespace std;
 using namespace Eigen;
 
+template<typename A> void printQueue(A pq)
+{
+	while (!pq.empty())
+		{
+			cout << pq.top() << endl;
+			pq.pop();
+		}
+}
+
 float vectorToKey(Vector3f vec)
 {
     //converts vector to key (1,1,1) is converted to float 111
@@ -110,7 +119,7 @@ int main(){
     float turnWeightPar = 1.1;
     float reverseWeightPar = 1.1;
 
-    int maxItr = 100;
+    int maxItr = 47552;
     int itr = 0;
 
     ODESolver odeSolver;
@@ -119,10 +128,10 @@ int main(){
 
     // Defining PQElement type as a pair of cost and state
     // Defining this pair is required to implement the priority queue
-    typedef pair<int, Vector3f> PQElement; 
+    typedef pair<float, Vector3f> PQElement; 
 
     //Below comparator helps implementing priority queue
-    struct myComp 
+    struct compPriorityQueue 
     {
     constexpr bool operator()(
         pair<float, Vector3f> const& a,
@@ -133,30 +142,41 @@ int main(){
     }
     };
 
-    priority_queue<PQElement, vector<PQElement>, myComp> seq;
+    priority_queue<PQElement, vector<PQElement>, compPriorityQueue> seq;
 
     seq.emplace(0, startNode);
+
+    float minDistToTar = 100; //some large value
+    Vector3f closestState;
+    float closestItr = 0;
 
     cout << "while loop starting" << endl;
     while (!seq.empty())
     {
         float distToTar = eulerDist(vehicle.state(0), vehicle.state(1), xTar, yTar);
 
-        if (distToTar < 1)
+        if (distToTar < minDistToTar)
+        {
+            minDistToTar = distToTar;
+            closestState = vehicle.state;
+            closestItr = itr;
+        }
+
+        if (distToTar < 2)
         {
             break;
         }
 
         itr += 1;
 
-        if (itr > 1  && itr < 20)
-        {
-            for(int i = 0; i < 3; i++)
-             {   
-                cout << vehicle.state(i) << "  " << seq.top().second(i) << endl;
-             }  
+        // if (itr > 1  && itr < 20)
+        // {
+        //     for(int i = 0; i < 3; i++)
+        //      {   
+        //         cout << vehicle.state(i) << "  " << seq.top().second(i) << endl;
+        //      }  
 
-        }
+        // }
 
         vehicle.state = seq.top().second; //this is redundunt in the first loop
 
@@ -201,15 +221,17 @@ int main(){
                                         && neighborNode(0) <= (simEnv.boundary[2] - boundaryCorrLength)
                                         && neighborNode(1) >= (simEnv.boundary[1] + boundaryCorrLength)
                                         && neighborNode(1) <= (simEnv.boundary[3] - boundaryCorrLength);
-                // if (true)
-                // {
-                //     cout << "vel - " << vel << "  steer - " << steer << "  distance - " << distToNeighbor << endl;  
-                //     for(int i = 0; i < 3; i++)
-                //     {
-                //         cout << vehicle.state(i) << "  " << neighborNode(i) << "  " << neighbor(i) << endl;
-                //     }
-                //     cout << "isNodeIntersect - " << isNodeIntersect << "\n\n";
-                // }
+                if (itr == 47551)
+                {
+                    cout << "vel - " << vel << "  steer - " << steer << "  distance - " << distToNeighbor << endl;  
+                    for(int i = 0; i < 3; i++)
+                    {
+                        cout << vehicle.state(i) << "  " << neighborNode(i) << "  " << neighbor(i) << endl;
+                    }
+                    cout << "isNodeIntersect - " << isNodeIntersect << "\n";
+
+                    
+                }
 
                 //node does not intersect with an obstacle and is inside the simulation boundary
                 if (!isNodeIntersect && isNodeInBoundary)
@@ -221,30 +243,43 @@ int main(){
 
                     //getting the key for the nodes
                     float neighborNodeKey = vectorToKey(neighborNode);
-                    float currentNodeKey = vectorToKey(currentNode);
+                    float currentNodeKey = vectorToKey(currentNode); 
 
-                    float costHeuristic = distToNeighbor * turnWeight * reverseWeight + costTillNow[currentNodeKey] 
-                                    + eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-                    // if (itr == 1711)
-                    // {
-                    //     cout << neighborNode << endl;
-                    //     cout << (cameFrom.find(neighborNodeKey) == cameFrom.end()) << endl;
-                    // }
-                    if (cameFrom.find(neighborNodeKey) == cameFrom.end() || (costHeuristic < costTillNow[neighborNodeKey]))
+                    
+                    float newCost = distToNeighbor * turnWeight * reverseWeight + costTillNow[currentNodeKey] ;
+                    float costHeuristic = newCost + eulerDist(neighbor(0), neighbor(1), xTar, yTar);
+                    if (itr == 47551)
+                    {
+                    cout << "first cost (distToneighbor) : " << distToNeighbor * turnWeight * reverseWeight << "first cost (costTillNow) : " << costTillNow[currentNodeKey] << "\n";
+                    cout << " second cost : " << eulerDist(neighbor(0), neighbor(1), xTar, yTar);
+                    cout << " cost heuristic : " << costHeuristic << "\n\n";
+                    }
+                    if (cameFrom.find(neighborNodeKey) == cameFrom.end() || (newCost < costTillNow[neighborNodeKey]))
                     {
                         //cout << "adding node to the queue" << endl;
-                        costTillNow[neighborNodeKey] = costHeuristic;
+                        costTillNow[neighborNodeKey] = newCost;
                         seq.emplace(costHeuristic, neighborNode);
                         cameFrom[neighborNodeKey] = currentNode;
                     }
                 }
             }
         }
+
+        // cout << "below is the priority queue: \n"; 
+        // while (!seq.empty())
+        // {
+        //     cout << seq.top().first <<  "\n" << seq.top().second << "\n\n\n";
+        //     seq.pop();
+        // }
+
+        //cout << "priority queue printed" << "\n\n";
+
         //breaking the loop if the solution is not converging
         if (itr >= maxItr)
         {     
             break;
         }
+        
         
     }
     cout << vehicle.state << endl;
@@ -279,7 +314,7 @@ int main(){
     // cout << "No. of un-visited nodes - " << notVisistedCount << "\n\n";
 
     cout << "path of the agent is -" << endl;
-    Vector3f current = vehicle.state;
+    Vector3f current = closestState;
     unsigned int maxPrintItr = 100;
     unsigned int printItr = 0;
     while (vectorToKey(current) != vectorToKey(startState))
@@ -293,5 +328,8 @@ int main(){
         printItr++;
     }
     
+    cout << "closesDistToTar" << minDistToTar << "\n\n";
+    cout << "closestState" << "\n" << closestState << "\n\n";
+    cout << "closestItr" << "\n" << closestItr << "\n\n";
     return 0;   
 }

@@ -5,7 +5,8 @@
         "vector": "cpp",
         "xutility": "cpp",
         "unordered_map": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "queue": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
