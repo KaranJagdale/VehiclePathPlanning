@@ -9,8 +9,16 @@ using namespace Eigen;
 int main()
 {
 
-    Vector3f a = {1,2,3};
+    double a = 2.3;
+    float b = 2.3;
 
-    cout << a(1) << endl;
+    if (b == (float) 2.3)
+    {
+        cout << "equal" << "\n";
+    }
+    else
+    {
+        cout << "not equal" << "\n";
+    }
     return 0;
 }

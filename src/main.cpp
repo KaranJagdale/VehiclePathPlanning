@@ -6,6 +6,7 @@
 #include <queue>
 #include <vector>
 #include <unordered_map>
+#include <functional>
 
 using namespace std;
 using namespace Eigen;
@@ -19,21 +20,18 @@ template<typename A> void printQueue(A pq)
 		}
 }
 
-float vectorToKey(Vector3f vec)
-{
-    //converts vector to key (1,1,1) is converted to float 111
-    //this function works independant of the size of the vector
+hash<float> hashFloat;
 
-    float key = 0;
+size_t vectorToKey(Vector3f const& vec) 
+ {
 
-    for(int i = 0; i < size(vec); i++)
-    {
-        key += vec[i] * pow(10, i);
-    }
-
-    return key;
+  size_t seed = vec.size();
+  for(auto& i : vec) 
+  {
+    seed ^= hashFloat(i) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+  }
+  return seed;
 }
-
 
 Vector3f constToDiscretezGrid(Vector3f state, SimEnv simEnv, float xRes, 
                                         float yRes, float headRes)
@@ -97,8 +95,8 @@ int main(){
     float xTar = 19;
     float yTar = 4;
  
-    unordered_map<float, Vector3f> cameFrom;
-    unordered_map<float, float> costTillNow;
+    unordered_map<size_t, Vector3f> cameFrom;
+    unordered_map<size_t, float> costTillNow;
 
     Vehicle vehicle (vehWheelBase, vehMass);
 
@@ -107,6 +105,8 @@ int main(){
     Vector3f startState = {5, 5, 0};
 
     Vector3f startNode = constToDiscretezGrid(startState, simEnv, xRes, yRes, headRes);
+
+    vehicle.state = startNode;
 
     // parameters for trajectory simulation for cell opening
     float PathGenSteerRes = 30 * M_PI / 180;
@@ -169,17 +169,16 @@ int main(){
 
         itr += 1;
 
-        // if (itr > 1  && itr < 20)
+        // if ((vehicle.state(0) > 8.3) && (vehicle.state(0) < 8.5) && (vehicle.state(1) > 10.1) && (vehicle.state(1) < 10.3 ))
         // {
-        //     for(int i = 0; i < 3; i++)
-        //      {   
-        //         cout << vehicle.state(i) << "  " << seq.top().second(i) << endl;
-        //      }  
-
+        //     cout << vehicle.state << endl;
+        //     cout << "requared itr - " << itr << endl;
+        //     //break;
         // }
 
-        vehicle.state = seq.top().second; //this is redundunt in the first loop
 
+        //converting the continuous state to the descrete node
+        Vector3f currentNode = constToDiscretezGrid(vehicle.state, simEnv, xRes, yRes, headRes);
         // if (true)
         // {
         //     cout << "itr : " << itr << endl;
@@ -188,6 +187,12 @@ int main(){
 
 
         seq.pop();
+
+        // if (itr == 1)
+        // {
+        //     cout << "vehicle state" << endl;
+        //     cout << vehicle.state << endl;
+        // }
 
         // to iterate over forward and reverse motion
         for (float vel = pathGenVel; vel >= -pathGenVel; vel -= 2*pathGenVel)
@@ -206,8 +211,14 @@ int main(){
 
                 float distToNeighbor = update.distance;
 
+                // if (itr == 31433) 
+                // {
+                //     cout << "neighbor" << endl;
+                //     cout << neighbor << endl;
+                // }
+
                 //converting the continous position to the decrete grid node
-                Vector3f currentNode = constToDiscretezGrid(vehicle.state, simEnv, xRes, yRes, headRes);
+                
                 Vector3f neighborNode = constToDiscretezGrid(neighbor, simEnv, xRes, yRes, headRes);
 
                 //check if the grid boundary overlaps with obstacle
@@ -221,16 +232,17 @@ int main(){
                                         && neighborNode(0) <= (simEnv.boundary[2] - boundaryCorrLength)
                                         && neighborNode(1) >= (simEnv.boundary[1] + boundaryCorrLength)
                                         && neighborNode(1) <= (simEnv.boundary[3] - boundaryCorrLength);
-                if (itr == 47551)
+                //if ((currentNode(0) >= 8.2 && currentNode(0) <= 8.6) && (currentNode(1) >= 10 && currentNode(1) <= 10.4)) //&& currentNode(2) == 1.48353)
+                // if ((currentNode(0) == (float) 8.4) && (currentNode(1) == (float) 10.2))
+                if (itr == 31433) 
                 {
                     cout << "vel - " << vel << "  steer - " << steer << "  distance - " << distToNeighbor << endl;  
                     for(int i = 0; i < 3; i++)
                     {
                         cout << vehicle.state(i) << "  " << neighborNode(i) << "  " << neighbor(i) << endl;
                     }
-                    cout << "isNodeIntersect - " << isNodeIntersect << "\n";
-
-                    
+                    cout << "isNodeIntersect - " << isNodeIntersect << "\n";     
+                    cout << "neighborNodeKey - " << vectorToKey(neighborNode);          
                 }
 
                 //node does not intersect with an obstacle and is inside the simulation boundary
@@ -248,12 +260,12 @@ int main(){
                     
                     float newCost = distToNeighbor * turnWeight * reverseWeight + costTillNow[currentNodeKey] ;
                     float costHeuristic = newCost + eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-                    if (itr == 47551)
-                    {
-                    cout << "first cost (distToneighbor) : " << distToNeighbor * turnWeight * reverseWeight << "first cost (costTillNow) : " << costTillNow[currentNodeKey] << "\n";
-                    cout << " second cost : " << eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-                    cout << " cost heuristic : " << costHeuristic << "\n\n";
-                    }
+                    // if (itr == 47551)
+                    // {
+                    // cout << "first cost (distToneighbor) : " << distToNeighbor * turnWeight * reverseWeight << "first cost (costTillNow) : " << costTillNow[currentNodeKey] << "\n";
+                    // cout << " second cost : " << eulerDist(neighbor(0), neighbor(1), xTar, yTar);
+                    // cout << " cost heuristic : " << costHeuristic << "\n\n";
+                    // }
                     if (cameFrom.find(neighborNodeKey) == cameFrom.end() || (newCost < costTillNow[neighborNodeKey]))
                     {
                         //cout << "adding node to the queue" << endl;
@@ -264,6 +276,9 @@ int main(){
                 }
             }
         }
+
+        //updating the vehicle state
+        vehicle.state = seq.top().second;
 
         // cout << "below is the priority queue: \n"; 
         // while (!seq.empty())
@@ -323,7 +338,8 @@ int main(){
         {
             break;
         }
-        cout << current << "\n\n";
+        cout << current << "\n";
+        cout << "key" << vectorToKey(current) << "\n\n";
         current = cameFrom[vectorToKey(current)];
         printItr++;
     }
@@ -331,5 +347,11 @@ int main(){
     cout << "closesDistToTar" << minDistToTar << "\n\n";
     cout << "closestState" << "\n" << closestState << "\n\n";
     cout << "closestItr" << "\n" << closestItr << "\n\n";
+
+    // cout << "testing cameFrom..." << "\n";
+    // for (int i = 0; i < 10; i++)
+    // {
+    //     cout << i << "cameFrom(i) " << "\n" << cameFrom[i*10 + 0.1] << "\n\n";
+    // }
     return 0;   
 }
