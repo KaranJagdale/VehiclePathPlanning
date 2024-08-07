@@ -150,6 +150,8 @@ int main(){
     Vector3f closestState;
     float closestItr = 0;
 
+    size_t myKey;
+
     cout << "while loop starting" << endl;
     while (!seq.empty())
     {
@@ -164,12 +166,14 @@ int main(){
 
         if (distToTar < 2)
         {
+            cout << "state when ending loop" << "\n" << vehicle.state << endl;
+            cout << "key when ending loop - " << vectorToKey(vehicle.state) << endl;
             break;
         }
 
         itr += 1;
 
-        // if ((vehicle.state(0) > 8.3) && (vehicle.state(0) < 8.5) && (vehicle.state(1) > 10.1) && (vehicle.state(1) < 10.3 ))
+        // if ((vehicle.state(0) > 18.1) && (vehicle.state(0) < 18.3) && (vehicle.state(1) > 4.9) && (vehicle.state(1) < 5.1 ))
         // {
         //     cout << vehicle.state << endl;
         //     cout << "requared itr - " << itr << endl;
@@ -221,6 +225,13 @@ int main(){
                 
                 Vector3f neighborNode = constToDiscretezGrid(neighbor, simEnv, xRes, yRes, headRes);
 
+                if ((neighborNode(0) > 18.1) && (neighborNode(0) < 18.3) && (neighborNode(1) > 4.9) && (neighborNode(1) < 5.1 ))
+                {
+                    cout << neighborNode << endl;
+                    cout << "requared itr - " << itr << endl;
+                    //break;
+                }
+
                 //check if the grid boundary overlaps with obstacle
                 vector<float> gridBoundary = {neighborNode(0) - xRes/2, neighborNode(1) - yRes/2,
                                             neighborNode(0) + xRes/2, neighborNode(1) + yRes/2};
@@ -234,15 +245,16 @@ int main(){
                                         && neighborNode(1) <= (simEnv.boundary[3] - boundaryCorrLength);
                 //if ((currentNode(0) >= 8.2 && currentNode(0) <= 8.6) && (currentNode(1) >= 10 && currentNode(1) <= 10.4)) //&& currentNode(2) == 1.48353)
                 // if ((currentNode(0) == (float) 8.4) && (currentNode(1) == (float) 10.2))
-                if (itr == 31433) 
+                if (itr == 41326) 
                 {
+                    cout << "itr" << itr << endl;
                     cout << "vel - " << vel << "  steer - " << steer << "  distance - " << distToNeighbor << endl;  
                     for(int i = 0; i < 3; i++)
                     {
                         cout << vehicle.state(i) << "  " << neighborNode(i) << "  " << neighbor(i) << endl;
                     }
                     cout << "isNodeIntersect - " << isNodeIntersect << "\n";     
-                    cout << "neighborNodeKey - " << vectorToKey(neighborNode);          
+                    cout << "neighborNodeKey - " << vectorToKey(neighborNode) << endl;          
                 }
 
                 //node does not intersect with an obstacle and is inside the simulation boundary
@@ -254,24 +266,44 @@ int main(){
                     float reverseWeight = (vel < 0) ? reverseWeightPar : 1.0f;
 
                     //getting the key for the nodes
-                    float neighborNodeKey = vectorToKey(neighborNode);
-                    float currentNodeKey = vectorToKey(currentNode); 
+                    size_t neighborNodeKey = vectorToKey(neighborNode);
+                    size_t currentNodeKey = vectorToKey(currentNode); 
 
                     
                     float newCost = distToNeighbor * turnWeight * reverseWeight + costTillNow[currentNodeKey] ;
                     float costHeuristic = newCost + eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-                    // if (itr == 47551)
-                    // {
+                    if (itr == 41326)
+                    {
                     // cout << "first cost (distToneighbor) : " << distToNeighbor * turnWeight * reverseWeight << "first cost (costTillNow) : " << costTillNow[currentNodeKey] << "\n";
                     // cout << " second cost : " << eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-                    // cout << " cost heuristic : " << costHeuristic << "\n\n";
-                    // }
-                    if (cameFrom.find(neighborNodeKey) == cameFrom.end() || (newCost < costTillNow[neighborNodeKey]))
+                    // cout << " cost heuristic : " << costHeuristic << "\n";
+                    cout << "Is this a new node? 1 " << (cameFrom.find(neighborNodeKey) == cameFrom.end()) << "\n";
+                    cout << "neighborNodeKey : " << neighborNodeKey << endl;
+                    //cout << "origin node : " << cameFrom[neighborNodeKey] << endl; 
+                    cout << "newCost : " << newCost << "costTillNow : " << costTillNow[neighborNodeKey] << "\n";
+                    cout << "currentNode : " << currentNode << "\n";
+                    cout << "if condition : " << ((cameFrom.find(neighborNodeKey) == cameFrom.end()) || (newCost < costTillNow[neighborNodeKey])) << "\n";
+                    cout << "if first : " << (cameFrom.find(neighborNodeKey) == cameFrom.end()) << " if second : " <<  (newCost < costTillNow[neighborNodeKey]) << "\n\n";
+                    }
+
+                    if ((cameFrom.find(neighborNodeKey) == cameFrom.end()) || (newCost < costTillNow[neighborNodeKey]))
                     {
                         //cout << "adding node to the queue" << endl;
+                        if (itr == 41326 || itr == 41611)
+                        {
+                            cout << "inside the if for writting cameFrom" << endl;
+                        }
+                        
                         costTillNow[neighborNodeKey] = newCost;
                         seq.emplace(costHeuristic, neighborNode);
                         cameFrom[neighborNodeKey] = currentNode;
+
+                        if (itr == 41326 && vel == pathGenVel && steer == 0)
+                        {
+                            myKey = neighborNodeKey;
+                            cout << "did we write successfully ? " << (cameFrom.count(neighborNodeKey) != 0) <<  "\n\n";
+                            cout << "key from innermost : " << myKey<< endl;
+                        }
                     }
                 }
             }
@@ -307,24 +339,24 @@ int main(){
     // cout << res << endl;
 
     //counting the number of nodes visited
-    int notVisistedCount = 0;
-    for (float x = 0; x <= simEnv.boundary[2]; x += xRes)
-    {
-        for(float y = 0; y <= simEnv.boundary[3]; y += yRes)
-        {
-            for (float head = 0; head <= 360; head += headRes)
-            {
-                Vector3f tempNode = {x, y, head* M_PI /180};
+    // int notVisistedCount = 0;
+    // for (float x = 0; x <= simEnv.boundary[2]; x += xRes)
+    // {
+    //     for(float y = 0; y <= simEnv.boundary[3]; y += yRes)
+    //     {
+    //         for (float head = 0; head <= 360; head += headRes)
+    //         {
+    //             Vector3f tempNode = {x, y, head* M_PI /180};
 
-                float tempNodeKey = vectorToKey(tempNode);
+    //             float tempNodeKey = vectorToKey(tempNode);
 
-                if (cameFrom.find(tempNodeKey) == cameFrom.end())
-                {
-                    notVisistedCount++;
-                }
-            }
-        }
-    }
+    //             if (cameFrom.find(tempNodeKey) == cameFrom.end())
+    //             {
+    //                 notVisistedCount++;
+    //             }
+    //         }
+    //     }
+    // }
 
     // cout << "No. of un-visited nodes - " << notVisistedCount << "\n\n";
 
@@ -338,12 +370,26 @@ int main(){
         {
             break;
         }
+        
         cout << current << "\n";
         cout << "key" << vectorToKey(current) << "\n\n";
-        current = cameFrom[vectorToKey(current)];
-        printItr++;
+        cout << "myKey" << myKey << "\n";
+        cout << "is this the same key" << (vectorToKey(current) == myKey) << endl;
+        if ( (cameFrom.count(vectorToKey(current)) != 0))
+        {
+            current = cameFrom[vectorToKey(current)];
+            printItr++;
+        }
+        else
+        {
+            cout << "key does not exist" << endl;
+            cout << costTillNow.count(vectorToKey(current)) << " " << cameFrom.count(vectorToKey(current)) <<  endl;
+            break;
+        }
+        
     }
-    
+
+
     cout << "closesDistToTar" << minDistToTar << "\n\n";
     cout << "closestState" << "\n" << closestState << "\n\n";
     cout << "closestItr" << "\n" << closestItr << "\n\n";
