@@ -7,6 +7,9 @@
 #include <vector>
 #include <unordered_map>
 #include <functional>
+#include <utility>
+#include <string>
+#include <fstream>
 
 using namespace std;
 using namespace Eigen;
@@ -102,7 +105,7 @@ int main(){
 
     //vehicle initial configuration
 
-    Vector3f startState = {5, 5, 0};
+    Vector3f startState = {5, 5, 3.14};
 
     Vector3f startNode = constToDiscretezGrid(startState, simEnv, xRes, yRes, headRes);
 
@@ -116,8 +119,8 @@ int main(){
     float simDt = 0.01;
 
     //parameters for computing thee heuristic cost
-    float turnWeightPar = 1.1;
-    float reverseWeightPar = 1.1;
+    float turnWeightPar = 1.2;
+    float reverseWeightPar = 2;
 
     int maxItr = 47552;
     int itr = 0;
@@ -312,16 +315,6 @@ int main(){
         //updating the vehicle state
         vehicle.state = seq.top().second;
 
-        // cout << "below is the priority queue: \n"; 
-        // while (!seq.empty())
-        // {
-        //     cout << seq.top().first <<  "\n" << seq.top().second << "\n\n\n";
-        //     seq.pop();
-        // }
-
-        //cout << "priority queue printed" << "\n\n";
-
-        //breaking the loop if the solution is not converging
         if (itr >= maxItr)
         {     
             break;
@@ -332,39 +325,15 @@ int main(){
     cout << vehicle.state << endl;
     cout << "iteration " << itr << endl;
 
-    // vector<float> temp = {13, 0, 14, 2};
-
-    // bool res = gridObstacleOverlap(temp, simEnv);
-
-    // cout << res << endl;
-
-    //counting the number of nodes visited
-    // int notVisistedCount = 0;
-    // for (float x = 0; x <= simEnv.boundary[2]; x += xRes)
-    // {
-    //     for(float y = 0; y <= simEnv.boundary[3]; y += yRes)
-    //     {
-    //         for (float head = 0; head <= 360; head += headRes)
-    //         {
-    //             Vector3f tempNode = {x, y, head* M_PI /180};
-
-    //             float tempNodeKey = vectorToKey(tempNode);
-
-    //             if (cameFrom.find(tempNodeKey) == cameFrom.end())
-    //             {
-    //                 notVisistedCount++;
-    //             }
-    //         }
-    //     }
-    // }
-
-    // cout << "No. of un-visited nodes - " << notVisistedCount << "\n\n";
-
     cout << "path of the agent is -" << endl;
     Vector3f current = closestState;
     unsigned int maxPrintItr = 100;
     unsigned int printItr = 0;
-    while (vectorToKey(current) != vectorToKey(startState))
+
+    //writing the agent path in a csv
+    ofstream myFile("../scripts/res.csv");
+    
+    while (vectorToKey(current) != vectorToKey(startNode))
     {
         if (printItr > maxPrintItr)
         {
@@ -372,9 +341,9 @@ int main(){
         }
         
         cout << current << "\n";
-        cout << "key" << vectorToKey(current) << "\n\n";
-        cout << "myKey" << myKey << "\n";
-        cout << "is this the same key" << (vectorToKey(current) == myKey) << endl;
+
+        myFile << current(0) << "," << current(1) << "\n";
+
         if ( (cameFrom.count(vectorToKey(current)) != 0))
         {
             current = cameFrom[vectorToKey(current)];
@@ -389,6 +358,13 @@ int main(){
         
     }
 
+    myFile.close();
+
+    //writing the environment detail in a csv
+    ofstream myFile("../scripts/env.csv");
+    // the format is: first line - boundary of the env
+    // from second line we start listing the boundaried of each obstacle
+    
 
     cout << "closesDistToTar" << minDistToTar << "\n\n";
     cout << "closestState" << "\n" << closestState << "\n\n";

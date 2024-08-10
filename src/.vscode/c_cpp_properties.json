@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/Personal/Learning/C++ExternalLib/eigen-3.4.0/eigen-3.4.0"
+                "C:/Personal/Learning/C++ExternalLib/eigen-3.4.0/eigen-3.4.0",
+                "C:/Personal/Learning/C++ExternalLib/QCustomPlot"
             ],
             "defines": [
                 "_DEBUG",
