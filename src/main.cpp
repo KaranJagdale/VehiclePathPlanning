@@ -44,9 +44,9 @@ Vector3f constToDiscretezGrid(Vector3f state, SimEnv simEnv, float xRes,
 
     state(2) *= 180 / M_PI;  //converting to degree
 
-    state(0) = (float) round(state(0) / xRes) * xRes;
-    state(1) = (float) round(state(1) / yRes) * yRes;
-    state(2) = (float) round(state(2) / headRes) * headRes;
+    state(0) = roundf(state(0) / xRes) * xRes;
+    state(1) = roundf(state(1) / yRes) * yRes;
+    state(2) = roundf(state(2) / headRes) * headRes;
 
     state(2) *= M_PI / 180; //converting back to radians
 
