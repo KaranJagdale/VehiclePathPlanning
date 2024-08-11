@@ -79,9 +79,10 @@ int main(){
 
     simEnv.boundary = {0, 0, 20, 20};
 
-    simEnv.objects = {//{5, 5, 8, 8},
-                      //{10, 15, 13, 19},
+    simEnv.objects = {{5.5, 5, 8, 8},
+                      {10, 15, 13, 19},
                       {10, 0, 14, 12},
+                      {1, 10, 6, 12}
                       };
 
     // assigning a small number to handle values near zero
@@ -105,7 +106,7 @@ int main(){
 
     //vehicle initial configuration
 
-    Vector3f startState = {5, 5, 3.14};
+    Vector3f startState = {4, 6, 3.14};
 
     Vector3f startNode = constToDiscretezGrid(startState, simEnv, xRes, yRes, headRes);
 
@@ -361,9 +362,29 @@ int main(){
     myFile.close();
 
     //writing the environment detail in a csv
-    ofstream myFile("../scripts/env.csv");
+    ofstream myFileEnv("../scripts/env.csv");
     // the format is: first line - boundary of the env
-    // from second line we start listing the boundaried of each obstacle
+    // from second line we start listing the boundaries of each obstacle
+
+    //boundary
+    for (int i = 0; i < 3; i++)
+    {
+        myFileEnv << simEnv.boundary[i] << ",";
+    }
+    myFileEnv << simEnv.boundary[3] << "\n";
+
+    //obstacles
+    cout << "number of objects : " << size(simEnv.objects) << "\n";
+    for (int i = 0; i < size(simEnv.objects); i++)
+    {
+        cout << "i" << i << "\n";
+        for (int j = 0; j < 3; j++)
+        {
+            myFileEnv << simEnv.objects[i][j] << ",";
+        }
+        myFileEnv << simEnv.objects[i][3] << "\n";
+    }
+
     
 
     cout << "closesDistToTar" << minDistToTar << "\n\n";
