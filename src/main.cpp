@@ -168,7 +168,7 @@ int main(){
             closestItr = itr;
         }
 
-        if (distToTar < 2)
+        if (distToTar < 0.5)
         {
             cout << "state when ending loop" << "\n" << vehicle.state << endl;
             cout << "key when ending loop - " << vectorToKey(vehicle.state) << endl;
@@ -332,8 +332,10 @@ int main(){
     unsigned int printItr = 0;
 
     //writing the agent path in a csv
+    // first row is the target node and subsequent nodes are the path of the agent
     ofstream myFile("../scripts/res.csv");
     
+    myFile << xTar << "," << yTar << "\n";
     while (vectorToKey(current) != vectorToKey(startNode))
     {
         if (printItr > maxPrintItr)
@@ -358,6 +360,9 @@ int main(){
         }
         
     }
+
+    // writing the starting node
+    myFile << startNode(0) << "," << startNode(1) << "\n";
 
     myFile.close();
 
