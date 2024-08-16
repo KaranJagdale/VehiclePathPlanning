@@ -41,7 +41,7 @@ def update(frame, x_arr, y_arr, line): #function for creating animation
     line.set_ydata(y)
     return line
 
-#plt.plot(xArr, yArr)
+
 fig, ax = plt.subplots()
 plt.xticks(np.arange(envBoundary[0], envBoundary[2], 1))
 plt.yticks(np.arange(envBoundary[1], envBoundary[3], 1))
@@ -65,6 +65,10 @@ simDelay = 500 #time between consecutive frames
 ani = animation.FuncAnimation(fig=fig, func=partial(update, x_arr = xArr, y_arr = yArr , line = line), frames=range(len(xArr) - 1), interval = simDelay)
     #writervideo = animation.FFMpegWriter(fps=60) 
 ani.save('res.gif')#, writer=writervideo) 
+
+# fig2 = plt.figure(2)
+# plt.plot(xArr, yArr)
+
 
 plt.show()
 plt.close

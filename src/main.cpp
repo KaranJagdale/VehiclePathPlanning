@@ -53,14 +53,17 @@ Vector3f constToDiscretezGrid(Vector3f state, SimEnv simEnv, float xRes,
     return state;
 }
 
-bool gridObstacleOverlap(vector<float> gridBoundary, SimEnv simEnv)
+bool pathGridObstacleOverlap(Vector3f currentNode, Vector3f neighborNode, SimEnv simEnv, float xRes, float yRes)
 {
     //boundary is stored as x1, y1, x2, y2, where the later coordinates are diagonal coordinate of the first
-
+    vector<float> gridBoundary = {neighborNode(0) - xRes/2, neighborNode(1) - yRes/2,
+                                            neighborNode(0) + xRes/2, neighborNode(1) + yRes/2};
     bool intersect = false;
     for(unsigned int i = 0; i < size(simEnv.objects); i+=1)
     {
         vector<float> object = simEnv.objects[i];
+
+        // first we check of the grid of the final node intersects any of the objects
         intersect = ((gridBoundary[0] > object[0] && gridBoundary[0] < object[2]) ||
                     (gridBoundary[2] > object[0] && gridBoundary[2] < object[2])) &&
                     ((gridBoundary[1] > object[1] && gridBoundary[1] < object[3]) ||
@@ -69,7 +72,50 @@ bool gridObstacleOverlap(vector<float> gridBoundary, SimEnv simEnv)
         {
             return true;
         }
+
+        // now we check whether the agent's path is intersecting any of the objects
+        // finding the closest edges of the obstacles from the agent
+        float xClosest;
+        if (abs(currentNode[0] - object[0]) < abs(currentNode[0] - object[2]))
+        {
+            xClosest = object[0];
+        }
+        else
+        {
+            xClosest = object[2];
+        }
+
+        float yClosest;
+        if (abs(currentNode[1] - object[1]) < abs(currentNode[1] - object[3]))
+        {
+            yClosest = object[1];
+        }
+        else
+        {
+            yClosest = object[3];
+        }
+
+
+        // calculate the intersection of the line passing through currentNode -> neighborNode with the closest edges
+        float slope = (neighborNode[1] - currentNode[1]) / (neighborNode[0] - currentNode[0]);
+        float yIntersect = currentNode[1] + slope * (xClosest - currentNode[0]);
+
+        if (yIntersect >= object[1] && yIntersect <= object[3] && 
+                (eulerDist(currentNode[0], currentNode[1], xClosest, yIntersect) < 1))
+        {
+            return true;
+        }
+
+        float xIntersect = (yClosest - currentNode[1]) / slope + currentNode[0];
+
+        if (xIntersect >= object[0] && xIntersect <= object[2] &&
+                (eulerDist(currentNode[0], currentNode[1], xIntersect, yClosest) < 1))
+        {
+            return true;
+        }
     }
+
+    
     return false;
 }
 
@@ -237,29 +283,28 @@ int main(){
                 }
 
                 //check if the grid boundary overlaps with obstacle
-                vector<float> gridBoundary = {neighborNode(0) - xRes/2, neighborNode(1) - yRes/2,
-                                            neighborNode(0) + xRes/2, neighborNode(1) + yRes/2};
-                
-                bool isNodeIntersect = gridObstacleOverlap(gridBoundary, simEnv);
-                
+                                
+                bool isNodeIntersect = pathGridObstacleOverlap(currentNode, neighborNode, simEnv, xRes, yRes);
 
+                //cout << "isNodeIntersect - " << isNodeIntersect << endl; 
+                
                 bool isNodeInBoundary = neighborNode(0) >= (simEnv.boundary[0] + boundaryCorrLength)
                                         && neighborNode(0) <= (simEnv.boundary[2] - boundaryCorrLength)
                                         && neighborNode(1) >= (simEnv.boundary[1] + boundaryCorrLength)
                                         && neighborNode(1) <= (simEnv.boundary[3] - boundaryCorrLength);
                 //if ((currentNode(0) >= 8.2 && currentNode(0) <= 8.6) && (currentNode(1) >= 10 && currentNode(1) <= 10.4)) //&& currentNode(2) == 1.48353)
                 // if ((currentNode(0) == (float) 8.4) && (currentNode(1) == (float) 10.2))
-                if (itr == 41326) 
-                {
-                    cout << "itr" << itr << endl;
-                    cout << "vel - " << vel << "  steer - " << steer << "  distance - " << distToNeighbor << endl;  
-                    for(int i = 0; i < 3; i++)
-                    {
-                        cout << vehicle.state(i) << "  " << neighborNode(i) << "  " << neighbor(i) << endl;
-                    }
-                    cout << "isNodeIntersect - " << isNodeIntersect << "\n";     
-                    cout << "neighborNodeKey - " << vectorToKey(neighborNode) << endl;          
-                }
+                // if (itr == 41326) 
+                // {
+                //     cout << "itr" << itr << endl;
+                //     cout << "vel - " << vel << "  steer - " << steer << "  distance - " << distToNeighbor << endl;  
+                //     for(int i = 0; i < 3; i++)
+                //     {
+                //         cout << vehicle.state(i) << "  " << neighborNode(i) << "  " << neighbor(i) << endl;
+                //     }
+                //     cout << "isNodeIntersect - " << isNodeIntersect << "\n";     
+                //     cout << "neighborNodeKey - " << vectorToKey(neighborNode) << endl;          
+                // }
 
                 //node does not intersect with an obstacle and is inside the simulation boundary
                 if (!isNodeIntersect && isNodeInBoundary)
