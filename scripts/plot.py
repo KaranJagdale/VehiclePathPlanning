@@ -66,8 +66,22 @@ ani = animation.FuncAnimation(fig=fig, func=partial(update, x_arr = xArr, y_arr 
     #writervideo = animation.FFMpegWriter(fps=60) 
 ani.save('res.gif')#, writer=writervideo) 
 
-# fig2 = plt.figure(2)
-# plt.plot(xArr, yArr)
+
+# creating a resultant plot
+fig1, ax1 = plt.subplots()
+plt.xticks(np.arange(envBoundary[0], envBoundary[2], 1))
+plt.yticks(np.arange(envBoundary[1], envBoundary[3], 1))
+ax1.grid()
+ax1.set_xlim(envBoundary[0], envBoundary[2])
+ax1.set_ylim(envBoundary[1], envBoundary[3])
+
+for i in range(len(envObjects)):
+    xFill = [envObjects[i][0], envObjects[i][2]]
+    y1, y2 = envObjects[i][1], envObjects[i][3]
+    ax1.fill_between(xFill, y1, y2)
+ax1.plot(xArr[0] , yArr[0], 'bo')
+ax1.plot(xArr[len(xArr) - 1], yArr[len(xArr) - 1], 'rx')
+ax1.plot(xArr, yArr)
 
 
 plt.show()
