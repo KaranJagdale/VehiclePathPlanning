@@ -1,5 +1,6 @@
 #include "../inc/solver.h"
-
+#include "../inc/spline.h"
+#include <bits/stdc++.h>
 #include <iostream>
 #include <cmath>
 #include <Eigen/Dense>
@@ -376,6 +377,9 @@ int main(){
     unsigned int maxPrintItr = 100;
     unsigned int printItr = 0;
 
+    // storing the vehicle path
+    vector<Vector3f> vehiclePath; 
+    
     //writing the agent path in a csv
     // first row is the target node and subsequent nodes are the path of the agent
     ofstream myFile("../scripts/res.csv");
@@ -389,6 +393,9 @@ int main(){
         }
         
         cout << current << "\n";
+
+        // adding the node to vehiclePath
+        vehiclePath.insert(vehiclePath.begin(), current);
 
         myFile << current(0) << "," << current(1) << "\n";
 
@@ -409,7 +416,25 @@ int main(){
     // writing the starting node
     myFile << startNode(0) << "," << startNode(1) << "\n";
 
+    vehiclePath.insert(vehiclePath.begin(), startNode);
+
     myFile.close();
+
+    // creating list of indices whe the vehicls is reversed
+
+    vector<unsigned int> reverseIndex;
+
+    for(unsigned int i = 1; i < size(vehiclePath); i++)
+    {
+        Vector2f vec1({vehiclePath{i + 1}(0) - vehiclePath{i}(0), vehiclePath{i + 1}(1) - vehiclePath{i}(1)});
+        Vector2f vec2({vehiclePath{i}(0) - vehiclePath{i - 1}(0), vehiclePath{i}(1) - vehiclePath{i - 1}(1)});
+        float angle = acos(vec1.dot(vec2) / sqrt(vec1.dot(vec1)) / sqrt(vec2.dot(vec2)));
+        if (angle > M_PI / 2)
+        {
+            reverseIndex.push_back(i);
+        }
+    }
+
 
     //writing the environment detail in a csv
     ofstream myFileEnv("../scripts/env.csv");
