@@ -3,28 +3,22 @@
 #include <Eigen/Dense>
 #include <vector>
 #include <functional>
-
-using namespace std;
-using namespace Eigen;
-
-hash<float> hashFloat;
-
-size_t vectorToKey(Vector3f const& vec) 
- {
-
-  size_t seed = vec.size();
-  for(auto& i : vec) 
-  {
-    seed ^= hashFloat(i) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
-  }
-  return seed;
-}
+#include "../inc/spline.h"
 
 int main()
 {
+    std::vector<double> X, Y;
+    X = {1,2};
 
-    Vector3f a = {18.2, 5, 4.97419};
-    Vector3f b = {18.2, 5, 4.97419};
-    cout << (vectorToKey(a) == vectorToKey(a)) << endl;
+    Y = {1, 4};
+
+    tk::spline s(X,Y);
+    Eigen::Vector2f vec1(-1,1);
+    Eigen::Vector2f vec2(1,0);
+    float angle = acos(vec1.dot(vec2) / sqrt(vec1.dot(vec1)) / sqrt(vec2.dot(vec2)));
+    std::cout << angle * 180 / M_PI << std::endl;
+
     return 0;
+
 }
+    

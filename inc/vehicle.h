@@ -87,5 +87,11 @@ float eulerDist(float x1, float y1, float x2, float y2)
     return sqrt(pow(x1 - x2, 2) + pow(y1 - y2,2));
 }
 
+struct VehicleTrajectory
+{
+    vector<Vector3f> state;
+    vector<float> time;
+};
+
 
 
