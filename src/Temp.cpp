@@ -3,28 +3,16 @@
 #include <Eigen/Dense>
 #include <vector>
 #include <functional>
-
-using namespace std;
-using namespace Eigen;
-
-hash<float> hashFloat;
-
-size_t vectorToKey(Vector3f const& vec) 
- {
-
-  size_t seed = vec.size();
-  for(auto& i : vec) 
-  {
-    seed ^= hashFloat(i) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
-  }
-  return seed;
-}
+#include "../inc/spline.h"
+#include "../inc/solver.h"
 
 int main()
 {
+    Eigen::Vector3f vec1(3.4, 7.4, 0);
+    Eigen::Vector3f vec2(3.4, 6.4, 0);
+    std::cout << eulerDist(vec1(0), vec1(1), vec2(0), vec2(1)) << std::endl;
 
-    Vector3f a = {18.2, 5, 4.97419};
-    Vector3f b = {18.2, 5, 4.97419};
-    cout << (vectorToKey(a) == vectorToKey(a)) << endl;
     return 0;
+
 }
+    

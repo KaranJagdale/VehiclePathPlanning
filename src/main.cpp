@@ -1,5 +1,6 @@
 #include "../inc/solver.h"
-
+#include "../inc/spline.h"
+#include <bits/stdc++.h>
 #include <iostream>
 #include <cmath>
 #include <Eigen/Dense>
@@ -119,6 +120,102 @@ bool pathGridObstacleOverlap(Vector3f currentNode, Vector3f neighborNode, SimEnv
     return false;
 }
 
+VehicleTrajectory generateSmoothTrajectory(vector<Vector3f> vehiclePath, float averageSpeed, float resolution){
+    
+    VehicleTrajectory vehicleTrajectory;
+    // finding the indices where direction of motion is reversed
+    vector<unsigned int> reverseIndex;
+
+    for(unsigned int i = 1; i < size(vehiclePath); i++)
+    {
+        Vector2f vec1(vehiclePath[i + 1](0) - vehiclePath[i](0), vehiclePath[i + 1](1) - vehiclePath[i](1));
+        Vector2f vec2(vehiclePath[i](0) - vehiclePath[i - 1](0), vehiclePath[i](1) - vehiclePath[i - 1](1));
+        float angle = acos(vec1.dot(vec2) / sqrt(vec1.dot(vec1)) / sqrt(vec2.dot(vec2)));
+        if (angle > M_PI / 2)
+        {
+            reverseIndex.push_back(i);
+        }
+    }
+
+    // inserting start and stop indices
+    reverseIndex.insert(reverseIndex.begin(), 0);
+    reverseIndex.push_back(size(vehiclePath) - 1);
+
+    // creating the time vector considering the averageSpeed for spline interpolation
+    vector<double> vehicleTimeStamps;
+    vehicleTimeStamps.push_back(0);
+    for (int i = 1; i < size(vehiclePath); i++)
+    {
+        // Note: (i / averageSpeed) is a float as i is int and averageSpeed is float
+        float dist = eulerDist(vehiclePath[i](0), vehiclePath[i](1), vehiclePath[i-1](0), vehiclePath[i-1](1));
+        if (dist == 0)
+        {
+            cout << "Warning: zero distance found and the vertices are:" << endl;
+            printVector(vehiclePath[i]);
+            printVector(vehiclePath[i-1]);
+        }
+        vehicleTimeStamps.push_back(vehicleTimeStamps[i-1] + dist / averageSpeed);
+    }
+
+    // adding first element manually in the trajectory
+    vehicleTrajectory.time.push_back(vehicleTimeStamps.front());
+    vehicleTrajectory.state.push_back(vehiclePath.front());
+    
+    for(int i = 0; i < size(reverseIndex) - 1; i++)
+    {
+        vector<double> timeSubVector(vehicleTimeStamps.begin() + reverseIndex[i],
+                                        vehicleTimeStamps.begin() + reverseIndex[i + 1] + 1);
+
+        // creating vector for each state element from vector<Vector3f>
+        vector<double> xSubVector, ySubVector, thetaSubVector;
+
+        for (int j = reverseIndex[i]; j <= reverseIndex[i + 1]; j++)
+        {
+            xSubVector.push_back((double)vehiclePath[j][0]);
+            ySubVector.push_back((double)vehiclePath[j][1]);
+            thetaSubVector.push_back((double)vehiclePath[j][2]);
+        }
+
+        
+
+        //checking if timeSubVector has sufficient (>= 3) elements for generating spline
+        if (size(timeSubVector) >= 3)
+        {
+            // creating splines for all the elements of the state
+            tk::spline xSpline(timeSubVector, xSubVector);
+            tk::spline ySpline(timeSubVector, ySubVector);
+            tk::spline thetaSpline(timeSubVector, thetaSubVector); 
+
+            // computing the spline at the distinct points defined by the resolution. Excluding first element since it's been already added   
+            for (float t = timeSubVector.front() + resolution; t <= timeSubVector.back(); t += resolution)
+            {
+                vehicleTrajectory.time.push_back(t);
+
+                // todo: instead of creating stateFromSpline variable, use Vector3f literal in the push_back
+
+                Vector3f stateFromSpline((float)xSpline(t), (float)ySpline(t), (float)thetaSpline(t));
+                vehicleTrajectory.state.push_back(stateFromSpline);   
+            }
+        }
+        else
+        {
+            for (float t = timeSubVector.front() + resolution; t <= timeSubVector.back(); t += resolution)
+            {
+                vehicleTrajectory.time.push_back(t);
+                
+                // if we only have two elements, we use linear interpolation
+                vector<Vector3f> stateSubVector(vehiclePath.begin() + reverseIndex[i],
+                                        vehiclePath.begin() + reverseIndex[i + 1] + 1); 
+                
+                Vector3f stateInterp = stateSubVector[0] + (stateSubVector[1] - stateSubVector[0])/(timeSubVector[1] - timeSubVector[0]) * (t - timeSubVector[0]);
+
+                vehicleTrajectory.state.push_back(stateInterp);
+            }
+        }
+    }
+    return vehicleTrajectory;
+}
+
 int main(){
 
     SimEnv simEnv;
@@ -168,6 +265,10 @@ int main(){
     //parameters for computing thee heuristic cost
     float turnWeightPar = 1.2;
     float reverseWeightPar = 2;
+
+    //parameters for trajectory generation
+    float averageSpeed = 10;
+    float trajectoryResolution = 0.01; // this the resolution of time
 
     int maxItr = 47552;
     int itr = 0;
@@ -223,30 +324,11 @@ int main(){
 
         itr += 1;
 
-        // if ((vehicle.state(0) > 18.1) && (vehicle.state(0) < 18.3) && (vehicle.state(1) > 4.9) && (vehicle.state(1) < 5.1 ))
-        // {
-        //     cout << vehicle.state << endl;
-        //     cout << "requared itr - " << itr << endl;
-        //     //break;
-        // }
-
-
         //converting the continuous state to the descrete node
         Vector3f currentNode = constToDiscretezGrid(vehicle.state, simEnv, xRes, yRes, headRes);
-        // if (true)
-        // {
-        //     cout << "itr : " << itr << endl;
-        //     cout << "length of queue : " << seq.size() << endl;
-        // }
-
 
         seq.pop();
 
-        // if (itr == 1)
-        // {
-        //     cout << "vehicle state" << endl;
-        //     cout << vehicle.state << endl;
-        // }
 
         // to iterate over forward and reverse motion
         for (float vel = pathGenVel; vel >= -pathGenVel; vel -= 2*pathGenVel)
@@ -292,21 +374,7 @@ int main(){
                                         && neighborNode(0) <= (simEnv.boundary[2] - boundaryCorrLength)
                                         && neighborNode(1) >= (simEnv.boundary[1] + boundaryCorrLength)
                                         && neighborNode(1) <= (simEnv.boundary[3] - boundaryCorrLength);
-                //if ((currentNode(0) >= 8.2 && currentNode(0) <= 8.6) && (currentNode(1) >= 10 && currentNode(1) <= 10.4)) //&& currentNode(2) == 1.48353)
-                // if ((currentNode(0) == (float) 8.4) && (currentNode(1) == (float) 10.2))
-                // if (itr == 41326) 
-                // {
-                //     cout << "itr" << itr << endl;
-                //     cout << "vel - " << vel << "  steer - " << steer << "  distance - " << distToNeighbor << endl;  
-                //     for(int i = 0; i < 3; i++)
-                //     {
-                //         cout << vehicle.state(i) << "  " << neighborNode(i) << "  " << neighbor(i) << endl;
-                //     }
-                //     cout << "isNodeIntersect - " << isNodeIntersect << "\n";     
-                //     cout << "neighborNodeKey - " << vectorToKey(neighborNode) << endl;          
-                // }
-
-                //node does not intersect with an obstacle and is inside the simulation boundary
+     
                 if (!isNodeIntersect && isNodeInBoundary)
                 {
                     
@@ -321,20 +389,7 @@ int main(){
                     
                     float newCost = distToNeighbor * turnWeight * reverseWeight + costTillNow[currentNodeKey] ;
                     float costHeuristic = newCost + eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-                    if (itr == 41326)
-                    {
-                    // cout << "first cost (distToneighbor) : " << distToNeighbor * turnWeight * reverseWeight << "first cost (costTillNow) : " << costTillNow[currentNodeKey] << "\n";
-                    // cout << " second cost : " << eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-                    // cout << " cost heuristic : " << costHeuristic << "\n";
-                    cout << "Is this a new node? 1 " << (cameFrom.find(neighborNodeKey) == cameFrom.end()) << "\n";
-                    cout << "neighborNodeKey : " << neighborNodeKey << endl;
-                    //cout << "origin node : " << cameFrom[neighborNodeKey] << endl; 
-                    cout << "newCost : " << newCost << "costTillNow : " << costTillNow[neighborNodeKey] << "\n";
-                    cout << "currentNode : " << currentNode << "\n";
-                    cout << "if condition : " << ((cameFrom.find(neighborNodeKey) == cameFrom.end()) || (newCost < costTillNow[neighborNodeKey])) << "\n";
-                    cout << "if first : " << (cameFrom.find(neighborNodeKey) == cameFrom.end()) << " if second : " <<  (newCost < costTillNow[neighborNodeKey]) << "\n\n";
-                    }
-
+                 
                     if ((cameFrom.find(neighborNodeKey) == cameFrom.end()) || (newCost < costTillNow[neighborNodeKey]))
                     {
                         //cout << "adding node to the queue" << endl;
@@ -376,6 +431,9 @@ int main(){
     unsigned int maxPrintItr = 100;
     unsigned int printItr = 0;
 
+    // storing the vehicle path
+    vector<Vector3f> vehiclePath; 
+    
     //writing the agent path in a csv
     // first row is the target node and subsequent nodes are the path of the agent
     ofstream myFile("../scripts/res.csv");
@@ -389,6 +447,9 @@ int main(){
         }
         
         cout << current << "\n";
+
+        // adding the node to vehiclePath
+        vehiclePath.insert(vehiclePath.begin(), current);
 
         myFile << current(0) << "," << current(1) << "\n";
 
@@ -409,7 +470,11 @@ int main(){
     // writing the starting node
     myFile << startNode(0) << "," << startNode(1) << "\n";
 
+    vehiclePath.insert(vehiclePath.begin(), startNode);
+
     myFile.close();
+
+    // creating list of indices whe the vehicls is reversed
 
     //writing the environment detail in a csv
     ofstream myFileEnv("../scripts/env.csv");
@@ -441,10 +506,24 @@ int main(){
     cout << "closestState" << "\n" << closestState << "\n\n";
     cout << "closestItr" << "\n" << closestItr << "\n\n";
 
-    // cout << "testing cameFrom..." << "\n";
-    // for (int i = 0; i < 10; i++)
-    // {
-    //     cout << i << "cameFrom(i) " << "\n" << cameFrom[i*10 + 0.1] << "\n\n";
-    // }
+    VehicleTrajectory vehicleTrajectory = generateSmoothTrajectory(vehiclePath, averageSpeed, trajectoryResolution);
+
+    // wrirtting smoothened path in csv
+    // format is - time, x, y, heading
+    ofstream myFileSmoothPath("../scripts/smoothPath.csv");
+
+    for(int i = 0; i < size(vehicleTrajectory.time); i++)
+    {
+        // writting time
+        myFileSmoothPath << vehicleTrajectory.time[i] << ",";
+        //writting state
+        myFileSmoothPath << vehicleTrajectory.state[i](0) << ",";
+        myFileSmoothPath << vehicleTrajectory.state[i](1) << ",";
+        myFileSmoothPath << vehicleTrajectory.state[i](2) << "\n";
+    }
+
+
+
+
     return 0;   
 }
