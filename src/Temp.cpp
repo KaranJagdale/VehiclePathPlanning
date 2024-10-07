@@ -4,19 +4,13 @@
 #include <vector>
 #include <functional>
 #include "../inc/spline.h"
+#include "../inc/solver.h"
 
 int main()
 {
-    std::vector<double> X, Y;
-    X = {1,2};
-
-    Y = {1, 4};
-
-    tk::spline s(X,Y);
-    Eigen::Vector2f vec1(-1,1);
-    Eigen::Vector2f vec2(1,0);
-    float angle = acos(vec1.dot(vec2) / sqrt(vec1.dot(vec1)) / sqrt(vec2.dot(vec2)));
-    std::cout << angle * 180 / M_PI << std::endl;
+    Eigen::Vector3f vec1(3.4, 7.4, 0);
+    Eigen::Vector3f vec2(3.4, 6.4, 0);
+    std::cout << eulerDist(vec1(0), vec1(1), vec2(0), vec2(1)) << std::endl;
 
     return 0;
 

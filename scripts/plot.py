@@ -15,6 +15,17 @@ with open('res.csv', newline='') as csvfile:
             
 csvfile.close()
 
+xArrSmooth, yArrSmooth = [], []
+#reading the path
+with open('smoothPath.csv', newline='') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    for row in spamreader:
+        loc = list(map(float, row[0].split(',')))
+        xArrSmooth.append(loc[1])
+        yArrSmooth.append(loc[2])
+            
+csvfile.close()
+
 #reversing xArr and yArr
 xArr = xArr[::-1]
 yArr = yArr[::-1]
@@ -82,6 +93,7 @@ for i in range(len(envObjects)):
 ax1.plot(xArr[0] , yArr[0], 'bo')
 ax1.plot(xArr[len(xArr) - 1], yArr[len(xArr) - 1], 'rx')
 ax1.plot(xArr, yArr)
+ax1.plot(xArrSmooth, yArrSmooth)
 
 
 plt.show()

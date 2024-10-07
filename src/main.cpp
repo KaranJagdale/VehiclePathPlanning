@@ -143,12 +143,23 @@ VehicleTrajectory generateSmoothTrajectory(vector<Vector3f> vehiclePath, float a
 
     // creating the time vector considering the averageSpeed for spline interpolation
     vector<double> vehicleTimeStamps;
-    for (int i = 0; i < size(vehiclePath); i++)
+    vehicleTimeStamps.push_back(0);
+    for (int i = 1; i < size(vehiclePath); i++)
     {
         // Note: (i / averageSpeed) is a float as i is int and averageSpeed is float
-        vehicleTimeStamps.push_back((double)(i / averageSpeed));
+        float dist = eulerDist(vehiclePath[i](0), vehiclePath[i](1), vehiclePath[i-1](0), vehiclePath[i-1](1));
+        if (dist == 0)
+        {
+            cout << "Warning: zero distance found and the vertices are:" << endl;
+            printVector(vehiclePath[i]);
+            printVector(vehiclePath[i-1]);
+        }
+        vehicleTimeStamps.push_back(vehicleTimeStamps[i-1] + dist / averageSpeed);
     }
 
+    // adding first element manually in the trajectory
+    vehicleTrajectory.time.push_back(vehicleTimeStamps.front());
+    vehicleTrajectory.state.push_back(vehiclePath.front());
     
     for(int i = 0; i < size(reverseIndex) - 1; i++)
     {
@@ -164,23 +175,43 @@ VehicleTrajectory generateSmoothTrajectory(vector<Vector3f> vehiclePath, float a
             ySubVector.push_back((double)vehiclePath[j][1]);
             thetaSubVector.push_back((double)vehiclePath[j][2]);
         }
-        cout << "timeSubVector size - " << size(timeSubVector)<< endl;
-        cout << "xSubVector size - " << size(xSubVector)<< endl;
-        // creating splines for all the elements of the state
-        tk::spline xSpline(timeSubVector, xSubVector);
-        tk::spline ySpline(timeSubVector, ySubVector);
-        tk::spline thetaSpline(timeSubVector, thetaSubVector);
 
-        // computing the spline at the distinct points defined by the resolution
-        for (float t = timeSubVector.front(); t <= timeSubVector.back(); t += resolution)
-        {
-            vehicleTrajectory.time.push_back(t);
-
-            // todo: instead of creating stateFromSpline variable, use Vector3f literal in the push_back
-            Vector3f stateFromSpline((float)xSpline(t), (float)ySpline(t), (float)thetaSpline(t));
-            vehicleTrajectory.state.push_back(stateFromSpline);
-        }
         
+
+        //checking if timeSubVector has sufficient (>= 3) elements for generating spline
+        if (size(timeSubVector) >= 3)
+        {
+            // creating splines for all the elements of the state
+            tk::spline xSpline(timeSubVector, xSubVector);
+            tk::spline ySpline(timeSubVector, ySubVector);
+            tk::spline thetaSpline(timeSubVector, thetaSubVector); 
+
+            // computing the spline at the distinct points defined by the resolution. Excluding first element since it's been already added   
+            for (float t = timeSubVector.front() + resolution; t <= timeSubVector.back(); t += resolution)
+            {
+                vehicleTrajectory.time.push_back(t);
+
+                // todo: instead of creating stateFromSpline variable, use Vector3f literal in the push_back
+
+                Vector3f stateFromSpline((float)xSpline(t), (float)ySpline(t), (float)thetaSpline(t));
+                vehicleTrajectory.state.push_back(stateFromSpline);   
+            }
+        }
+        else
+        {
+            for (float t = timeSubVector.front() + resolution; t <= timeSubVector.back(); t += resolution)
+            {
+                vehicleTrajectory.time.push_back(t);
+                
+                // if we only have two elements, we use linear interpolation
+                vector<Vector3f> stateSubVector(vehiclePath.begin() + reverseIndex[i],
+                                        vehiclePath.begin() + reverseIndex[i + 1] + 1); 
+                
+                Vector3f stateInterp = stateSubVector[0] + (stateSubVector[1] - stateSubVector[0])/(timeSubVector[1] - timeSubVector[0]) * (t - timeSubVector[0]);
+
+                vehicleTrajectory.state.push_back(stateInterp);
+            }
+        }
     }
     return vehicleTrajectory;
 }
@@ -237,7 +268,7 @@ int main(){
 
     //parameters for trajectory generation
     float averageSpeed = 10;
-    float trajectoryResolution = 0.1; // this the resolution of time
+    float trajectoryResolution = 0.01; // this the resolution of time
 
     int maxItr = 47552;
     int itr = 0;
@@ -343,21 +374,7 @@ int main(){
                                         && neighborNode(0) <= (simEnv.boundary[2] - boundaryCorrLength)
                                         && neighborNode(1) >= (simEnv.boundary[1] + boundaryCorrLength)
                                         && neighborNode(1) <= (simEnv.boundary[3] - boundaryCorrLength);
-                //if ((currentNode(0) >= 8.2 && currentNode(0) <= 8.6) && (currentNode(1) >= 10 && currentNode(1) <= 10.4)) //&& currentNode(2) == 1.48353)
-                // if ((currentNode(0) == (float) 8.4) && (currentNode(1) == (float) 10.2))
-                // if (itr == 41326) 
-                // {
-                //     cout << "itr" << itr << endl;
-                //     cout << "vel - " << vel << "  steer - " << steer << "  distance - " << distToNeighbor << endl;  
-                //     for(int i = 0; i < 3; i++)
-                //     {
-                //         cout << vehicle.state(i) << "  " << neighborNode(i) << "  " << neighbor(i) << endl;
-                //     }
-                //     cout << "isNodeIntersect - " << isNodeIntersect << "\n";     
-                //     cout << "neighborNodeKey - " << vectorToKey(neighborNode) << endl;          
-                // }
-
-                //node does not intersect with an obstacle and is inside the simulation boundary
+     
                 if (!isNodeIntersect && isNodeInBoundary)
                 {
                     
@@ -372,20 +389,7 @@ int main(){
                     
                     float newCost = distToNeighbor * turnWeight * reverseWeight + costTillNow[currentNodeKey] ;
                     float costHeuristic = newCost + eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-                    if (itr == 41326)
-                    {
-                    // cout << "first cost (distToneighbor) : " << distToNeighbor * turnWeight * reverseWeight << "first cost (costTillNow) : " << costTillNow[currentNodeKey] << "\n";
-                    // cout << " second cost : " << eulerDist(neighbor(0), neighbor(1), xTar, yTar);
-                    // cout << " cost heuristic : " << costHeuristic << "\n";
-                    cout << "Is this a new node? 1 " << (cameFrom.find(neighborNodeKey) == cameFrom.end()) << "\n";
-                    cout << "neighborNodeKey : " << neighborNodeKey << endl;
-                    //cout << "origin node : " << cameFrom[neighborNodeKey] << endl; 
-                    cout << "newCost : " << newCost << "costTillNow : " << costTillNow[neighborNodeKey] << "\n";
-                    cout << "currentNode : " << currentNode << "\n";
-                    cout << "if condition : " << ((cameFrom.find(neighborNodeKey) == cameFrom.end()) || (newCost < costTillNow[neighborNodeKey])) << "\n";
-                    cout << "if first : " << (cameFrom.find(neighborNodeKey) == cameFrom.end()) << " if second : " <<  (newCost < costTillNow[neighborNodeKey]) << "\n\n";
-                    }
-
+                 
                     if ((cameFrom.find(neighborNodeKey) == cameFrom.end()) || (newCost < costTillNow[neighborNodeKey]))
                     {
                         //cout << "adding node to the queue" << endl;
@@ -503,6 +507,23 @@ int main(){
     cout << "closestItr" << "\n" << closestItr << "\n\n";
 
     VehicleTrajectory vehicleTrajectory = generateSmoothTrajectory(vehiclePath, averageSpeed, trajectoryResolution);
+
+    // wrirtting smoothened path in csv
+    // format is - time, x, y, heading
+    ofstream myFileSmoothPath("../scripts/smoothPath.csv");
+
+    for(int i = 0; i < size(vehicleTrajectory.time); i++)
+    {
+        // writting time
+        myFileSmoothPath << vehicleTrajectory.time[i] << ",";
+        //writting state
+        myFileSmoothPath << vehicleTrajectory.state[i](0) << ",";
+        myFileSmoothPath << vehicleTrajectory.state[i](1) << ",";
+        myFileSmoothPath << vehicleTrajectory.state[i](2) << "\n";
+    }
+
+
+
 
     return 0;   
 }

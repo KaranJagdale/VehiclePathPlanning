@@ -93,5 +93,13 @@ struct VehicleTrajectory
     vector<float> time;
 };
 
+template<typename type> void printVector(type myVector)
+{
+    for (int i = 0; i < size(myVector); i++)
+    {
+        std::cout << myVector[i] << " ";
+    }
+    std::cout << std::endl;
+}
 
 
