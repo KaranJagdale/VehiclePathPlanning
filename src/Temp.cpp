@@ -8,9 +8,15 @@
 
 int main()
 {
-    Eigen::Vector3f vec1(3.4, 7.4, 0);
-    Eigen::Vector3f vec2(3.4, 6.4, 0);
-    std::cout << eulerDist(vec1(0), vec1(1), vec2(0), vec2(1)) << std::endl;
+    Eigen::Matrix2f mat{{1,2},{3,4}};
+    Eigen::Vector2f vec{1, 0};
+
+    float a = 1;
+    if(true)
+    {
+        a = 2;
+    }
+    std::cout << a << std::endl;
 
     return 0;
 

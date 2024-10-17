@@ -120,6 +120,7 @@ bool pathGridObstacleOverlap(Vector3f currentNode, Vector3f neighborNode, SimEnv
     return false;
 }
 
+// Todo: convert VehicleTrajectory to unordered map
 VehicleTrajectory generateSmoothTrajectory(vector<Vector3f> vehiclePath, float averageSpeed, float resolution){
     
     VehicleTrajectory vehicleTrajectory;
@@ -249,7 +250,7 @@ int main(){
 
     //vehicle initial configuration
 
-    Vector3f startState = {4, 6, 3.14};
+    Vector3f startState = {2, 6, 0};
 
     Vector3f startNode = constToDiscretezGrid(startState, simEnv, xRes, yRes, headRes);
 
@@ -451,7 +452,7 @@ int main(){
         // adding the node to vehiclePath
         vehiclePath.insert(vehiclePath.begin(), current);
 
-        myFile << current(0) << "," << current(1) << "\n";
+        myFile << current(0) << "," << current(1) << "," << current(2) << "\n";
 
         if ( (cameFrom.count(vectorToKey(current)) != 0))
         {
@@ -468,7 +469,7 @@ int main(){
     }
 
     // writing the starting node
-    myFile << startNode(0) << "," << startNode(1) << "\n";
+    myFile << startNode(0) << "," << startNode(1)<< "," << startNode(2) << "\n";
 
     vehiclePath.insert(vehiclePath.begin(), startNode);
 
@@ -522,7 +523,146 @@ int main(){
         myFileSmoothPath << vehicleTrajectory.state[i](2) << "\n";
     }
 
+    // simulating vehicle motion with control commands to follow the generated trajectory
 
+    //creating the bicycle object
+    Vehicle bicycle (vehWheelBase, vehMass);
+
+    // assume that the bicycle is at the start of the generated trajectory
+
+    bicycle.state = vehicleTrajectory.state.front();
+
+    float maxSimTime = 10;
+
+    unsigned int simItr = 0;
+
+    unsigned int planItr = 0; //this will progress slower than simItr
+
+    // implementation sample time is lowest compared to the high/low level planning sample time
+    float controlSampTime = 0.005;
+
+    unsigned int closestItrOld = 0; // this is itr with respect to the current simulation time "t"
+    // this will be used to search the time-stamp just smaller than the simulation time "t" 
+
+    // the referece trajectory will be converted to continuous using zero-order hold
+    // this is essential as the simulation time will not necessarily match with the time stamps in the trajectory
+
+    //defining PID controller
+    PIDController PID (5, 0, 0.5);
+    float yError = 0;
+    float yErrorPrev = 0;
+    float yErrorDot = 0;
+    float yErrorInt = 0;
+    float simHeading = bicycle.state(2); //initial heading is obtained by the smoothened trajectory
+
+    // vector to store the simulated trajectory
+    VehicleTrajectory simResult; 
+    simResult.state.push_back(bicycle.state);
+    simResult.time.push_back(0);
+
+    cout << "starting simulation..." << endl;
+    for (float t = controlSampTime; t <= maxSimTime; t += controlSampTime)
+    {
+        // finding the closest time-stamp smaller than or equal to the current time "t"
+        float minDist = 100000000; // some large value
+        unsigned int closestItr = closestItrOld; 
+        for (int i = closestItr; i < closestItr + 3; i ++)
+        {
+            if ((t - vehicleTrajectory.time[i]) > 0 && (t - vehicleTrajectory.time[i] < minDist))
+            {
+                minDist = t - vehicleTrajectory.time[i];
+                closestItr = i;
+            }
+        }
+        // decide between forward and reverse velocity based on heading and the target state
+
+        // rotation matrix to take from cartessian to the target points frame (x-axis along the target heading)
+        
+        //Rotation matrix angle
+        if (closestItr > 0)
+        {
+            simHeading = atan2(vehicleTrajectory.state[closestItr](1) - vehicleTrajectory.state[closestItr-1](1), 
+                                vehicleTrajectory.state[closestItr](0) - vehicleTrajectory.state[closestItr-1](0));
+        }
+        Matrix2f rotMat {
+            {cos(simHeading), sin(simHeading)},
+            {-sin(simHeading), cos(simHeading)},
+        };
+
+        // obtain the rotated vector of current and target location and compute the target velocity and the steering input.
+        Vector2f state2D = projectionOn2DPlane(bicycle.state);
+        Vector2f target2D = projectionOn2DPlane(vehicleTrajectory.state[closestItr]);
+
+        // obtain the 2D vectors in the rotated coordinates
+
+        Vector2f state2DRot = rotMat * state2D;
+        Vector2f target2DRot = rotMat * target2D;
+        float targetAverageSpeed = (target2DRot(0) > state2DRot(0)) ? averageSpeed : -averageSpeed;
+       
+        yError = target2DRot(1) - state2DRot(1);
+        yErrorDot = (yError - yErrorPrev) / controlSampTime;
+        yErrorInt += yError * controlSampTime;
+
+        float targetSteering = PID.action(yError, yErrorDot, yErrorInt);
+
+        // saturating the steering input
+        
+        if (targetSteering > pathGenSteeringMax)
+        {
+            targetSteering = pathGenSteeringMax;
+        }
+        else if(targetSteering < -pathGenSteeringMax)
+        {
+            targetSteering = -pathGenSteeringMax;
+        }
+
+        Vector2f targetInput = {targetSteering, targetAverageSpeed};
+
+        if (t > 0.83 && t < 1)
+        {
+            cout << "t - " << t << endl;  
+            cout << "bicycle state\n" << bicycle.state << endl;
+            cout << "target state\n" << vehicleTrajectory.state[closestItr] << endl;
+            cout << "state2DRot\n" << state2DRot << "\n";
+            cout << "target2DRot\n" << target2DRot << "\n"; 
+            cout << yError << "," << yErrorInt << "," << yErrorDot << endl;
+            cout << targetInput << "\n\n";
+        }
+
+        stateWithDistance update = odeSolver.updateStateWithDist(bicycle, t, t + controlSampTime, targetInput, controlSampTime / 10, "RK4");
+
+        bicycle.state = update.state;
+
+        // pushing new state to the result vector
+
+        simResult.state.push_back(bicycle.state);
+        simResult.time.push_back(t);
+
+        // compute the control input 
+        yErrorPrev = yError;
+        closestItrOld = closestItr;
+
+        // stopping condition
+        float distToTar = eulerDist(bicycle.state[0], bicycle.state[1], xTar, yTar);
+        if (distToTar < 0.5)
+        {
+            cout << "reached at the target" << endl;
+            break;
+        }
+    }
+    cout << "done with simulation." << endl;
+
+    ofstream myFileSimulationRes("../scripts/simulationRes.csv");
+
+    for(int i = 0; i < size(simResult.time); i++)
+    {
+        // writting time
+        myFileSimulationRes << simResult.time[i] << ",";
+        //writting state
+        myFileSimulationRes << simResult.state[i](0) << ",";
+        myFileSimulationRes << simResult.state[i](1) << ",";
+        myFileSimulationRes << simResult.state[i](2) << "\n";
+    }
 
 
     return 0;   

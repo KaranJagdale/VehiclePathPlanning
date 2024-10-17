@@ -102,4 +102,29 @@ template<typename type> void printVector(type myVector)
     std::cout << std::endl;
 }
 
+Vector2f projectionOn2DPlane(Vector3f vec)
+{
+    Vector2f proj = {vec(0), vec(1)};
+    return proj;
+}
+
+class PIDController
+{
+public:
+    float Kp, Kd, Ki;
+
+    PIDController(float KpIn, float KiIn, float KdIn)
+    {
+        Kp = KpIn;
+        Kd = KdIn;
+        Ki = KiIn;
+    }
+    // Modify it for the cases like when just PI controller is needed and user do not provide errorDot term 
+    float action(float error, float errorDot, float errorInt)
+    {
+        return Kp * error + Kd * errorDot + Ki * errorInt;
+    }
+
+};
+
 
