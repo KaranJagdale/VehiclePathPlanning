@@ -4,31 +4,46 @@ import csv
 import matplotlib.animation as animation
 from functools import partial
 from scipy.interpolate import CubicSpline
+import math
 
-xArr, yArr = [], []
+timeArr, xArr, yArr, thetaArr = [], [], [], []
 #reading the path
-with open('res.csv', newline='') as csvfile:
+with open('smoothPath.csv', newline='') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in spamreader:
         loc = list(map(float, row[0].split(',')))
-        xArr.append(loc[0])
-        yArr.append(loc[1])
+        timeArr.append(loc[0])
+        xArr.append(loc[1])
+        yArr.append(loc[2])
+        thetaArr.append(loc[3])
             
 csvfile.close()
 
-#reversing xArr and yArr
-xArr = xArr[::-1]
-yArr = yArr[::-1]
+thetaPlanner = []
+timePlanner = []
+with open('res.csv', newline='') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    i = 0
+    for row in spamreader:
+        loc = list(map(float, row[0].split(',')))
+        thetaPlanner.append(loc[2])
+        timePlanner.append(i)
+        i += 1/10
 
-timeTick = np.linspace(0, len(xArr) - 1, len(xArr))
+csvfile.close()
 
-cs_x = CubicSpline(timeTick, xArr)
-cs_y = CubicSpline(timeTick, yArr)
+thetaFromDiff = []
 
-timeTickFine = np.arange(0, len(xArr) - 1, 0.1)
+for i in range(len(xArr) - 1):
+    thetaFromDiff.append(math.atan2((yArr[i+1] - yArr[i]), (xArr[i+1] - xArr[i])))
 
-plt.plot(xArr, yArr)
-plt.plot(cs_x(timeTickFine), cs_y(timeTickFine))
+plt.plot(timePlanner, thetaPlanner[::-1])
+plt.plot(timeArr, thetaArr)
+plt.plot(timeArr[:len(timeArr) - 1], thetaFromDiff)
+
+
+print(math.atan2(1,1))
+
 plt.show()
 
 
