@@ -305,7 +305,7 @@ int main(){
     float closestItr = 0;
 
     size_t myKey;
-
+    bool printFlag = true;
     cout << "while loop starting" << endl;
     while (!seq.empty())
     {
@@ -316,6 +316,15 @@ int main(){
             minDistToTar = distToTar;
             closestState = vehicle.state;
             closestItr = itr;
+        }
+	
+        if (distToTar < 0.5 && printFlag)
+        {
+            cout << "state when ending loop" << "\n" << vehicle.state << endl;
+            cout << "key when ending loop - " << vectorToKey(vehicle.state) << endl;
+            std::cout << "cost till now for the final node - " << costTillNow[vectorToKey(vehicle.state)] << endl;
+            printFlag = false;
+            break;
         }
 
         itr += 1;
@@ -388,11 +397,22 @@ int main(){
                  
                     if ((cameFrom.find(neighborNodeKey) == cameFrom.end()) || (newCost < costTillNow[neighborNodeKey]))
                     {
+                        //cout << "adding node to the queue" << endl;
+                        // if (itr == 41326 || itr == 41611)
+                        // {
+                        //     cout << "inside the if for writting cameFrom" << endl;
+                        // }
                         
                         costTillNow[neighborNodeKey] = newCost;
                         seq.emplace(costHeuristic, neighborNode);
                         cameFrom[neighborNodeKey] = currentNode;
 
+                        // if (itr == 41326 && vel == pathGenVel && steer == 0)
+                        // {
+                        //     myKey = neighborNodeKey;
+                        //     cout << "did we write successfully ? " << (cameFrom.count(neighborNodeKey) != 0) <<  "\n\n";
+                        //     cout << "key from innermost : " << myKey<< endl;
+                        // }
                     }
                 }
             }
@@ -490,6 +510,7 @@ int main(){
     cout << "closesDistToTar" << minDistToTar << "\n\n";
     cout << "closestState" << "\n" << closestState << "\n\n";
     cout << "closestItr" << "\n" << closestItr << "\n\n";
+    cout << "cost till now for the final final node - " << costTillNow[vectorToKey(closestState)] << endl;
 
     VehicleTrajectory vehicleTrajectory = generateSmoothTrajectory(vehiclePath, averageSpeed, trajectoryResolution);
 
@@ -639,10 +660,9 @@ int main(){
     }
     auto end = std::chrono::steady_clock::now();
 
-    // Calculate duration in milliseconds
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    // Calculate duration
+    std::chrono::duration<double, std::milli> duration = end - start;
+    std::cout << "Runtime: " << duration.count() << " ms" << std::endl;
 
-    std::cout << "Time taken: " << duration.count() << " milliseconds" << std::endl;
-
-    return 0;
+    return 0;   
 }
