@@ -11,6 +11,7 @@
 #include <utility>
 #include <string>
 #include <fstream>
+#include <chrono>
 
 using namespace std;
 using namespace Eigen;
@@ -26,7 +27,7 @@ template<typename A> void printQueue(A pq)
 
 hash<float> hashFloat;
 
-size_t vectorToKey(Vector3f const& vec) 
+size_t vectorToKey(const Vector3f& vec) 
  {
 
   size_t seed = vec.size();
@@ -54,7 +55,7 @@ Vector3f constToDiscretezGrid(Vector3f state, SimEnv simEnv, float xRes,
     return state;
 }
 
-bool pathGridObstacleOverlap(Vector3f currentNode, Vector3f neighborNode, SimEnv simEnv, float xRes, float yRes)
+bool pathGridObstacleOverlap(const Vector3f& currentNode, const Vector3f& neighborNode, SimEnv simEnv, float xRes, float yRes)
 {
     //boundary is stored as x1, y1, x2, y2, where the later coordinates are diagonal coordinate of the first
     vector<float> gridBoundary = {neighborNode(0) - xRes/2, neighborNode(1) - yRes/2,
@@ -121,12 +122,12 @@ bool pathGridObstacleOverlap(Vector3f currentNode, Vector3f neighborNode, SimEnv
 }
 
 // Todo: convert VehicleTrajectory to unordered map
-VehicleTrajectory generateSmoothTrajectory(vector<Vector3f> vehiclePath, float averageSpeed, float resolution){
-    
+VehicleTrajectory generateSmoothTrajectory(const vector<Vector3f>& vehiclePath, float averageSpeed, float resolution){
+
     VehicleTrajectory vehicleTrajectory;
     // finding the indices where direction of motion is reversed
     vector<unsigned int> reverseIndex;
-
+    reverseIndex.push_back(0); // adding the start index
     for(unsigned int i = 1; i < size(vehiclePath); i++)
     {
         Vector2f vec1(vehiclePath[i + 1](0) - vehiclePath[i](0), vehiclePath[i + 1](1) - vehiclePath[i](1));
@@ -138,13 +139,13 @@ VehicleTrajectory generateSmoothTrajectory(vector<Vector3f> vehiclePath, float a
         }
     }
 
-    // inserting start and stop indices
-    reverseIndex.insert(reverseIndex.begin(), 0);
+    // inserting stop indiex
     reverseIndex.push_back(size(vehiclePath) - 1);
 
     // creating the time vector considering the averageSpeed for spline interpolation
     vector<double> vehicleTimeStamps;
     vehicleTimeStamps.push_back(0);
+    vehicleTimeStamps.reserve(size(vehiclePath)); // reserving memory to avoid reallocation during push_back
     for (int i = 1; i < size(vehiclePath); i++)
     {
         // Note: (i / averageSpeed) is a float as i is int and averageSpeed is float
@@ -218,6 +219,7 @@ VehicleTrajectory generateSmoothTrajectory(vector<Vector3f> vehiclePath, float a
 }
 
 int main(){
+    auto start = std::chrono::steady_clock::now();
 
     SimEnv simEnv;
 
@@ -303,7 +305,7 @@ int main(){
     float closestItr = 0;
 
     size_t myKey;
-
+    bool printFlag = true;
     cout << "while loop starting" << endl;
     while (!seq.empty())
     {
@@ -315,11 +317,13 @@ int main(){
             closestState = vehicle.state;
             closestItr = itr;
         }
-
-        if (distToTar < 0.5)
+	
+        if (distToTar < 0.5 && printFlag)
         {
             cout << "state when ending loop" << "\n" << vehicle.state << endl;
             cout << "key when ending loop - " << vectorToKey(vehicle.state) << endl;
+            std::cout << "cost till now for the final node - " << costTillNow[vectorToKey(vehicle.state)] << endl;
+            printFlag = false;
             break;
         }
 
@@ -358,12 +362,12 @@ int main(){
                 
                 Vector3f neighborNode = constToDiscretezGrid(neighbor, simEnv, xRes, yRes, headRes);
 
-                if ((neighborNode(0) > 18.1) && (neighborNode(0) < 18.3) && (neighborNode(1) > 4.9) && (neighborNode(1) < 5.1 ))
-                {
-                    cout << neighborNode << endl;
-                    cout << "requared itr - " << itr << endl;
-                    //break;
-                }
+                // if ((neighborNode(0) > 18.1) && (neighborNode(0) < 18.3) && (neighborNode(1) > 4.9) && (neighborNode(1) < 5.1 ))
+                // {
+                //     cout << neighborNode << endl;
+                //     cout << "requared itr - " << itr << endl;
+                //     //break;
+                // }
 
                 //check if the grid boundary overlaps with obstacle
                                 
@@ -394,21 +398,21 @@ int main(){
                     if ((cameFrom.find(neighborNodeKey) == cameFrom.end()) || (newCost < costTillNow[neighborNodeKey]))
                     {
                         //cout << "adding node to the queue" << endl;
-                        if (itr == 41326 || itr == 41611)
-                        {
-                            cout << "inside the if for writting cameFrom" << endl;
-                        }
+                        // if (itr == 41326 || itr == 41611)
+                        // {
+                        //     cout << "inside the if for writting cameFrom" << endl;
+                        // }
                         
                         costTillNow[neighborNodeKey] = newCost;
                         seq.emplace(costHeuristic, neighborNode);
                         cameFrom[neighborNodeKey] = currentNode;
 
-                        if (itr == 41326 && vel == pathGenVel && steer == 0)
-                        {
-                            myKey = neighborNodeKey;
-                            cout << "did we write successfully ? " << (cameFrom.count(neighborNodeKey) != 0) <<  "\n\n";
-                            cout << "key from innermost : " << myKey<< endl;
-                        }
+                        // if (itr == 41326 && vel == pathGenVel && steer == 0)
+                        // {
+                        //     myKey = neighborNodeKey;
+                        //     cout << "did we write successfully ? " << (cameFrom.count(neighborNodeKey) != 0) <<  "\n\n";
+                        //     cout << "key from innermost : " << myKey<< endl;
+                        // }
                     }
                 }
             }
@@ -506,6 +510,7 @@ int main(){
     cout << "closesDistToTar" << minDistToTar << "\n\n";
     cout << "closestState" << "\n" << closestState << "\n\n";
     cout << "closestItr" << "\n" << closestItr << "\n\n";
+    cout << "cost till now for the final final node - " << costTillNow[vectorToKey(closestState)] << endl;
 
     VehicleTrajectory vehicleTrajectory = generateSmoothTrajectory(vehiclePath, averageSpeed, trajectoryResolution);
 
@@ -618,16 +623,6 @@ int main(){
 
         Vector2f targetInput = {targetSteering, targetAverageSpeed};
 
-        if (t > 0.83 && t < 1)
-        {
-            cout << "t - " << t << endl;  
-            cout << "bicycle state\n" << bicycle.state << endl;
-            cout << "target state\n" << vehicleTrajectory.state[closestItr] << endl;
-            cout << "state2DRot\n" << state2DRot << "\n";
-            cout << "target2DRot\n" << target2DRot << "\n"; 
-            cout << yError << "," << yErrorInt << "," << yErrorDot << endl;
-            cout << targetInput << "\n\n";
-        }
 
         stateWithDistance update = odeSolver.updateStateWithDist(bicycle, t, t + controlSampTime, targetInput, controlSampTime / 10, "RK4");
 
@@ -663,7 +658,11 @@ int main(){
         myFileSimulationRes << simResult.state[i](1) << ",";
         myFileSimulationRes << simResult.state[i](2) << "\n";
     }
+    auto end = std::chrono::steady_clock::now();
 
+    // Calculate duration
+    std::chrono::duration<double, std::milli> duration = end - start;
+    std::cout << "Runtime: " << duration.count() << " ms" << std::endl;
 
     return 0;   
 }
