@@ -1,5 +1,6 @@
 // This file contains vehicle class. As of now it will implement simple bicycle model
-using namespace std;
+#define _USE_MATH_DEFINES
+
 #include <iostream>
 #include <vector>
 #include <Eigen/Dense>

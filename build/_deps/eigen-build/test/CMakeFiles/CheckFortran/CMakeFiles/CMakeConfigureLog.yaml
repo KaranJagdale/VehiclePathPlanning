@@ -1,0 +1,898 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      The system is: Windows - 10.0.26200 - AMD64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineFortranCompiler.cmake:190 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeFortranCompilerId.F.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/"
+      - "C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-src/cmake/"
+    found: "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFortranCompilerId.F.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\ffmpeg\\bin"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\MATLAB\\R2021b\\runtime\\win64"
+        - "C:\\Program Files\\MATLAB\\R2021b\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\PuTTY\\"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineFortranCompiler.cmake:190 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      
+      Microsoft Visual Studio 2022 Version 17.4.4.
+      Copyright (C) Microsoft Corp. All rights reserved.
+      
+      Catastrophic failure (Exception from HRESULT: 0x8000FFFF (E_UNEXPECTED))
+      The operation could not be completed. The parameter is incorrect. 
+      
+      Use:
+      devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+      
+      The first argument for devenv is usually a solution file, project file or a folder.
+      You can also use any other file as the first argument if you want to have the
+      file open automatically in an editor. When you enter a project file, the IDE
+      looks for an .sln file with the same base name as the project file in the
+      parent directory for the project file. If no such .sln file exists, then the
+      IDE looks for a single .sln file that references the project. If no such single
+      .sln file exists, then the IDE creates an unsaved solution with a default .sln
+      file name that has the same base name as the project file.
+      
+      Command line builds:
+      devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+      Available command line switches:
+      
+      /Build			Builds the solution or project with the specified solution
+      			configuration. For example "Debug". If multiple platforms
+      			are possible, the configuration name must be enclosed in quotes
+      			and contain platform name. For example: "Debug|Win32".
+      /Clean			Deletes build outputs.
+      /Command		Starts the IDE and executes the command.
+      /Deploy			Builds and then deploys the specified build configuration.
+      /DoNotLoadProjects	Opens the specified solution without loading any projects.
+      /Edit			Opens the specified files in a running instance of this
+      			application. If there are no running instances, it will
+      			start a new instance with a simplified window layout.
+      /LCID			Sets the default language in the IDE for the UI.
+      /Log			Logs IDE activity to the specified file for troubleshooting.
+      /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+      /Out			Appends the build log to a specified file.
+      /Project		Specifies the project to build, clean, or deploy.
+      			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+      /ProjectConfig		Overrides the project configuration specified in the solution
+      			configuration. For example "Debug". If multiple platforms are
+      			possible, the configuration name must be enclosed in quotes
+      			and contain platform name. For example: "Debug|Win32".
+      			Must be used with /Project.
+      /Rebuild		Cleans and then builds the solution or project with the
+      			specified configuration.
+      /ResetSettings		Restores the IDE's default settings, optionally resets to
+      			the specified VSSettings file.
+      /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+      /Run			Compiles and runs the specified solution.
+      /RunExit		Compiles and runs the specified solution then closes the IDE.
+      /SafeMode		Launches the IDE in safe mode loading minimal windows.
+      /Upgrade		Upgrades the project or the solution and all projects in it.
+      			A backup of these files will be created as appropriate. Please
+      			see Help on 'Visual Studio Conversion Wizard' for more
+      			information on the backup process.
+      
+      Product-specific switches:
+      
+      /debugexe	Open the specified executable to be debugged. The remainder of 
+      		the command line is passed to this executable as its arguments.
+      /diff		Compares two files.  Takes four parameters:
+      		SourceFile, TargetFile, SourceDisplayName(optional),
+      		TargetDisplayName(optional)
+      /TfsLink	Opens Team Explorer and launches a viewer for the 
+      		provided artifact URI if one is registered.
+      /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+      		instead of IDE paths for VC++ builds.
+      
+      To attach the debugger from the command line, use:
+      	VsJITDebugger.exe -p <pid>
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineFortranCompiler.cmake:190 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeFortranCompilerId.F.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/"
+      - "C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-src/cmake/"
+    found: "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFortranCompilerId.F.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\ffmpeg\\bin"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\MATLAB\\R2021b\\runtime\\win64"
+        - "C:\\Program Files\\MATLAB\\R2021b\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\PuTTY\\"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineFortranCompiler.cmake:190 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      
+      Microsoft Visual Studio 2022 Version 17.4.4.
+      Copyright (C) Microsoft Corp. All rights reserved.
+      
+      Catastrophic failure (Exception from HRESULT: 0x8000FFFF (E_UNEXPECTED))
+      The operation could not be completed. The parameter is incorrect. 
+      
+      Use:
+      devenv  [solutionfile | projectfile | folder | anyfile.ext]  [switches]
+      
+      The first argument for devenv is usually a solution file, project file or a folder.
+      You can also use any other file as the first argument if you want to have the
+      file open automatically in an editor. When you enter a project file, the IDE
+      looks for an .sln file with the same base name as the project file in the
+      parent directory for the project file. If no such .sln file exists, then the
+      IDE looks for a single .sln file that references the project. If no such single
+      .sln file exists, then the IDE creates an unsaved solution with a default .sln
+      file name that has the same base name as the project file.
+      
+      Command line builds:
+      devenv solutionfile.sln /build [ solutionconfig ] [ /project projectnameorfile [ /projectconfig name ] ]
+      Available command line switches:
+      
+      /Build			Builds the solution or project with the specified solution
+      			configuration. For example "Debug". If multiple platforms
+      			are possible, the configuration name must be enclosed in quotes
+      			and contain platform name. For example: "Debug|Win32".
+      /Clean			Deletes build outputs.
+      /Command		Starts the IDE and executes the command.
+      /Deploy			Builds and then deploys the specified build configuration.
+      /DoNotLoadProjects	Opens the specified solution without loading any projects.
+      /Edit			Opens the specified files in a running instance of this
+      			application. If there are no running instances, it will
+      			start a new instance with a simplified window layout.
+      /LCID			Sets the default language in the IDE for the UI.
+      /Log			Logs IDE activity to the specified file for troubleshooting.
+      /NoVSIP			Disables the VSIP developer's license key for VSIP testing.
+      /Out			Appends the build log to a specified file.
+      /Project		Specifies the project to build, clean, or deploy.
+      			Must be used with /Build, /Rebuild, /Clean, or /Deploy.
+      /ProjectConfig		Overrides the project configuration specified in the solution
+      			configuration. For example "Debug". If multiple platforms are
+      			possible, the configuration name must be enclosed in quotes
+      			and contain platform name. For example: "Debug|Win32".
+      			Must be used with /Project.
+      /Rebuild		Cleans and then builds the solution or project with the
+      			specified configuration.
+      /ResetSettings		Restores the IDE's default settings, optionally resets to
+      			the specified VSSettings file.
+      /ResetSkipPkgs		Clears all SkipLoading tags added to VSPackages.
+      /Run			Compiles and runs the specified solution.
+      /RunExit		Compiles and runs the specified solution then closes the IDE.
+      /SafeMode		Launches the IDE in safe mode loading minimal windows.
+      /Upgrade		Upgrades the project or the solution and all projects in it.
+      			A backup of these files will be created as appropriate. Please
+      			see Help on 'Visual Studio Conversion Wizard' for more
+      			information on the backup process.
+      
+      Product-specific switches:
+      
+      /debugexe	Open the specified executable to be debugged. The remainder of 
+      		the command line is passed to this executable as its arguments.
+      /diff		Compares two files.  Takes four parameters:
+      		SourceFile, TargetFile, SourceDisplayName(optional),
+      		TargetDisplayName(optional)
+      /TfsLink	Opens Team Explorer and launches a viewer for the 
+      		provided artifact URI if one is registered.
+      /useenv		Use PATH, INCLUDE, LIBPATH, and LIB environment variables
+      		instead of IDE paths for VC++ builds.
+      
+      To attach the debugger from the command line, use:
+      	VsJITDebugger.exe -p <pid>
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:103 (__resolve_linker_path)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineFortranCompiler.cmake:313 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/ffmpeg/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/"
+      - "C:/Program Files/MATLAB/R2021b/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/PuTTY/"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/msys64/mingw64/bin/"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/CMake/bin/"
+    searched_directories:
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/link.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/link.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/link"
+      - "C:/ffmpeg/bin/link.com"
+      - "C:/ffmpeg/bin/link.exe"
+      - "C:/ffmpeg/bin/link"
+      - "C:/Windows/System32/link.com"
+      - "C:/Windows/System32/link.exe"
+      - "C:/Windows/System32/link"
+      - "C:/Windows/link.com"
+      - "C:/Windows/link.exe"
+      - "C:/Windows/link"
+      - "C:/Windows/System32/wbem/link.com"
+      - "C:/Windows/System32/wbem/link.exe"
+      - "C:/Windows/System32/wbem/link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link"
+      - "C:/Windows/System32/OpenSSH/link.com"
+      - "C:/Windows/System32/OpenSSH/link.exe"
+      - "C:/Windows/System32/OpenSSH/link"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/link.com"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/link.exe"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/link"
+      - "C:/Program Files/MATLAB/R2021b/bin/link.com"
+      - "C:/Program Files/MATLAB/R2021b/bin/link.exe"
+      - "C:/Program Files/MATLAB/R2021b/bin/link"
+      - "C:/Program Files/Git/cmd/link.com"
+      - "C:/Program Files/Git/cmd/link.exe"
+      - "C:/Program Files/Git/cmd/link"
+      - "C:/Program Files/PuTTY/link.com"
+      - "C:/Program Files/PuTTY/link.exe"
+      - "C:/Program Files/PuTTY/link"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/link.com"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/link.exe"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/link"
+      - "C:/msys64/mingw64/bin/link.com"
+      - "C:/msys64/mingw64/bin/link.exe"
+      - "C:/msys64/mingw64/bin/link"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/link.com"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/link.exe"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/link"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/link.com"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/link.exe"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/link"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/link.com"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/link.exe"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/link"
+      - "C:/Program Files/CMake/bin/link.com"
+      - "C:/Program Files/CMake/bin/link.exe"
+      - "C:/Program Files/CMake/bin/link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\ffmpeg\\bin"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\MATLAB\\R2021b\\runtime\\win64"
+        - "C:\\Program Files\\MATLAB\\R2021b\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\PuTTY\\"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:104 (__resolve_linker_path)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineFortranCompiler.cmake:313 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lld-link"
+    candidate_directories:
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/ffmpeg/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/"
+      - "C:/Program Files/MATLAB/R2021b/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/PuTTY/"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/msys64/mingw64/bin/"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/CMake/bin/"
+    searched_directories:
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/lld-link.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/lld-link.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/lld-link"
+      - "C:/ffmpeg/bin/lld-link.com"
+      - "C:/ffmpeg/bin/lld-link.exe"
+      - "C:/ffmpeg/bin/lld-link"
+      - "C:/Windows/System32/lld-link.com"
+      - "C:/Windows/System32/lld-link.exe"
+      - "C:/Windows/System32/lld-link"
+      - "C:/Windows/lld-link.com"
+      - "C:/Windows/lld-link.exe"
+      - "C:/Windows/lld-link"
+      - "C:/Windows/System32/wbem/lld-link.com"
+      - "C:/Windows/System32/wbem/lld-link.exe"
+      - "C:/Windows/System32/wbem/lld-link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link"
+      - "C:/Windows/System32/OpenSSH/lld-link.com"
+      - "C:/Windows/System32/OpenSSH/lld-link.exe"
+      - "C:/Windows/System32/OpenSSH/lld-link"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/lld-link.com"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/lld-link.exe"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/lld-link"
+      - "C:/Program Files/MATLAB/R2021b/bin/lld-link.com"
+      - "C:/Program Files/MATLAB/R2021b/bin/lld-link.exe"
+      - "C:/Program Files/MATLAB/R2021b/bin/lld-link"
+      - "C:/Program Files/Git/cmd/lld-link.com"
+      - "C:/Program Files/Git/cmd/lld-link.exe"
+      - "C:/Program Files/Git/cmd/lld-link"
+      - "C:/Program Files/PuTTY/lld-link.com"
+      - "C:/Program Files/PuTTY/lld-link.exe"
+      - "C:/Program Files/PuTTY/lld-link"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/lld-link.com"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/msys64/mingw64/bin/lld-link.com"
+      - "C:/msys64/mingw64/bin/lld-link.exe"
+      - "C:/msys64/mingw64/bin/lld-link"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/lld-link.com"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/lld-link.exe"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/lld-link"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link.com"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link.exe"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link"
+      - "C:/Program Files/CMake/bin/lld-link.com"
+      - "C:/Program Files/CMake/bin/lld-link.exe"
+      - "C:/Program Files/CMake/bin/lld-link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\ffmpeg\\bin"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\MATLAB\\R2021b\\runtime\\win64"
+        - "C:\\Program Files\\MATLAB\\R2021b\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\PuTTY\\"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineFortranCompiler.cmake:313 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/ffmpeg/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/"
+      - "C:/Program Files/MATLAB/R2021b/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/PuTTY/"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/msys64/mingw64/bin/"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/CMake/bin/"
+    searched_directories:
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/link.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/link.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/link"
+      - "C:/ffmpeg/bin/link.com"
+      - "C:/ffmpeg/bin/link.exe"
+      - "C:/ffmpeg/bin/link"
+      - "C:/Windows/System32/link.com"
+      - "C:/Windows/System32/link.exe"
+      - "C:/Windows/System32/link"
+      - "C:/Windows/link.com"
+      - "C:/Windows/link.exe"
+      - "C:/Windows/link"
+      - "C:/Windows/System32/wbem/link.com"
+      - "C:/Windows/System32/wbem/link.exe"
+      - "C:/Windows/System32/wbem/link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link"
+      - "C:/Windows/System32/OpenSSH/link.com"
+      - "C:/Windows/System32/OpenSSH/link.exe"
+      - "C:/Windows/System32/OpenSSH/link"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/link.com"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/link.exe"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/link"
+      - "C:/Program Files/MATLAB/R2021b/bin/link.com"
+      - "C:/Program Files/MATLAB/R2021b/bin/link.exe"
+      - "C:/Program Files/MATLAB/R2021b/bin/link"
+      - "C:/Program Files/Git/cmd/link.com"
+      - "C:/Program Files/Git/cmd/link.exe"
+      - "C:/Program Files/Git/cmd/link"
+      - "C:/Program Files/PuTTY/link.com"
+      - "C:/Program Files/PuTTY/link.exe"
+      - "C:/Program Files/PuTTY/link"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/link.com"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/link.exe"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/link"
+      - "C:/msys64/mingw64/bin/link.com"
+      - "C:/msys64/mingw64/bin/link.exe"
+      - "C:/msys64/mingw64/bin/link"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/link.com"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/link.exe"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/link"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/link.com"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/link.exe"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/link"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/link.com"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/link.exe"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/link"
+      - "C:/Program Files/CMake/bin/link.com"
+      - "C:/Program Files/CMake/bin/link.exe"
+      - "C:/Program Files/CMake/bin/link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\ffmpeg\\bin"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\MATLAB\\R2021b\\runtime\\win64"
+        - "C:\\Program Files\\MATLAB\\R2021b\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\PuTTY\\"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineFortranCompiler.cmake:313 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_MT"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "mt"
+    candidate_directories:
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/ffmpeg/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/"
+      - "C:/Program Files/MATLAB/R2021b/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/PuTTY/"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/msys64/mingw64/bin/"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/CMake/bin/"
+    searched_directories:
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/mt.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/mt.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/mt"
+      - "C:/ffmpeg/bin/mt.com"
+      - "C:/ffmpeg/bin/mt.exe"
+      - "C:/ffmpeg/bin/mt"
+      - "C:/Windows/System32/mt.com"
+      - "C:/Windows/System32/mt.exe"
+      - "C:/Windows/System32/mt"
+      - "C:/Windows/mt.com"
+      - "C:/Windows/mt.exe"
+      - "C:/Windows/mt"
+      - "C:/Windows/System32/wbem/mt.com"
+      - "C:/Windows/System32/wbem/mt.exe"
+      - "C:/Windows/System32/wbem/mt"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt"
+      - "C:/Windows/System32/OpenSSH/mt.com"
+      - "C:/Windows/System32/OpenSSH/mt.exe"
+      - "C:/Windows/System32/OpenSSH/mt"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/mt.com"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/mt.exe"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/mt"
+      - "C:/Program Files/MATLAB/R2021b/bin/mt.com"
+      - "C:/Program Files/MATLAB/R2021b/bin/mt.exe"
+      - "C:/Program Files/MATLAB/R2021b/bin/mt"
+      - "C:/Program Files/Git/cmd/mt.com"
+      - "C:/Program Files/Git/cmd/mt.exe"
+      - "C:/Program Files/Git/cmd/mt"
+      - "C:/Program Files/PuTTY/mt.com"
+      - "C:/Program Files/PuTTY/mt.exe"
+      - "C:/Program Files/PuTTY/mt"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/mt.com"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/mt.exe"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/mt"
+      - "C:/msys64/mingw64/bin/mt.com"
+      - "C:/msys64/mingw64/bin/mt.exe"
+      - "C:/msys64/mingw64/bin/mt"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/mt.com"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/mt.exe"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/mt"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/mt.com"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/mt.exe"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/mt"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/mt.com"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/mt.exe"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/mt"
+      - "C:/Program Files/CMake/bin/mt.com"
+      - "C:/Program Files/CMake/bin/mt.exe"
+      - "C:/Program Files/CMake/bin/mt"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\ffmpeg\\bin"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\MATLAB\\R2021b\\runtime\\win64"
+        - "C:\\Program Files\\MATLAB\\R2021b\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\PuTTY\\"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeDetermineFortranCompiler.cmake:313 (include)"
+      - "CMakeLists.txt:17 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lib"
+    candidate_directories:
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/ffmpeg/bin/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/"
+      - "C:/Program Files/MATLAB/R2021b/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/PuTTY/"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/msys64/mingw64/bin/"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/CMake/bin/"
+    searched_directories:
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/lib.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/lib.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/lib"
+      - "C:/ffmpeg/bin/lib.com"
+      - "C:/ffmpeg/bin/lib.exe"
+      - "C:/ffmpeg/bin/lib"
+      - "C:/Windows/System32/lib.com"
+      - "C:/Windows/System32/lib.exe"
+      - "C:/Windows/System32/lib"
+      - "C:/Windows/lib.com"
+      - "C:/Windows/lib.exe"
+      - "C:/Windows/lib"
+      - "C:/Windows/System32/wbem/lib.com"
+      - "C:/Windows/System32/wbem/lib.exe"
+      - "C:/Windows/System32/wbem/lib"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lib.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lib.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lib"
+      - "C:/Windows/System32/OpenSSH/lib.com"
+      - "C:/Windows/System32/OpenSSH/lib.exe"
+      - "C:/Windows/System32/OpenSSH/lib"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/lib.com"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/lib.exe"
+      - "C:/Program Files/MATLAB/R2021b/runtime/win64/lib"
+      - "C:/Program Files/MATLAB/R2021b/bin/lib.com"
+      - "C:/Program Files/MATLAB/R2021b/bin/lib.exe"
+      - "C:/Program Files/MATLAB/R2021b/bin/lib"
+      - "C:/Program Files/Git/cmd/lib.com"
+      - "C:/Program Files/Git/cmd/lib.exe"
+      - "C:/Program Files/Git/cmd/lib"
+      - "C:/Program Files/PuTTY/lib.com"
+      - "C:/Program Files/PuTTY/lib.exe"
+      - "C:/Program Files/PuTTY/lib"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/lib.com"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/lib.exe"
+      - "C:/Users/karan/AppData/Local/Microsoft/WindowsApps/lib"
+      - "C:/msys64/mingw64/bin/lib.com"
+      - "C:/msys64/mingw64/bin/lib.exe"
+      - "C:/msys64/mingw64/bin/lib"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/lib.com"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/lib.exe"
+      - "C:/Users/karan/AppData/Local/Programs/Microsoft VS Code/bin/lib"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/lib.com"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/lib.exe"
+      - "C:/Users/karan/AppData/Local/GitHubDesktop/bin/lib"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lib.com"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lib.exe"
+      - "C:/Users/karan/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lib"
+      - "C:/Program Files/CMake/bin/lib.com"
+      - "C:/Program Files/CMake/bin/lib.exe"
+      - "C:/Program Files/CMake/bin/lib"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\ffmpeg\\bin"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\MATLAB\\R2021b\\runtime\\win64"
+        - "C:\\Program Files\\MATLAB\\R2021b\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\PuTTY\\"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\msys64\\mingw64\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\karan\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+...

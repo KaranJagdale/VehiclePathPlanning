@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{184C4137-A04B-3226-8A60-C1FC76E0B68D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>linearstructure</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\test\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-src/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Personal/Learning/VehiclePathPlanningNew -BC:/Personal/Learning/VehiclePathPlanningNew/build --check-stamp-file C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-build/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\EigenSmokeTestList.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindBLAS.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindCHOLMOD.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindHWLOC.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindKLU.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindLAPACK.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindPASTIX.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindSPQR.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindSuperLU.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindUMFPACK.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\MacroAddFileDependencies.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-src/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Personal/Learning/VehiclePathPlanningNew -BC:/Personal/Learning/VehiclePathPlanningNew/build --check-stamp-file C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-build/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\EigenSmokeTestList.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindBLAS.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindCHOLMOD.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindHWLOC.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindKLU.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindLAPACK.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindPASTIX.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindSPQR.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindSuperLU.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindUMFPACK.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\MacroAddFileDependencies.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-src/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Personal/Learning/VehiclePathPlanningNew -BC:/Personal/Learning/VehiclePathPlanningNew/build --check-stamp-file C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-build/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\EigenSmokeTestList.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindBLAS.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindCHOLMOD.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindHWLOC.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindKLU.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindLAPACK.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindPASTIX.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindSPQR.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindSuperLU.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindUMFPACK.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\MacroAddFileDependencies.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-src/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Personal/Learning/VehiclePathPlanningNew -BC:/Personal/Learning/VehiclePathPlanningNew/build --check-stamp-file C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-build/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\EigenSmokeTestList.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindBLAS.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindCHOLMOD.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindHWLOC.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindKLU.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindLAPACK.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindPASTIX.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindSPQR.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindSuperLU.cmake;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\cmake\FindUMFPACK.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.3\Modules\MacroAddFileDependencies.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\ZERO_CHECK.vcxproj">
+      <Project>{BB5FA2C5-07F7-30A7-8D24-67C2C2E9AF3D}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_1.vcxproj">
+      <Project>{031B7070-4E51-345E-931F-B4E93B833A25}</Project>
+      <Name>linearstructure_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_10.vcxproj">
+      <Project>{14C4DCBA-A62B-3517-85A1-1DCAA7E87903}</Project>
+      <Name>linearstructure_10</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_11.vcxproj">
+      <Project>{AD86EFA8-277E-3542-BB9F-C4FA3F3F155E}</Project>
+      <Name>linearstructure_11</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_2.vcxproj">
+      <Project>{00C36DC2-C8CD-3F9F-B918-5DE93BF0CC58}</Project>
+      <Name>linearstructure_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_3.vcxproj">
+      <Project>{1B26CD81-1529-389B-AB96-6DF85895A6F7}</Project>
+      <Name>linearstructure_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_4.vcxproj">
+      <Project>{29C12BBD-1F98-3D9E-9ED7-EBB535E720CC}</Project>
+      <Name>linearstructure_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_5.vcxproj">
+      <Project>{3EB80117-D0E5-3DDD-AB6F-BD71B6BB750E}</Project>
+      <Name>linearstructure_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_6.vcxproj">
+      <Project>{03734CD9-3EBC-38B5-B944-CA016F0706B6}</Project>
+      <Name>linearstructure_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_7.vcxproj">
+      <Project>{B3A33A9D-40D2-3AC0-B979-C39576184644}</Project>
+      <Name>linearstructure_7</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_8.vcxproj">
+      <Project>{3555DBF1-F795-31BA-B548-27F20E2B2794}</Project>
+      <Name>linearstructure_8</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\test\linearstructure_9.vcxproj">
+      <Project>{086B8C2C-1AC2-3DE2-857E-691C08E6E42B}</Project>
+      <Name>linearstructure_9</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,6 +1,6 @@
 #include "../inc/solver.h"
 #include "../inc/spline.h"
-#include <bits/stdc++.h>
+
 #include <iostream>
 #include <cmath>
 #include <Eigen/Dense>

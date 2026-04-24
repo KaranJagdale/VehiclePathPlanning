@@ -1,0 +1,1607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{ACC4790C-3CC4-388F-93B6-9749C3835F6B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-src/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Personal/Learning/VehiclePathPlanningNew -BC:/Personal/Learning/VehiclePathPlanningNew/build --check-stamp-file C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\Doxyfile.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_footer.html.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_header.html.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_layout.xml.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\unsupported\doc\eigendoxy_layout.xml.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-src/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Personal/Learning/VehiclePathPlanningNew -BC:/Personal/Learning/VehiclePathPlanningNew/build --check-stamp-file C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\Doxyfile.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_footer.html.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_header.html.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_layout.xml.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\unsupported\doc\eigendoxy_layout.xml.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-src/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Personal/Learning/VehiclePathPlanningNew -BC:/Personal/Learning/VehiclePathPlanningNew/build --check-stamp-file C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\Doxyfile.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_footer.html.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_header.html.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_layout.xml.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\unsupported\doc\eigendoxy_layout.xml.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-src/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Personal/Learning/VehiclePathPlanningNew -BC:/Personal/Learning/VehiclePathPlanningNew/build --check-stamp-file C:/Personal/Learning/VehiclePathPlanningNew/build/_deps/eigen-build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\Doxyfile.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_footer.html.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_header.html.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\doc\eigendoxy_layout.xml.in;C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-src\unsupported\doc\eigendoxy_layout.xml.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\ZERO_CHECK.vcxproj">
+      <Project>{BB5FA2C5-07F7-30A7-8D24-67C2C2E9AF3D}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\CustomizingEigen_Inheritance.vcxproj">
+      <Project>{BFE76ABB-EB36-3994-89D3-5DAA29CF8C19}</Project>
+      <Name>CustomizingEigen_Inheritance</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Cwise_erf.vcxproj">
+      <Project>{D65E4C92-21A1-36BC-AD35-7C56156AD314}</Project>
+      <Name>Cwise_erf</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Cwise_erfc.vcxproj">
+      <Project>{41BE5753-C52D-30C1-99B2-E82B6EC36838}</Project>
+      <Name>Cwise_erfc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Cwise_lgamma.vcxproj">
+      <Project>{4A054B2E-6F2B-37C2-8983-D624ABC29CEE}</Project>
+      <Name>Cwise_lgamma</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\DenseBase_middleCols_int.vcxproj">
+      <Project>{142AEFE9-A3E2-3E3D-9B06-FCA2302B34E2}</Project>
+      <Name>DenseBase_middleCols_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\DenseBase_middleRows_int.vcxproj">
+      <Project>{9748D163-5ECF-3872-8CDC-F00DE8AC7DF4}</Project>
+      <Name>DenseBase_middleRows_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\DenseBase_template_int_middleCols.vcxproj">
+      <Project>{4B4E66B1-A87D-32B3-B517-FA646446F594}</Project>
+      <Name>DenseBase_template_int_middleCols</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\DenseBase_template_int_middleRows.vcxproj">
+      <Project>{E5748753-DB36-3632-996D-949EBA4F7F3A}</Project>
+      <Name>DenseBase_template_int_middleRows</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\QuickStart_example.vcxproj">
+      <Project>{AB6D5683-3B16-386C-9125-05EDB6250A9D}</Project>
+      <Name>QuickStart_example</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\QuickStart_example2_dynamic.vcxproj">
+      <Project>{C1B1E3DC-59F7-3E70-A759-92344E584BEA}</Project>
+      <Name>QuickStart_example2_dynamic</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\QuickStart_example2_fixed.vcxproj">
+      <Project>{ADFB5DA6-BE90-378A-A7CF-7E2033189505}</Project>
+      <Name>QuickStart_example2_fixed</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TemplateKeyword_flexible.vcxproj">
+      <Project>{9E4EE46A-8663-3DE6-9DDE-A07F03163AE1}</Project>
+      <Name>TemplateKeyword_flexible</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TemplateKeyword_simple.vcxproj">
+      <Project>{1758C5D5-3890-383D-8992-719DA711D159}</Project>
+      <Name>TemplateKeyword_simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TutorialInplaceLU.vcxproj">
+      <Project>{597EA99B-ED2D-3A7B-8BC4-96D0672490F3}</Project>
+      <Name>TutorialInplaceLU</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TutorialLinAlgComputeTwice.vcxproj">
+      <Project>{B5B80C74-7689-3D92-AD40-C0E660FAE34B}</Project>
+      <Name>TutorialLinAlgComputeTwice</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TutorialLinAlgExComputeSolveError.vcxproj">
+      <Project>{0A89BADE-C5B0-35F7-B3D5-27E492F8ED16}</Project>
+      <Name>TutorialLinAlgExComputeSolveError</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TutorialLinAlgExSolveColPivHouseholderQR.vcxproj">
+      <Project>{DFDCDC76-6A83-33B0-BC97-C58F4084CC57}</Project>
+      <Name>TutorialLinAlgExSolveColPivHouseholderQR</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TutorialLinAlgExSolveLDLT.vcxproj">
+      <Project>{3017C601-4A2B-3532-9F6C-5DB8E2D33235}</Project>
+      <Name>TutorialLinAlgExSolveLDLT</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TutorialLinAlgInverseDeterminant.vcxproj">
+      <Project>{4EDE268C-4BF2-32BC-A6B6-111C34B5A70D}</Project>
+      <Name>TutorialLinAlgInverseDeterminant</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TutorialLinAlgRankRevealing.vcxproj">
+      <Project>{5F877D62-366C-365A-A397-603F1047611A}</Project>
+      <Name>TutorialLinAlgRankRevealing</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TutorialLinAlgSVDSolve.vcxproj">
+      <Project>{5F1ABF08-14D5-384B-A5A5-1EB10393C66A}</Project>
+      <Name>TutorialLinAlgSVDSolve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TutorialLinAlgSelfAdjointEigenSolver.vcxproj">
+      <Project>{3257063C-9AB7-35E5-9D8A-E093EA00308E}</Project>
+      <Name>TutorialLinAlgSelfAdjointEigenSolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\TutorialLinAlgSetThreshold.vcxproj">
+      <Project>{2DFCF36B-1E22-3302-9F88-AC4143CC2CD2}</Project>
+      <Name>TutorialLinAlgSetThreshold</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ArrayClass_accessors.vcxproj">
+      <Project>{7A8CDC2C-61F4-3073-88E7-06E14DB7B05A}</Project>
+      <Name>Tutorial_ArrayClass_accessors</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ArrayClass_addition.vcxproj">
+      <Project>{005AFC23-2F7C-34FF-B5E8-6E8DAA171B9C}</Project>
+      <Name>Tutorial_ArrayClass_addition</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ArrayClass_cwise_other.vcxproj">
+      <Project>{A243D0C6-1A7E-3AC0-A5FB-76C74DDC710B}</Project>
+      <Name>Tutorial_ArrayClass_cwise_other</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ArrayClass_interop.vcxproj">
+      <Project>{561A0B73-34EB-36F6-B5BC-FCFC666FE3C3}</Project>
+      <Name>Tutorial_ArrayClass_interop</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ArrayClass_interop_matrix.vcxproj">
+      <Project>{BAB457C6-151A-3C16-8159-96FDF9FE782C}</Project>
+      <Name>Tutorial_ArrayClass_interop_matrix</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ArrayClass_mult.vcxproj">
+      <Project>{7DAEF375-1363-3473-A98F-3B9CB9B9B51F}</Project>
+      <Name>Tutorial_ArrayClass_mult</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_BlockOperations_block_assignment.vcxproj">
+      <Project>{85FD7E8D-62F8-3A6E-A506-9CEAF6C43C3C}</Project>
+      <Name>Tutorial_BlockOperations_block_assignment</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_BlockOperations_colrow.vcxproj">
+      <Project>{1701DC3A-9B1D-3A1F-AA6F-7ED4C6139929}</Project>
+      <Name>Tutorial_BlockOperations_colrow</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_BlockOperations_corner.vcxproj">
+      <Project>{B799176D-ECE2-3327-92C1-ADAB52743921}</Project>
+      <Name>Tutorial_BlockOperations_corner</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_BlockOperations_print_block.vcxproj">
+      <Project>{7D0FFE09-7C2A-30C9-846C-101411606308}</Project>
+      <Name>Tutorial_BlockOperations_print_block</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_BlockOperations_vector.vcxproj">
+      <Project>{4DDF184D-77C5-3897-8A90-C65425AAADB4}</Project>
+      <Name>Tutorial_BlockOperations_vector</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_PartialLU_solve.vcxproj">
+      <Project>{937383E7-A2EB-36DA-AC6B-A8055053F82D}</Project>
+      <Name>Tutorial_PartialLU_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_broadcast_1nn.vcxproj">
+      <Project>{A448F9AE-EE93-306E-BDFD-20579BBED59C}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_broadcast_1nn</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_broadcast_simple.vcxproj">
+      <Project>{B213F405-4F98-3167-A75A-5514F43841D3}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_broadcast_simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_broadcast_simple_rowwise.vcxproj">
+      <Project>{E4DE3D40-302A-334A-A14D-92C6962DEF9F}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_broadcast_simple_rowwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_colwise.vcxproj">
+      <Project>{1AAEFD95-3683-3A81-AFE5-C49AC06F49ED}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_colwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_maxnorm.vcxproj">
+      <Project>{789E5DE8-F180-3645-A08A-A5F77CC7BDB5}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_maxnorm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_reductions_bool.vcxproj">
+      <Project>{28F8F898-F140-3FD7-B32B-58EF80897F0C}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_reductions_bool</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_reductions_norm.vcxproj">
+      <Project>{C359E457-8EF2-3020-976C-BE19DEAA07AA}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_reductions_norm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_reductions_operatornorm.vcxproj">
+      <Project>{71ED26F6-7C12-3B57-96EF-4FB75EFAB68D}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_reductions_operatornorm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_rowwise.vcxproj">
+      <Project>{E699D6AB-A681-3292-B82B-390F8A6BA1E1}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_rowwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_visitors.vcxproj">
+      <Project>{E90FEFDE-172F-3F3B-A5AD-0B1FFFC1E20D}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_visitors</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_simple_example_dynamic_size.vcxproj">
+      <Project>{5C8B48C8-8BE2-3FBD-BF40-C89515AA2C40}</Project>
+      <Name>Tutorial_simple_example_dynamic_size</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\Tutorial_simple_example_fixed_size.vcxproj">
+      <Project>{9006DC5E-BBF0-3F65-9339-E401E7CA75B0}</Project>
+      <Name>Tutorial_simple_example_fixed_size</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\class_Block.vcxproj">
+      <Project>{C23BE90C-45E2-327E-9260-9B445D9CD3AC}</Project>
+      <Name>class_Block</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\class_CwiseBinaryOp.vcxproj">
+      <Project>{8ED2A90D-7987-3FC5-836C-47912615D8A8}</Project>
+      <Name>class_CwiseBinaryOp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\class_CwiseUnaryOp.vcxproj">
+      <Project>{F6216DE8-4C12-3944-BAFA-7A7B0097F2DC}</Project>
+      <Name>class_CwiseUnaryOp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\class_CwiseUnaryOp_ptrfun.vcxproj">
+      <Project>{E63E5C07-E302-3CC0-AAD6-9DDD2193758B}</Project>
+      <Name>class_CwiseUnaryOp_ptrfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\class_FixedBlock.vcxproj">
+      <Project>{AF5C7F11-3606-313B-92F3-9395E9793ABD}</Project>
+      <Name>class_FixedBlock</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\class_FixedReshaped.vcxproj">
+      <Project>{C659772D-8A75-3225-90B8-598EE805B1E9}</Project>
+      <Name>class_FixedReshaped</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\class_FixedVectorBlock.vcxproj">
+      <Project>{964D86FE-CD2F-3B68-8EC7-9B6CC1ADCAE1}</Project>
+      <Name>class_FixedVectorBlock</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\class_Reshaped.vcxproj">
+      <Project>{8D72F765-1626-38CC-A204-F5810AB11A02}</Project>
+      <Name>class_Reshaped</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\class_VectorBlock.vcxproj">
+      <Project>{F750BDB5-F57A-3DE9-895F-2E762DB7AEFF}</Project>
+      <Name>class_VectorBlock</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_AngleAxis_mimic_euler.vcxproj">
+      <Project>{74F76EE4-0494-3F44-A825-0AB53FC8372E}</Project>
+      <Name>compile_AngleAxis_mimic_euler</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_BiCGSTAB_simple.vcxproj">
+      <Project>{275CE65C-5B4F-319F-9144-CAFDDE423CDA}</Project>
+      <Name>compile_BiCGSTAB_simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_BiCGSTAB_step_by_step.vcxproj">
+      <Project>{00B5A63A-3DD8-35B0-88B8-C2A9874B1DA1}</Project>
+      <Name>compile_BiCGSTAB_step_by_step</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_ColPivHouseholderQR_solve.vcxproj">
+      <Project>{741A472B-8665-3D1A-93FA-74EA04950660}</Project>
+      <Name>compile_ColPivHouseholderQR_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_ComplexEigenSolver_compute.vcxproj">
+      <Project>{B229DF9B-492B-3A1E-9782-9B34D48F83B0}</Project>
+      <Name>compile_ComplexEigenSolver_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_ComplexEigenSolver_eigenvalues.vcxproj">
+      <Project>{5F24EEA5-F9F9-3768-BED8-CB18BC2ED791}</Project>
+      <Name>compile_ComplexEigenSolver_eigenvalues</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_ComplexEigenSolver_eigenvectors.vcxproj">
+      <Project>{2FAE2BC5-513F-39B3-9052-A15454CA963F}</Project>
+      <Name>compile_ComplexEigenSolver_eigenvectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_ComplexSchur_compute.vcxproj">
+      <Project>{C6C47E89-7F7C-3568-A3CA-AA95CE7800C9}</Project>
+      <Name>compile_ComplexSchur_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_ComplexSchur_matrixT.vcxproj">
+      <Project>{290A607B-3898-37AE-A2BC-CB5DD0A0F288}</Project>
+      <Name>compile_ComplexSchur_matrixT</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_ComplexSchur_matrixU.vcxproj">
+      <Project>{DA14B4F4-E436-3647-B933-5CEDCCF9EAD3}</Project>
+      <Name>compile_ComplexSchur_matrixU</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_abs.vcxproj">
+      <Project>{616DDC89-4D81-3B8A-A03D-8793EA5B2438}</Project>
+      <Name>compile_Cwise_abs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_abs2.vcxproj">
+      <Project>{46BF071F-E62B-3019-ACBB-EA11CD087446}</Project>
+      <Name>compile_Cwise_abs2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_acos.vcxproj">
+      <Project>{4BAA2DA0-3348-304E-AB99-6403DA1F06FE}</Project>
+      <Name>compile_Cwise_acos</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_arg.vcxproj">
+      <Project>{F1CA70F9-7E64-3183-AFBB-D9F47C3B9736}</Project>
+      <Name>compile_Cwise_arg</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_array_power_array.vcxproj">
+      <Project>{74A2CEDA-FB50-3A79-A9AB-EAF01928B55B}</Project>
+      <Name>compile_Cwise_array_power_array</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_asin.vcxproj">
+      <Project>{705D87EA-B078-3367-B6D6-B1D6D5850963}</Project>
+      <Name>compile_Cwise_asin</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_atan.vcxproj">
+      <Project>{6B8F3DB6-F194-310B-BF1B-530D9ADD7AC9}</Project>
+      <Name>compile_Cwise_atan</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_boolean_and.vcxproj">
+      <Project>{D21CCE22-C562-3D74-B6E4-2689B1D4D5DC}</Project>
+      <Name>compile_Cwise_boolean_and</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_boolean_not.vcxproj">
+      <Project>{F891B2F8-E6BC-3D2C-9EF0-F3F79BBE6159}</Project>
+      <Name>compile_Cwise_boolean_not</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_boolean_or.vcxproj">
+      <Project>{857152F0-E055-3884-821F-ED9D370D7534}</Project>
+      <Name>compile_Cwise_boolean_or</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_boolean_xor.vcxproj">
+      <Project>{658AD5A0-5FD3-364A-B3DB-DED641E071DE}</Project>
+      <Name>compile_Cwise_boolean_xor</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_ceil.vcxproj">
+      <Project>{E6FC12CD-8427-32FC-B3BB-6CF40DE283B3}</Project>
+      <Name>compile_Cwise_ceil</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_cos.vcxproj">
+      <Project>{E0F2A6D6-8A4F-3128-8259-EF80B303C5F9}</Project>
+      <Name>compile_Cwise_cos</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_cosh.vcxproj">
+      <Project>{D2C36288-0014-3DC9-8B9D-18144E234D4E}</Project>
+      <Name>compile_Cwise_cosh</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_cube.vcxproj">
+      <Project>{1E82704B-BB3B-3E34-B684-70CB2622CF29}</Project>
+      <Name>compile_Cwise_cube</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_equal_equal.vcxproj">
+      <Project>{84BC4197-12DC-3480-876E-5FB550F481A7}</Project>
+      <Name>compile_Cwise_equal_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_exp.vcxproj">
+      <Project>{ED111FD9-AE4C-3064-A15C-CD7820712CC1}</Project>
+      <Name>compile_Cwise_exp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_floor.vcxproj">
+      <Project>{17DA2343-A5AE-3A8C-AEF9-E756F8BA871C}</Project>
+      <Name>compile_Cwise_floor</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_greater.vcxproj">
+      <Project>{076EEFA3-CEFB-341A-B846-4395C5302D02}</Project>
+      <Name>compile_Cwise_greater</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_greater_equal.vcxproj">
+      <Project>{28A2D02C-CFB2-3122-BCFF-67198D9A723E}</Project>
+      <Name>compile_Cwise_greater_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_inverse.vcxproj">
+      <Project>{8D2FEF9C-D4A9-3E05-B5B4-B137EB589A9B}</Project>
+      <Name>compile_Cwise_inverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_isFinite.vcxproj">
+      <Project>{EED55788-BED7-3311-945E-202025773078}</Project>
+      <Name>compile_Cwise_isFinite</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_isInf.vcxproj">
+      <Project>{1C7C9E5E-DA64-31C6-BCC6-08911E06EB1C}</Project>
+      <Name>compile_Cwise_isInf</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_isNaN.vcxproj">
+      <Project>{19B52C74-60F2-3257-B2A2-1BABDEB50D8E}</Project>
+      <Name>compile_Cwise_isNaN</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_less.vcxproj">
+      <Project>{2DAF7E9B-3576-3476-8770-6AFD5873946A}</Project>
+      <Name>compile_Cwise_less</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_less_equal.vcxproj">
+      <Project>{CFCF05CD-A5C9-3EE7-8CFD-E51054605923}</Project>
+      <Name>compile_Cwise_less_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_log.vcxproj">
+      <Project>{549E4896-0334-3F8D-B48E-0A2E9A45F217}</Project>
+      <Name>compile_Cwise_log</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_log10.vcxproj">
+      <Project>{5313291C-2C77-36EF-9EBC-ECE08844D0E0}</Project>
+      <Name>compile_Cwise_log10</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_max.vcxproj">
+      <Project>{5353E142-3C45-3C57-881E-E58E152B8051}</Project>
+      <Name>compile_Cwise_max</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_min.vcxproj">
+      <Project>{79D96D09-00E9-302C-91BD-DEBC658F9345}</Project>
+      <Name>compile_Cwise_min</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_minus.vcxproj">
+      <Project>{C017C641-B8A7-3175-8D98-590D3FE9CA0A}</Project>
+      <Name>compile_Cwise_minus</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_minus_equal.vcxproj">
+      <Project>{B49893BC-9D60-328C-BD92-54089B4A130A}</Project>
+      <Name>compile_Cwise_minus_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_not_equal.vcxproj">
+      <Project>{D6AB1455-7C74-3AE9-97A2-CC9726AEF379}</Project>
+      <Name>compile_Cwise_not_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_plus.vcxproj">
+      <Project>{9FB5E82E-6DFB-3B01-BFAD-88179CDF9747}</Project>
+      <Name>compile_Cwise_plus</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_plus_equal.vcxproj">
+      <Project>{73CE6394-472A-33CF-8747-E5C3817F6B5C}</Project>
+      <Name>compile_Cwise_plus_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_pow.vcxproj">
+      <Project>{4A53FBB0-9B55-32C4-87CA-9388DEB731B8}</Project>
+      <Name>compile_Cwise_pow</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_product.vcxproj">
+      <Project>{7A1AE3FB-C7DF-350A-B7E6-62E1A60A6AFB}</Project>
+      <Name>compile_Cwise_product</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_quotient.vcxproj">
+      <Project>{1B27113C-CAC9-31D6-B263-59525C43F87B}</Project>
+      <Name>compile_Cwise_quotient</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_rint.vcxproj">
+      <Project>{6A5EEC95-4FF8-3D5C-A356-9EF95A13ED7C}</Project>
+      <Name>compile_Cwise_rint</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_round.vcxproj">
+      <Project>{CED22706-2AD6-3799-8003-4533809D96DF}</Project>
+      <Name>compile_Cwise_round</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_scalar_power_array.vcxproj">
+      <Project>{724843CE-3C60-3846-8F9F-1134961C4560}</Project>
+      <Name>compile_Cwise_scalar_power_array</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_sign.vcxproj">
+      <Project>{6EAE3414-99AD-3514-BCCE-F96075E05870}</Project>
+      <Name>compile_Cwise_sign</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_sin.vcxproj">
+      <Project>{53647E9A-636B-342E-91E4-3F5B15A32574}</Project>
+      <Name>compile_Cwise_sin</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_sinh.vcxproj">
+      <Project>{15F84FDC-15BB-30F5-A7BE-E761D0026154}</Project>
+      <Name>compile_Cwise_sinh</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_slash_equal.vcxproj">
+      <Project>{3BDC02CA-CDFF-36C0-874A-492A70F5B9BD}</Project>
+      <Name>compile_Cwise_slash_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_sqrt.vcxproj">
+      <Project>{3F8FD439-F5A6-38FE-B156-5916B965B2A3}</Project>
+      <Name>compile_Cwise_sqrt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_square.vcxproj">
+      <Project>{AB8566A6-DB66-3AB5-AC06-92C71125614E}</Project>
+      <Name>compile_Cwise_square</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_tan.vcxproj">
+      <Project>{DCB9E58B-FE78-338C-A48A-522948A927E4}</Project>
+      <Name>compile_Cwise_tan</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_tanh.vcxproj">
+      <Project>{9FCAFE9D-6421-3E35-A95F-901E4D2485EC}</Project>
+      <Name>compile_Cwise_tanh</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Cwise_times_equal.vcxproj">
+      <Project>{F13194EA-C8D7-369B-B146-FB1CF774BC01}</Project>
+      <Name>compile_Cwise_times_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_DenseBase_LinSpaced.vcxproj">
+      <Project>{28F66385-8AB4-3D52-A8A4-9E0AC051BF78}</Project>
+      <Name>compile_DenseBase_LinSpaced</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_DenseBase_LinSpacedInt.vcxproj">
+      <Project>{03221FF2-7C1F-3FFE-BDA8-48DA48F3746B}</Project>
+      <Name>compile_DenseBase_LinSpacedInt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_DenseBase_LinSpaced_seq_deprecated.vcxproj">
+      <Project>{5AA444FD-99ED-349C-972E-A22A7B11328F}</Project>
+      <Name>compile_DenseBase_LinSpaced_seq_deprecated</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_DenseBase_setLinSpaced.vcxproj">
+      <Project>{C6E8C3EF-F2FF-3E6E-A4D9-621484804EB6}</Project>
+      <Name>compile_DenseBase_setLinSpaced</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_DirectionWise_hnormalized.vcxproj">
+      <Project>{B6AD8964-1ABD-3DF4-9920-CF629DFC9932}</Project>
+      <Name>compile_DirectionWise_hnormalized</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_DirectionWise_replicate.vcxproj">
+      <Project>{32C73102-B2B7-3D2D-BA8C-52EE262A6D2C}</Project>
+      <Name>compile_DirectionWise_replicate</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_DirectionWise_replicate_int.vcxproj">
+      <Project>{5104DDCC-8303-335A-9260-4B8A904FB38B}</Project>
+      <Name>compile_DirectionWise_replicate_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_EigenSolver_EigenSolver_MatrixType.vcxproj">
+      <Project>{DEDC24E9-85F1-377A-B632-818A7F3B64DA}</Project>
+      <Name>compile_EigenSolver_EigenSolver_MatrixType</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_EigenSolver_compute.vcxproj">
+      <Project>{B969272B-69DE-3F72-AA9C-3FAD9D6B36C2}</Project>
+      <Name>compile_EigenSolver_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_EigenSolver_eigenvalues.vcxproj">
+      <Project>{B2B25AB6-A00C-3E3E-B71D-8E76086E293E}</Project>
+      <Name>compile_EigenSolver_eigenvalues</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_EigenSolver_eigenvectors.vcxproj">
+      <Project>{E9BAA995-3906-3600-A8DB-7B74BBF6B297}</Project>
+      <Name>compile_EigenSolver_eigenvectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_EigenSolver_pseudoEigenvectors.vcxproj">
+      <Project>{11803349-5909-31AB-A01D-C751626120F8}</Project>
+      <Name>compile_EigenSolver_pseudoEigenvectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_FullPivHouseholderQR_solve.vcxproj">
+      <Project>{F1FEE3E4-0E1A-393E-B455-E49D903C53CC}</Project>
+      <Name>compile_FullPivHouseholderQR_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_FullPivLU_image.vcxproj">
+      <Project>{E99D8CD9-5248-3DA4-8071-61A38CF3C5AD}</Project>
+      <Name>compile_FullPivLU_image</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_FullPivLU_kernel.vcxproj">
+      <Project>{85FDF58C-0C08-3B7F-9C94-61C8C80DC73F}</Project>
+      <Name>compile_FullPivLU_kernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_FullPivLU_solve.vcxproj">
+      <Project>{750436E8-3436-3F3F-957A-DDE53E9E0268}</Project>
+      <Name>compile_FullPivLU_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_GeneralizedEigenSolver.vcxproj">
+      <Project>{95E22483-1D1A-3DEC-BE26-90F76FB67467}</Project>
+      <Name>compile_GeneralizedEigenSolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_HessenbergDecomposition_compute.vcxproj">
+      <Project>{99987BA0-455B-3C41-A4E3-B351BC1C74F0}</Project>
+      <Name>compile_HessenbergDecomposition_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_HessenbergDecomposition_matrixH.vcxproj">
+      <Project>{C402572D-C712-3A71-964F-08EF567FF643}</Project>
+      <Name>compile_HessenbergDecomposition_matrixH</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_HessenbergDecomposition_packedMatrix.vcxproj">
+      <Project>{F2412C66-705E-3306-ACD2-BF5478A8C1ED}</Project>
+      <Name>compile_HessenbergDecomposition_packedMatrix</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_HouseholderQR_householderQ.vcxproj">
+      <Project>{9B34A442-641E-3143-B30C-D17878FEE315}</Project>
+      <Name>compile_HouseholderQR_householderQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_HouseholderQR_solve.vcxproj">
+      <Project>{28DDFCD8-CF6E-3B4F-9A3D-CA52ECE71DEB}</Project>
+      <Name>compile_HouseholderQR_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_HouseholderSequence_HouseholderSequence.vcxproj">
+      <Project>{70E15A0B-E22A-3F1A-8786-403E49B2C119}</Project>
+      <Name>compile_HouseholderSequence_HouseholderSequence</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_IOFormat.vcxproj">
+      <Project>{9B7138D5-382F-33FC-9773-174153BAE11F}</Project>
+      <Name>compile_IOFormat</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_JacobiSVD_basic.vcxproj">
+      <Project>{36E1D54B-AB9F-35DA-BFA4-EB536F58AEFE}</Project>
+      <Name>compile_JacobiSVD_basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Jacobi_makeGivens.vcxproj">
+      <Project>{06831F22-751C-3A1D-9438-C4D37689CAE6}</Project>
+      <Name>compile_Jacobi_makeGivens</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Jacobi_makeJacobi.vcxproj">
+      <Project>{324064A0-733A-310F-99AD-D22BF8CE8C6A}</Project>
+      <Name>compile_Jacobi_makeJacobi</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_LLT_example.vcxproj">
+      <Project>{1D1551C3-FE99-3319-9E83-115E2373446D}</Project>
+      <Name>compile_LLT_example</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_LLT_solve.vcxproj">
+      <Project>{ECEF0FF3-154D-3C6B-868A-6685A8B881B0}</Project>
+      <Name>compile_LLT_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_LeastSquaresNormalEquations.vcxproj">
+      <Project>{E9F82B47-281F-33FA-B086-950B9D6D5F81}</Project>
+      <Name>compile_LeastSquaresNormalEquations</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_LeastSquaresQR.vcxproj">
+      <Project>{755C9F9C-4835-3F3F-91F4-E29BDA276A2A}</Project>
+      <Name>compile_LeastSquaresQR</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Map_general_stride.vcxproj">
+      <Project>{386A5233-26C8-397E-BA7B-E5C6C4ED5EF9}</Project>
+      <Name>compile_Map_general_stride</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Map_inner_stride.vcxproj">
+      <Project>{02E4D63D-11D4-36A3-9576-65C5842B60FC}</Project>
+      <Name>compile_Map_inner_stride</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Map_outer_stride.vcxproj">
+      <Project>{B6CAA299-FB2E-3797-ACBB-005548936BE3}</Project>
+      <Name>compile_Map_outer_stride</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Map_placement_new.vcxproj">
+      <Project>{512262E9-E09C-3B01-825F-12DEE0760AD4}</Project>
+      <Name>compile_Map_placement_new</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Map_simple.vcxproj">
+      <Project>{0C548B43-2E7D-3178-89C1-D3C6609A18EB}</Project>
+      <Name>compile_Map_simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_adjoint.vcxproj">
+      <Project>{CA383369-E310-31E4-B3A8-401175CD9147}</Project>
+      <Name>compile_MatrixBase_adjoint</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_all.vcxproj">
+      <Project>{24A55FDB-C891-3DF5-9957-54177CDE7D28}</Project>
+      <Name>compile_MatrixBase_all</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_applyOnTheLeft.vcxproj">
+      <Project>{6DAEBBB6-9120-33F7-9BA6-238375C2D670}</Project>
+      <Name>compile_MatrixBase_applyOnTheLeft</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_applyOnTheRight.vcxproj">
+      <Project>{0137FF35-4D55-3871-9AB5-1366A8FC9095}</Project>
+      <Name>compile_MatrixBase_applyOnTheRight</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_array.vcxproj">
+      <Project>{5656AD4E-0AD6-3E62-80DE-3322C471DF8E}</Project>
+      <Name>compile_MatrixBase_array</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_array_const.vcxproj">
+      <Project>{515E0703-2EE3-3F7A-AAE4-E2514AF77BA3}</Project>
+      <Name>compile_MatrixBase_array_const</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_asDiagonal.vcxproj">
+      <Project>{0DD06493-AF52-3234-AC55-B81FEF307540}</Project>
+      <Name>compile_MatrixBase_asDiagonal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_block_int_int.vcxproj">
+      <Project>{0A3AF80F-C8D9-3DCC-B68D-D911A6F91E35}</Project>
+      <Name>compile_MatrixBase_block_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_block_int_int_int_int.vcxproj">
+      <Project>{647F96B2-58E9-304B-9FC9-2B50C17865DF}</Project>
+      <Name>compile_MatrixBase_block_int_int_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_bottomLeftCorner_int_int.vcxproj">
+      <Project>{5DD26A31-8A48-38B5-8C25-50FE8499B6B7}</Project>
+      <Name>compile_MatrixBase_bottomLeftCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_bottomRightCorner_int_int.vcxproj">
+      <Project>{E10457BC-0BE1-3FC3-8437-4EAB55209FCB}</Project>
+      <Name>compile_MatrixBase_bottomRightCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_bottomRows_int.vcxproj">
+      <Project>{E0169CD8-82AC-3EE0-9AD7-034CA3D251E4}</Project>
+      <Name>compile_MatrixBase_bottomRows_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cast.vcxproj">
+      <Project>{580723F9-E0C3-39D7-AF8A-5A392BB479B7}</Project>
+      <Name>compile_MatrixBase_cast</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_col.vcxproj">
+      <Project>{5E9E58E9-5091-3697-AF1D-616CEB042CFE}</Project>
+      <Name>compile_MatrixBase_col</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_colwise.vcxproj">
+      <Project>{E842E935-FC9B-32B3-98B9-5B981F60D397}</Project>
+      <Name>compile_MatrixBase_colwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_computeInverseAndDetWithCheck.vcxproj">
+      <Project>{71E09345-4DDE-3B5A-8B39-5C8BB358D9F4}</Project>
+      <Name>compile_MatrixBase_computeInverseAndDetWithCheck</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_computeInverseWithCheck.vcxproj">
+      <Project>{1733DB2D-D1F1-3DF8-A8C2-1BFF9EA67A4E}</Project>
+      <Name>compile_MatrixBase_computeInverseWithCheck</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseAbs.vcxproj">
+      <Project>{1C0B394E-F19A-3FD1-A133-B22426B53530}</Project>
+      <Name>compile_MatrixBase_cwiseAbs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseAbs2.vcxproj">
+      <Project>{5911CE82-BB8A-3FB6-A0F2-7992ED1F4141}</Project>
+      <Name>compile_MatrixBase_cwiseAbs2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseArg.vcxproj">
+      <Project>{7B08EB29-CF54-369E-999B-96729E8CF6C7}</Project>
+      <Name>compile_MatrixBase_cwiseArg</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseEqual.vcxproj">
+      <Project>{83327179-67F4-32E0-87E8-46ADD83B22EA}</Project>
+      <Name>compile_MatrixBase_cwiseEqual</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseInverse.vcxproj">
+      <Project>{B7109C03-FEE1-3D08-A2C0-6CED89C3D844}</Project>
+      <Name>compile_MatrixBase_cwiseInverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseMax.vcxproj">
+      <Project>{20552BD6-BCC3-31EC-8EBE-662100E7B75E}</Project>
+      <Name>compile_MatrixBase_cwiseMax</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseMin.vcxproj">
+      <Project>{93F8DDD4-7C15-3671-9FDC-5A36DD22C959}</Project>
+      <Name>compile_MatrixBase_cwiseMin</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseNotEqual.vcxproj">
+      <Project>{7A27FA2B-E8F0-31ED-8DEB-DC7BD06BD5B9}</Project>
+      <Name>compile_MatrixBase_cwiseNotEqual</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseProduct.vcxproj">
+      <Project>{134F06D0-056E-352C-8A1A-40BD0EB1CBEE}</Project>
+      <Name>compile_MatrixBase_cwiseProduct</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseQuotient.vcxproj">
+      <Project>{3BB76B04-9CE1-3365-836B-FA7BEE9D029E}</Project>
+      <Name>compile_MatrixBase_cwiseQuotient</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseSign.vcxproj">
+      <Project>{73AAE8DD-AE3F-3ACF-B775-845A3C778E60}</Project>
+      <Name>compile_MatrixBase_cwiseSign</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_cwiseSqrt.vcxproj">
+      <Project>{4C7BA125-704F-3B85-9434-5E3F233A6422}</Project>
+      <Name>compile_MatrixBase_cwiseSqrt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_diagonal.vcxproj">
+      <Project>{C068A21B-52D9-34BF-B4EC-9463E0D86542}</Project>
+      <Name>compile_MatrixBase_diagonal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_diagonal_int.vcxproj">
+      <Project>{C6FCE906-5B00-3018-B074-DA9021AEF106}</Project>
+      <Name>compile_MatrixBase_diagonal_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_diagonal_template_int.vcxproj">
+      <Project>{F666D508-F623-3A82-B9FE-3D4C5D47FF5B}</Project>
+      <Name>compile_MatrixBase_diagonal_template_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_eigenvalues.vcxproj">
+      <Project>{82A5AB37-8172-3B2D-8A80-5BF14A99DE34}</Project>
+      <Name>compile_MatrixBase_eigenvalues</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_end_int.vcxproj">
+      <Project>{A05A1D40-15E3-3A2D-A894-A7613D22F03F}</Project>
+      <Name>compile_MatrixBase_end_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_eval.vcxproj">
+      <Project>{9CCF03CB-7FBA-3A06-A013-E8F979CA04A2}</Project>
+      <Name>compile_MatrixBase_eval</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_fixedBlock_int_int.vcxproj">
+      <Project>{655779CB-3296-3FCF-AEF4-0309AC5361C0}</Project>
+      <Name>compile_MatrixBase_fixedBlock_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_hnormalized.vcxproj">
+      <Project>{92C407CC-EAF2-3ED6-B32A-7A94F1DCFF7D}</Project>
+      <Name>compile_MatrixBase_hnormalized</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_homogeneous.vcxproj">
+      <Project>{719C192E-4500-3FBB-B242-300B6EE9751A}</Project>
+      <Name>compile_MatrixBase_homogeneous</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_identity.vcxproj">
+      <Project>{6EED5D92-685F-33FB-85B6-654BE04B5084}</Project>
+      <Name>compile_MatrixBase_identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_identity_int_int.vcxproj">
+      <Project>{6FE460BE-A6B3-3D45-A8B5-8B33B32EAE7A}</Project>
+      <Name>compile_MatrixBase_identity_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_inverse.vcxproj">
+      <Project>{4BF679C8-535D-3FCF-9908-DC255C2D7AAD}</Project>
+      <Name>compile_MatrixBase_inverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_isDiagonal.vcxproj">
+      <Project>{BADBC56A-EF89-340C-97A4-64A755570B13}</Project>
+      <Name>compile_MatrixBase_isDiagonal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_isIdentity.vcxproj">
+      <Project>{5DD45CEF-0EE2-3C74-BBD8-40017223E667}</Project>
+      <Name>compile_MatrixBase_isIdentity</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_isOnes.vcxproj">
+      <Project>{8C6CF027-684F-313F-AABB-F38D87E66AF4}</Project>
+      <Name>compile_MatrixBase_isOnes</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_isOrthogonal.vcxproj">
+      <Project>{5C5875C1-91AC-30D7-89A3-707BC57C0BD9}</Project>
+      <Name>compile_MatrixBase_isOrthogonal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_isUnitary.vcxproj">
+      <Project>{4DAE46BF-4942-3DB0-9F48-13987D9E79A0}</Project>
+      <Name>compile_MatrixBase_isUnitary</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_isZero.vcxproj">
+      <Project>{8737834B-3F57-35AE-BCEA-FF79D4BE7375}</Project>
+      <Name>compile_MatrixBase_isZero</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_leftCols_int.vcxproj">
+      <Project>{94538B9B-8A0A-3AC5-8283-F72751A83449}</Project>
+      <Name>compile_MatrixBase_leftCols_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_noalias.vcxproj">
+      <Project>{830EE668-1D28-387B-9EAB-E04BF86E1654}</Project>
+      <Name>compile_MatrixBase_noalias</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_ones.vcxproj">
+      <Project>{727C39FA-E980-32CB-868C-F45E40489247}</Project>
+      <Name>compile_MatrixBase_ones</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_ones_int.vcxproj">
+      <Project>{50871D1F-CBFB-30EA-8FC2-C1EF239C2324}</Project>
+      <Name>compile_MatrixBase_ones_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_ones_int_int.vcxproj">
+      <Project>{52866677-B491-37C4-9E9D-8CE63355C226}</Project>
+      <Name>compile_MatrixBase_ones_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_operatorNorm.vcxproj">
+      <Project>{2C04CD48-1A9B-3CAB-96ED-B48D6579BFF9}</Project>
+      <Name>compile_MatrixBase_operatorNorm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_prod.vcxproj">
+      <Project>{2CEAFD22-475F-3D42-BAF6-07881785B38B}</Project>
+      <Name>compile_MatrixBase_prod</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_random.vcxproj">
+      <Project>{1C6D0932-9AC3-37A8-A6E3-08212F84337B}</Project>
+      <Name>compile_MatrixBase_random</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_random_int.vcxproj">
+      <Project>{20E87B36-7011-3382-99FB-F9563003E2CE}</Project>
+      <Name>compile_MatrixBase_random_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_random_int_int.vcxproj">
+      <Project>{3B71829D-7223-39B9-9F6B-079A4B06A7DB}</Project>
+      <Name>compile_MatrixBase_random_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_replicate.vcxproj">
+      <Project>{FD047C9D-3986-3CAA-AE20-550712CDB08B}</Project>
+      <Name>compile_MatrixBase_replicate</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_replicate_int_int.vcxproj">
+      <Project>{D136E52D-C850-33B0-BEC9-C07BB8D8BE40}</Project>
+      <Name>compile_MatrixBase_replicate_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_reshaped_auto.vcxproj">
+      <Project>{D834E588-F17B-392F-B085-5C1155D008A5}</Project>
+      <Name>compile_MatrixBase_reshaped_auto</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_reshaped_fixed.vcxproj">
+      <Project>{F9C5CEB7-3519-398E-B64D-F467221EF7C7}</Project>
+      <Name>compile_MatrixBase_reshaped_fixed</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_reshaped_int_int.vcxproj">
+      <Project>{6DCA0FEE-0A09-39EA-91FB-42291A74CE07}</Project>
+      <Name>compile_MatrixBase_reshaped_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_reshaped_to_vector.vcxproj">
+      <Project>{2250AD70-3371-3B53-AF73-2EF3B801C1AF}</Project>
+      <Name>compile_MatrixBase_reshaped_to_vector</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_reverse.vcxproj">
+      <Project>{4494EFB1-3E98-3EC3-A198-265B2E182E79}</Project>
+      <Name>compile_MatrixBase_reverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_rightCols_int.vcxproj">
+      <Project>{F07447B8-254D-3D2E-AC90-F660A37AEF1F}</Project>
+      <Name>compile_MatrixBase_rightCols_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_row.vcxproj">
+      <Project>{5F596BCE-6905-3ABF-8B29-DF5832B5A6D3}</Project>
+      <Name>compile_MatrixBase_row</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_rowwise.vcxproj">
+      <Project>{4D87F653-322F-3162-B379-3DE183E835EF}</Project>
+      <Name>compile_MatrixBase_rowwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_segment_int_int.vcxproj">
+      <Project>{4704B7D3-A875-3AB1-9243-4ABE95B472BD}</Project>
+      <Name>compile_MatrixBase_segment_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_select.vcxproj">
+      <Project>{6AAE96F2-AB9C-37E5-81B3-75191ED73B30}</Project>
+      <Name>compile_MatrixBase_select</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_selfadjointView.vcxproj">
+      <Project>{42AC8404-E3F3-30BF-8FEB-0D8C6876B95C}</Project>
+      <Name>compile_MatrixBase_selfadjointView</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_set.vcxproj">
+      <Project>{00A8457E-9F13-3674-94E4-9F19F97BF407}</Project>
+      <Name>compile_MatrixBase_set</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_setIdentity.vcxproj">
+      <Project>{04126A85-B15E-3828-B835-AE702CD82E08}</Project>
+      <Name>compile_MatrixBase_setIdentity</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_setOnes.vcxproj">
+      <Project>{CD1A0C4C-D543-322B-B947-8481E62438DD}</Project>
+      <Name>compile_MatrixBase_setOnes</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_setRandom.vcxproj">
+      <Project>{50CDFA7B-5C54-3070-8A2A-D8D792E327DF}</Project>
+      <Name>compile_MatrixBase_setRandom</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_setZero.vcxproj">
+      <Project>{42A0DE2B-D7AD-3E77-BA3A-B941E0F87A1F}</Project>
+      <Name>compile_MatrixBase_setZero</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_start_int.vcxproj">
+      <Project>{BE76FAF3-FDFE-301F-AA8B-B78CD73E69B1}</Project>
+      <Name>compile_MatrixBase_start_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_bottomRows.vcxproj">
+      <Project>{4D3CAB26-BD4A-3BA6-9481-A6F7410400D7}</Project>
+      <Name>compile_MatrixBase_template_int_bottomRows</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_end.vcxproj">
+      <Project>{A44656DA-E600-3D82-9534-E1B7CD6ED672}</Project>
+      <Name>compile_MatrixBase_template_int_end</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_int_block_int_int_int_int.vcxproj">
+      <Project>{40A4ED88-01E2-37C3-819B-7B190849C99E}</Project>
+      <Name>compile_MatrixBase_template_int_int_block_int_int_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_int_bottomLeftCorner.vcxproj">
+      <Project>{DC826E15-6D60-3D85-AE6E-554816E854FA}</Project>
+      <Name>compile_MatrixBase_template_int_int_bottomLeftCorner</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_int_bottomLeftCorner_int_int.vcxproj">
+      <Project>{1C71C540-72DE-3FDF-85F3-9894E9DDA86D}</Project>
+      <Name>compile_MatrixBase_template_int_int_bottomLeftCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_int_bottomRightCorner.vcxproj">
+      <Project>{D46D10CE-49B7-3E00-A8DD-BB30FEA984F7}</Project>
+      <Name>compile_MatrixBase_template_int_int_bottomRightCorner</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_int_bottomRightCorner_int_int.vcxproj">
+      <Project>{EB48B74E-8F24-3A79-A31D-9628DA872CE2}</Project>
+      <Name>compile_MatrixBase_template_int_int_bottomRightCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_int_topLeftCorner.vcxproj">
+      <Project>{2FDFF9C4-4D06-38A9-B3D1-C84F0BF29E61}</Project>
+      <Name>compile_MatrixBase_template_int_int_topLeftCorner</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_int_topLeftCorner_int_int.vcxproj">
+      <Project>{2A075828-F4CC-30A3-9BDA-C54B9F2EFFD2}</Project>
+      <Name>compile_MatrixBase_template_int_int_topLeftCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_int_topRightCorner.vcxproj">
+      <Project>{DA09B145-3F47-346B-AF96-8C54549339CD}</Project>
+      <Name>compile_MatrixBase_template_int_int_topRightCorner</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_int_topRightCorner_int_int.vcxproj">
+      <Project>{0DF11EDA-3593-3285-884F-B518E3835502}</Project>
+      <Name>compile_MatrixBase_template_int_int_topRightCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_leftCols.vcxproj">
+      <Project>{A48BC34B-4ADC-333F-8463-7C15A218CAAA}</Project>
+      <Name>compile_MatrixBase_template_int_leftCols</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_rightCols.vcxproj">
+      <Project>{05169787-19C0-359B-AFCF-618CFAC34113}</Project>
+      <Name>compile_MatrixBase_template_int_rightCols</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_segment.vcxproj">
+      <Project>{F854EA93-FC74-39DE-BB9F-7E606D55811A}</Project>
+      <Name>compile_MatrixBase_template_int_segment</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_start.vcxproj">
+      <Project>{3BF345AA-A108-3F2C-9D3A-A0F466A33F87}</Project>
+      <Name>compile_MatrixBase_template_int_start</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_template_int_topRows.vcxproj">
+      <Project>{3432EEE8-75F1-338B-939F-EABBEF782E67}</Project>
+      <Name>compile_MatrixBase_template_int_topRows</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_topLeftCorner_int_int.vcxproj">
+      <Project>{FDBD148B-BBB5-3AD9-B873-58EA02E317EF}</Project>
+      <Name>compile_MatrixBase_topLeftCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_topRightCorner_int_int.vcxproj">
+      <Project>{BBC10137-5EA5-3D12-96BA-F2487B94B083}</Project>
+      <Name>compile_MatrixBase_topRightCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_topRows_int.vcxproj">
+      <Project>{F96F8E34-F948-3C3C-8936-EC6BEA25CC5E}</Project>
+      <Name>compile_MatrixBase_topRows_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_transpose.vcxproj">
+      <Project>{9E868718-CEE9-3A9C-A347-22E451140875}</Project>
+      <Name>compile_MatrixBase_transpose</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_triangularView.vcxproj">
+      <Project>{6E619C0C-05D0-3A7C-869A-5E6D64BF8973}</Project>
+      <Name>compile_MatrixBase_triangularView</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_zero.vcxproj">
+      <Project>{A15E25C6-601D-3176-B46D-73495AC6B48D}</Project>
+      <Name>compile_MatrixBase_zero</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_zero_int.vcxproj">
+      <Project>{52CE5EBE-CE49-3A4B-9377-EB9CE6F7503B}</Project>
+      <Name>compile_MatrixBase_zero_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_MatrixBase_zero_int_int.vcxproj">
+      <Project>{113F30ED-3390-3970-BC17-B73AE07CA0D7}</Project>
+      <Name>compile_MatrixBase_zero_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_Map_stride.vcxproj">
+      <Project>{F85B35BE-BBCD-3B70-A7BA-0F00D39E5732}</Project>
+      <Name>compile_Matrix_Map_stride</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_resize_NoChange_int.vcxproj">
+      <Project>{DF18E891-EF78-3E2A-9CCE-CFA28341C79E}</Project>
+      <Name>compile_Matrix_resize_NoChange_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_resize_int.vcxproj">
+      <Project>{8E293437-6107-388D-BCF3-CD31200B5255}</Project>
+      <Name>compile_Matrix_resize_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_resize_int_NoChange.vcxproj">
+      <Project>{94054D43-4A54-3638-95B7-F2144BC15E32}</Project>
+      <Name>compile_Matrix_resize_int_NoChange</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_resize_int_int.vcxproj">
+      <Project>{E7AB5F79-8C3A-3178-BB5E-EADDF93DE1A2}</Project>
+      <Name>compile_Matrix_resize_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_setConstant_int.vcxproj">
+      <Project>{4D67C9F5-3728-3744-9A3A-E5379E779A3F}</Project>
+      <Name>compile_Matrix_setConstant_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_setConstant_int_int.vcxproj">
+      <Project>{D80337B2-A1DB-3E2C-9ACA-BB0771D021FE}</Project>
+      <Name>compile_Matrix_setConstant_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_setIdentity_int_int.vcxproj">
+      <Project>{DA818B4C-8405-3D3A-BAB1-8D96529B1DC5}</Project>
+      <Name>compile_Matrix_setIdentity_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_setOnes_int.vcxproj">
+      <Project>{EF42C57B-8C2B-3C7D-9D65-59CC9D03F54D}</Project>
+      <Name>compile_Matrix_setOnes_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_setOnes_int_int.vcxproj">
+      <Project>{B4299C6D-55E2-32A9-A785-7ACC6A5BA977}</Project>
+      <Name>compile_Matrix_setOnes_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_setRandom_int.vcxproj">
+      <Project>{0C17BA52-8298-3413-9DBB-FB1545B354A3}</Project>
+      <Name>compile_Matrix_setRandom_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_setRandom_int_int.vcxproj">
+      <Project>{6847B781-3217-37CA-AF82-D97A4E6B90F7}</Project>
+      <Name>compile_Matrix_setRandom_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_setZero_int.vcxproj">
+      <Project>{2A501CFA-61BE-3D2E-B035-8F477A888CBE}</Project>
+      <Name>compile_Matrix_setZero_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Matrix_setZero_int_int.vcxproj">
+      <Project>{EEA0EBFC-7EFE-3CBC-907A-3A6120E89DE1}</Project>
+      <Name>compile_Matrix_setZero_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_PartialPivLU_solve.vcxproj">
+      <Project>{747BFB3A-C22E-37B1-B866-157FE37AD2F9}</Project>
+      <Name>compile_PartialPivLU_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_PartialRedux_count.vcxproj">
+      <Project>{3D78B1E8-A23C-38CC-898B-A5951AB45D0A}</Project>
+      <Name>compile_PartialRedux_count</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_PartialRedux_maxCoeff.vcxproj">
+      <Project>{4888C268-933F-320F-A8F3-71E45CBC4E96}</Project>
+      <Name>compile_PartialRedux_maxCoeff</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_PartialRedux_minCoeff.vcxproj">
+      <Project>{60D97F38-80EE-36D4-A59E-228A74EC0528}</Project>
+      <Name>compile_PartialRedux_minCoeff</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_PartialRedux_norm.vcxproj">
+      <Project>{85418476-955B-392E-A3DF-0BF130324FC1}</Project>
+      <Name>compile_PartialRedux_norm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_PartialRedux_prod.vcxproj">
+      <Project>{1240DFC1-2E09-3D63-BB69-E095999AD806}</Project>
+      <Name>compile_PartialRedux_prod</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_PartialRedux_squaredNorm.vcxproj">
+      <Project>{9A87BD54-FC16-345B-BCFE-F1D2E9E0D1CC}</Project>
+      <Name>compile_PartialRedux_squaredNorm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_PartialRedux_sum.vcxproj">
+      <Project>{4F230087-61DF-3A74-8854-7EBB3F3D5EC1}</Project>
+      <Name>compile_PartialRedux_sum</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_RealQZ_compute.vcxproj">
+      <Project>{93A7B920-4A10-3A27-9527-EC876788B143}</Project>
+      <Name>compile_RealQZ_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_RealSchur_RealSchur_MatrixType.vcxproj">
+      <Project>{440D340E-37DA-3532-86F1-79C91B257C54}</Project>
+      <Name>compile_RealSchur_RealSchur_MatrixType</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_RealSchur_compute.vcxproj">
+      <Project>{5A67F1E1-826E-36C0-B27E-9611B4F5C204}</Project>
+      <Name>compile_RealSchur_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver.vcxproj">
+      <Project>{5FDB7055-F5A3-32F9-AA01-BEC2409FCD53}</Project>
+      <Name>compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver_MatrixType.vcxproj">
+      <Project>{16F86F61-4774-39F0-89E0-403A6EBF30B0}</Project>
+      <Name>compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver_MatrixType</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver_MatrixType2.vcxproj">
+      <Project>{26D7C0BB-7928-30CD-890F-30C6A0D86AD3}</Project>
+      <Name>compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver_MatrixType2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointEigenSolver_compute_MatrixType.vcxproj">
+      <Project>{775C9168-BC30-34D4-94F1-2F22F202DA69}</Project>
+      <Name>compile_SelfAdjointEigenSolver_compute_MatrixType</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointEigenSolver_compute_MatrixType2.vcxproj">
+      <Project>{991D3F58-1AED-3A19-A892-905C22DB2348}</Project>
+      <Name>compile_SelfAdjointEigenSolver_compute_MatrixType2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointEigenSolver_eigenvalues.vcxproj">
+      <Project>{BEC16FCF-5B03-34A2-A6FB-D51030858443}</Project>
+      <Name>compile_SelfAdjointEigenSolver_eigenvalues</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointEigenSolver_eigenvectors.vcxproj">
+      <Project>{AA73AABA-F190-396F-A980-C4E6E861B574}</Project>
+      <Name>compile_SelfAdjointEigenSolver_eigenvectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointEigenSolver_operatorInverseSqrt.vcxproj">
+      <Project>{628D004C-B592-3D56-B1DA-5B86D67711CC}</Project>
+      <Name>compile_SelfAdjointEigenSolver_operatorInverseSqrt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointEigenSolver_operatorSqrt.vcxproj">
+      <Project>{E3F7BD6A-A1C1-3D84-A713-D2204EFE40FE}</Project>
+      <Name>compile_SelfAdjointEigenSolver_operatorSqrt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointView_eigenvalues.vcxproj">
+      <Project>{47ADAB90-0331-3BC2-A8EF-2AD33FBFD5BF}</Project>
+      <Name>compile_SelfAdjointView_eigenvalues</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SelfAdjointView_operatorNorm.vcxproj">
+      <Project>{62284AD7-2EF5-37A9-80AC-6B57442C7F5E}</Project>
+      <Name>compile_SelfAdjointView_operatorNorm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Slicing_arrayexpr.vcxproj">
+      <Project>{570EE78E-2A1C-319E-A12C-EADC6280CA06}</Project>
+      <Name>compile_Slicing_arrayexpr</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_SparseMatrix_coeffs.vcxproj">
+      <Project>{06000D37-4F3B-3533-9AB0-173EBA5D1666}</Project>
+      <Name>compile_SparseMatrix_coeffs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_TopicAliasing_block.vcxproj">
+      <Project>{4E97893F-B3C6-34FB-8B26-794FB135F37D}</Project>
+      <Name>compile_TopicAliasing_block</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_TopicAliasing_block_correct.vcxproj">
+      <Project>{B3BAB0B6-1BCA-373B-87A2-15EDA0621E30}</Project>
+      <Name>compile_TopicAliasing_block_correct</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_TopicAliasing_cwise.vcxproj">
+      <Project>{85A26620-C986-3DD5-9F15-D066459E9A74}</Project>
+      <Name>compile_TopicAliasing_cwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_TopicAliasing_mult1.vcxproj">
+      <Project>{18BC60F7-B1F8-3009-B359-9C286C7D4E7B}</Project>
+      <Name>compile_TopicAliasing_mult1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_TopicAliasing_mult2.vcxproj">
+      <Project>{5E44231D-9FCF-33D9-9547-596A42C3DB43}</Project>
+      <Name>compile_TopicAliasing_mult2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_TopicAliasing_mult3.vcxproj">
+      <Project>{E3322DEE-84D7-3CF0-BAF4-0D8DDC08B0CF}</Project>
+      <Name>compile_TopicAliasing_mult3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_TopicAliasing_mult4.vcxproj">
+      <Project>{FE461FCD-2E95-34D6-A164-9B2DDD237D36}</Project>
+      <Name>compile_TopicAliasing_mult4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_TopicAliasing_mult5.vcxproj">
+      <Project>{788E4295-DA6C-3C5F-BA60-2C6206CF952F}</Project>
+      <Name>compile_TopicAliasing_mult5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_TopicStorageOrders_example.vcxproj">
+      <Project>{E929EC26-EC99-35BE-99E6-329548D35B1C}</Project>
+      <Name>compile_TopicStorageOrders_example</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Triangular_solve.vcxproj">
+      <Project>{44A65574-DE81-3235-9DF7-4ADCCC676B94}</Project>
+      <Name>compile_Triangular_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tridiagonalization_Tridiagonalization_MatrixType.vcxproj">
+      <Project>{BAC3031E-1938-310B-9906-90F50598C00B}</Project>
+      <Name>compile_Tridiagonalization_Tridiagonalization_MatrixType</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tridiagonalization_compute.vcxproj">
+      <Project>{AE55F858-3FF4-30E7-AA05-4B4C3B1AB29D}</Project>
+      <Name>compile_Tridiagonalization_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tridiagonalization_decomposeInPlace.vcxproj">
+      <Project>{90694A49-80D4-3CB9-92E1-60E82A75B503}</Project>
+      <Name>compile_Tridiagonalization_decomposeInPlace</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tridiagonalization_diagonal.vcxproj">
+      <Project>{71D023D1-44FA-3A11-BC25-71631894399F}</Project>
+      <Name>compile_Tridiagonalization_diagonal</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tridiagonalization_householderCoefficients.vcxproj">
+      <Project>{3DD5F8E5-D624-3DE0-979F-2E1A536AE4D3}</Project>
+      <Name>compile_Tridiagonalization_householderCoefficients</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tridiagonalization_packedMatrix.vcxproj">
+      <Project>{53A6F659-356D-319A-9666-1852E10B2A33}</Project>
+      <Name>compile_Tridiagonalization_packedMatrix</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_AdvancedInitialization_Block.vcxproj">
+      <Project>{E3612EEC-63AC-3FA9-A5CE-9346DE392CDD}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_Block</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_AdvancedInitialization_CommaTemporary.vcxproj">
+      <Project>{9F0D092E-48EA-3950-9828-71A62D07FDF5}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_CommaTemporary</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_AdvancedInitialization_Join.vcxproj">
+      <Project>{506A0411-CDC5-36B1-BD3B-44FF22DEAE83}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_Join</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_AdvancedInitialization_LinSpaced.vcxproj">
+      <Project>{08C98B14-52B5-38FE-AFA3-A0D6BA79EFDE}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_LinSpaced</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_AdvancedInitialization_ThreeWays.vcxproj">
+      <Project>{80695079-FBB7-3E4A-A900-40BB5D48E376}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_ThreeWays</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_AdvancedInitialization_Zero.vcxproj">
+      <Project>{1B1F29E3-1707-3381-ADA7-BC0C00CC673F}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_Zero</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_Map_rowmajor.vcxproj">
+      <Project>{9EE888F1-509E-3947-A80E-1B6C6C435116}</Project>
+      <Name>compile_Tutorial_Map_rowmajor</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_Map_using.vcxproj">
+      <Project>{B965675D-C8E6-346D-80AF-8F12347FEB48}</Project>
+      <Name>compile_Tutorial_Map_using</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_ReshapeMat2Mat.vcxproj">
+      <Project>{2E76FD59-891B-3F60-9960-3B84C754E01D}</Project>
+      <Name>compile_Tutorial_ReshapeMat2Mat</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_ReshapeMat2Vec.vcxproj">
+      <Project>{C798D88E-3008-3541-82D5-37B81CC89EDB}</Project>
+      <Name>compile_Tutorial_ReshapeMat2Vec</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_SlicingCol.vcxproj">
+      <Project>{548BF68A-514B-3F02-92A1-F768FB059522}</Project>
+      <Name>compile_Tutorial_SlicingCol</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_SlicingVec.vcxproj">
+      <Project>{E4939B53-82CC-33B8-A39A-97C822DE1ED7}</Project>
+      <Name>compile_Tutorial_SlicingVec</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_commainit_01.vcxproj">
+      <Project>{3B98E8FC-EB5D-36E1-A56E-9A05F448E0EC}</Project>
+      <Name>compile_Tutorial_commainit_01</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_commainit_01b.vcxproj">
+      <Project>{D5645340-6B29-35B0-B8B5-D6D8794B2186}</Project>
+      <Name>compile_Tutorial_commainit_01b</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_commainit_02.vcxproj">
+      <Project>{C3CF391C-8A64-3C95-B176-E17005049754}</Project>
+      <Name>compile_Tutorial_commainit_02</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_reshaped_vs_resize_1.vcxproj">
+      <Project>{A8996A64-6ABC-392F-BB14-6E09557244E4}</Project>
+      <Name>compile_Tutorial_reshaped_vs_resize_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_reshaped_vs_resize_2.vcxproj">
+      <Project>{EEF67D09-B5FE-3A5E-85E6-A2E1F37412FD}</Project>
+      <Name>compile_Tutorial_reshaped_vs_resize_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_solve_matrix_inverse.vcxproj">
+      <Project>{E85C8AAB-AC3A-30C7-8FD4-2DA17B2818A9}</Project>
+      <Name>compile_Tutorial_solve_matrix_inverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_solve_multiple_rhs.vcxproj">
+      <Project>{B74307BD-AB06-3233-A630-40C8EEB50F08}</Project>
+      <Name>compile_Tutorial_solve_multiple_rhs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_solve_reuse_decomposition.vcxproj">
+      <Project>{F20FC528-880B-36B7-A56D-3982966D04AE}</Project>
+      <Name>compile_Tutorial_solve_reuse_decomposition</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_solve_singular.vcxproj">
+      <Project>{F6B2B268-A78D-3EE6-8A4F-F775ED0FC828}</Project>
+      <Name>compile_Tutorial_solve_singular</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_solve_triangular.vcxproj">
+      <Project>{346D7D3F-F839-3C2F-8248-6873818D5DB5}</Project>
+      <Name>compile_Tutorial_solve_triangular</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_solve_triangular_inplace.vcxproj">
+      <Project>{495EDD51-F2C1-3B19-A747-640D27F3EDA3}</Project>
+      <Name>compile_Tutorial_solve_triangular_inplace</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Tutorial_std_sort.vcxproj">
+      <Project>{F168B453-548D-3DF1-91F9-BCB7A2B125CB}</Project>
+      <Name>compile_Tutorial_std_sort</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_VectorwiseOp_homogeneous.vcxproj">
+      <Project>{07FD6E5A-8CB1-33D3-9D1F-0C068D75198C}</Project>
+      <Name>compile_VectorwiseOp_homogeneous</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_Vectorwise_reverse.vcxproj">
+      <Project>{471A5CD8-97FA-384C-B0FC-2F899AF5768A}</Project>
+      <Name>compile_Vectorwise_reverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_class_FullPivLU.vcxproj">
+      <Project>{B6AD1F89-1EC3-3124-ABDC-DECC25582B80}</Project>
+      <Name>compile_class_FullPivLU</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_tut_arithmetic_redux_minmax.vcxproj">
+      <Project>{C5351499-1239-38C6-A06B-6716B3F9E980}</Project>
+      <Name>compile_tut_arithmetic_redux_minmax</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_tut_arithmetic_transpose_aliasing.vcxproj">
+      <Project>{D470010B-1FB8-38E0-865C-81BE675C6DDA}</Project>
+      <Name>compile_tut_arithmetic_transpose_aliasing</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_tut_arithmetic_transpose_conjugate.vcxproj">
+      <Project>{917A0F43-0A0E-3CD4-9D66-004E2D91016B}</Project>
+      <Name>compile_tut_arithmetic_transpose_conjugate</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_tut_arithmetic_transpose_inplace.vcxproj">
+      <Project>{F90E75FC-312C-3338-9FAC-7A5157BA2CE8}</Project>
+      <Name>compile_tut_arithmetic_transpose_inplace</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\snippets\compile_tut_matrix_assignment_resizing.vcxproj">
+      <Project>{B8362330-3322-3A2B-9172-CDA9E0177EA2}</Project>
+      <Name>compile_tut_matrix_assignment_resizing</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\doc.vcxproj">
+      <Project>{2761AF3F-F2A6-31E4-9F2F-9A720F188018}</Project>
+      <Name>doc</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\doc-eigen-prerequisites.vcxproj">
+      <Project>{387406E6-47F6-38ED-9489-AD7EBF26EE9D}</Project>
+      <Name>doc-eigen-prerequisites</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\doc-unsupported-prerequisites.vcxproj">
+      <Project>{09FB95DD-2E8E-3630-B2DF-837884DF2CE3}</Project>
+      <Name>doc-unsupported-prerequisites</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\function_taking_eigenbase.vcxproj">
+      <Project>{1104A73A-CAF3-38B7-A094-C4CCFDEED69D}</Project>
+      <Name>function_taking_eigenbase</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\function_taking_ref.vcxproj">
+      <Project>{72872E26-4523-33CC-878E-418B4531B606}</Project>
+      <Name>function_taking_ref</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\make_circulant.vcxproj">
+      <Project>{ED540C25-82F1-300A-BE8D-8246248F99DC}</Project>
+      <Name>make_circulant</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\make_circulant2.vcxproj">
+      <Project>{47285637-9F35-3564-8EF5-4012BEC4FDC5}</Project>
+      <Name>make_circulant2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\matrixfree_cg.vcxproj">
+      <Project>{7C600124-493A-3FEC-9664-F7247F4D9E22}</Project>
+      <Name>matrixfree_cg</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\nullary_indexing.vcxproj">
+      <Project>{0F90FC5B-DEE5-3CBB-90C4-06A05448D817}</Project>
+      <Name>nullary_indexing</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\tut_arithmetic_add_sub.vcxproj">
+      <Project>{9E11310D-E4B3-38CD-B759-2C675A317C85}</Project>
+      <Name>tut_arithmetic_add_sub</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\tut_arithmetic_dot_cross.vcxproj">
+      <Project>{8AF66814-8035-3CF2-93E7-EE93BCE34009}</Project>
+      <Name>tut_arithmetic_dot_cross</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\tut_arithmetic_matrix_mul.vcxproj">
+      <Project>{91BFD47A-0442-30D7-8D59-F4DD4167C178}</Project>
+      <Name>tut_arithmetic_matrix_mul</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\tut_arithmetic_redux_basic.vcxproj">
+      <Project>{1D2B30ED-5598-309C-BE6D-FB2A3F0D27CE}</Project>
+      <Name>tut_arithmetic_redux_basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\tut_arithmetic_scalar_mul_div.vcxproj">
+      <Project>{58B46BAB-6A2E-38E3-B35B-D487367BB482}</Project>
+      <Name>tut_arithmetic_scalar_mul_div</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\tut_matrix_coefficient_accessors.vcxproj">
+      <Project>{1CC9D083-4661-359B-BBC3-6F3FB4E369CA}</Project>
+      <Name>tut_matrix_coefficient_accessors</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\tut_matrix_resize.vcxproj">
+      <Project>{C983B3AB-DCD1-3BC4-AA9A-E7BA74B70EF0}</Project>
+      <Name>tut_matrix_resize</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Personal\Learning\VehiclePathPlanningNew\build\_deps\eigen-build\doc\examples\tut_matrix_resize_fixed_size.vcxproj">
+      <Project>{9898F30B-FCB8-36ED-8E9B-62095B7B04ED}</Project>
+      <Name>tut_matrix_resize_fixed_size</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
