@@ -10,7 +10,7 @@ using namespace std;
 //void printVec(vector<char)
 
 int main(){
-    
+    std::cout << "c++ version - " << __cplusplus << std::endl;
     //implementing Breadth-First-Search
     // Declaring the graph with unit edge-weight
 

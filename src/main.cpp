@@ -1,6 +1,6 @@
 #include "../inc/solver.h"
 #include "../inc/spline.h"
-#include <bits/stdc++.h>
+
 #include <iostream>
 #include <cmath>
 #include <Eigen/Dense>
@@ -12,6 +12,9 @@
 #include <string>
 #include <fstream>
 #include <chrono>
+#include <filesystem>
+
+//namespace fs = std::filesystem;
 
 using namespace std;
 using namespace Eigen;
@@ -123,21 +126,28 @@ bool pathGridObstacleOverlap(const Vector3f& currentNode, const Vector3f& neighb
 
 // Todo: convert VehicleTrajectory to unordered map
 VehicleTrajectory generateSmoothTrajectory(const vector<Vector3f>& vehiclePath, float averageSpeed, float resolution){
+    std::cout << "generating smooth trajectory..." << std::endl;
 
     VehicleTrajectory vehicleTrajectory;
     // finding the indices where direction of motion is reversed
     vector<unsigned int> reverseIndex;
     reverseIndex.push_back(0); // adding the start index
-    for(unsigned int i = 1; i < size(vehiclePath); i++)
+    std::cout << "finding reverse indices..." << std::endl;
+    std::cout << "size of vehicle path - " << size(vehiclePath) << std::endl;
+    for(unsigned int i = 1; i < size(vehiclePath) - 1; i++)
     {
+        std::cout << "i - " << i << "\n";
         Vector2f vec1(vehiclePath[i + 1](0) - vehiclePath[i](0), vehiclePath[i + 1](1) - vehiclePath[i](1));
+        std::cout << "vec1 - " << vec1 << "\n";
         Vector2f vec2(vehiclePath[i](0) - vehiclePath[i - 1](0), vehiclePath[i](1) - vehiclePath[i - 1](1));
+        std::cout << "vec2 - " << vec2 << "\n";
         float angle = acos(vec1.dot(vec2) / sqrt(vec1.dot(vec1)) / sqrt(vec2.dot(vec2)));
         if (angle > M_PI / 2)
         {
             reverseIndex.push_back(i);
         }
     }
+    std::cout << "reverse indices found" << std::endl;
 
     // inserting stop indiex
     reverseIndex.push_back(size(vehiclePath) - 1);
@@ -158,6 +168,7 @@ VehicleTrajectory generateSmoothTrajectory(const vector<Vector3f>& vehiclePath, 
         }
         vehicleTimeStamps.push_back(vehicleTimeStamps[i-1] + dist / averageSpeed);
     }
+    std::cout << "time vector created" << std::endl;
 
     // adding first element manually in the trajectory
     vehicleTrajectory.time.push_back(vehicleTimeStamps.front());
@@ -220,6 +231,7 @@ VehicleTrajectory generateSmoothTrajectory(const vector<Vector3f>& vehiclePath, 
 
 int main(){
     auto start = std::chrono::steady_clock::now();
+    std::cout << "c++  version - " << __cplusplus << std::endl;
 
     SimEnv simEnv;
 
@@ -242,8 +254,8 @@ int main(){
     float vehMass = 1500;
 
     //target location for the vehicle
-    float xTar = 19;
-    float yTar = 4;
+    float xTar = 15;
+    float yTar = 2;
  
     unordered_map<size_t, Vector3f> cameFrom;
     unordered_map<size_t, float> costTillNow;
@@ -441,7 +453,8 @@ int main(){
     
     //writing the agent path in a csv
     // first row is the target node and subsequent nodes are the path of the agent
-    ofstream myFile("../scripts/res.csv");
+    std::cout << "Current working directory: " << filesystem::current_path() << std::endl;
+    ofstream myFile("scripts/res.csv");
     
     myFile << xTar << "," << yTar << "\n";
     while (vectorToKey(current) != vectorToKey(startNode))
@@ -482,7 +495,7 @@ int main(){
     // creating list of indices whe the vehicls is reversed
 
     //writing the environment detail in a csv
-    ofstream myFileEnv("../scripts/env.csv");
+    ofstream myFileEnv("scripts/env.csv");
     // the format is: first line - boundary of the env
     // from second line we start listing the boundaries of each obstacle
 
@@ -511,12 +524,13 @@ int main(){
     cout << "closestState" << "\n" << closestState << "\n\n";
     cout << "closestItr" << "\n" << closestItr << "\n\n";
     cout << "cost till now for the final final node - " << costTillNow[vectorToKey(closestState)] << endl;
-
+    std::cout << "path generated and written in csv" << std::endl;
     VehicleTrajectory vehicleTrajectory = generateSmoothTrajectory(vehiclePath, averageSpeed, trajectoryResolution);
+    std::cout<<"smooth trajectory generated" << std::endl;
 
     // wrirtting smoothened path in csv
     // format is - time, x, y, heading
-    ofstream myFileSmoothPath("../scripts/smoothPath.csv");
+    ofstream myFileSmoothPath("scripts/smoothPath.csv");
 
     for(int i = 0; i < size(vehicleTrajectory.time); i++)
     {
@@ -527,6 +541,7 @@ int main(){
         myFileSmoothPath << vehicleTrajectory.state[i](1) << ",";
         myFileSmoothPath << vehicleTrajectory.state[i](2) << "\n";
     }
+    std::cout<<"smooth trajectory written in csv" << std::endl;
 
     // simulating vehicle motion with control commands to follow the generated trajectory
 
@@ -647,7 +662,7 @@ int main(){
     }
     cout << "done with simulation." << endl;
 
-    ofstream myFileSimulationRes("../scripts/simulationRes.csv");
+    ofstream myFileSimulationRes("scripts/simulationRes.csv");
 
     for(int i = 0; i < size(simResult.time); i++)
     {
