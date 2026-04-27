@@ -19,6 +19,8 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(eigen)
 
+find_package(OsqpEigen REQUIRED)
+
 
 target_sources(VehiclePathPlanning
   PRIVATE
@@ -29,4 +31,5 @@ target_sources(VehiclePathPlanning
 target_link_libraries(VehiclePathPlanning
   PRIVATE
     eigen
+    OsqpEigen::OsqpEigen
 )
