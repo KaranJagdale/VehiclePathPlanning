@@ -1,6 +1,6 @@
 ## Hybrid A* implementation --- More details coming soon
 
-### Resulting agent motion
+### Path obtained by Hybrid A-star
 ![](https://github.com/KaranJagdale/VehiclePathPlanning/blob/main/scripts/res.gif)
 
 ### Smooth Trajetory Generation and Trajectory Tracking
