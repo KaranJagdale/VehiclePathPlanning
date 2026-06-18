@@ -15,7 +15,6 @@
 #include <filesystem>
 #include "OsqpEigen/OsqpEigen.h"
 
-//namespace fs = std::filesystem;
 
 using namespace std;
 using namespace Eigen;

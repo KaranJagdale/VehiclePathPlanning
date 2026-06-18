@@ -103,9 +103,11 @@ for i in range(len(envObjects)):
     ax1.fill_between(xFill, y1, y2)
 ax1.plot(xArr[0] , yArr[0], 'bo')
 ax1.plot(xArr[len(xArr) - 1], yArr[len(xArr) - 1], 'rx')
-ax1.plot(xArr, yArr)
-ax1.plot(xArrSmooth, yArrSmooth)
-ax1.plot(xArrSim, yArrSim)
+ax1.plot(xArr, yArr, label = "Path")
+ax1.plot(xArrSmooth, yArrSmooth, label = "Smooth trajectory")
+ax1.plot(xArrSim, yArrSim, label = "Tracked trajectory using PID")
+
+ax1.legend(loc='upper left')
 
 
 plt.show()
